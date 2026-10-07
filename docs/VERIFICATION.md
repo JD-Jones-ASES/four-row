@@ -36,9 +36,26 @@ cancelled unbounded cold-build diagnostic remain in
 [cold-build.json](../verification/cold-build.json). They are historical
 diagnostics, not substitutes for the complete successful run.
 
-## Documentation revision
+## Pre-submission review revision
 
-The current revision updates prose, metadata, the packaged-evidence manifest,
+The [October 7 review](REVIEW.md) retains all sixteen compared statements.
+All 298 proof/build/data/license inputs recorded in
+[documentation-refresh.json](../verification/documentation-refresh.json)
+remain byte-identical to the verified proof commit, and all 23 original
+Python executable ASTs remain unchanged after docstring removal. The new
+[atom-geometry checker](../evidence/atom_geometry.py) is supplementary and
+is not imported by a Lean generator, build script, or existing evidence replay.
+Its normal and optimized runs passed, including corruption controls.
+
+[review-2026-10-07.json](../verification/review-2026-10-07.json) records
+current-policy metadata/schema checks, Lean source requirements, source
+identity, local links, and the exact supplementary evidence. This revision
+is not a new full kernel replay. The previously verified proof is preserved;
+the proposed five additional Lean statements were not included.
+
+## Earlier documentation revision
+
+Commit `d03ba898e7fd0d8102916bddb297eb35bf48fdea` updated prose, metadata, the packaged-evidence manifest,
 and Python documentation strings. Every Lean file, dependency pin, Comparator
 configuration, and workflow is byte-identical to the verified proof commit.
 Python executable syntax is unchanged after removing documentation strings.

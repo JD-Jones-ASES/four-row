@@ -15,8 +15,9 @@
 
 Use the full 40-character commit returned by `git rev-parse HEAD` on the
 intended `main` checkout. A branch name or tag is not a submission revision.
-The repository must be public when submitted. Visibility changes, submission,
-and any later registration remain maintainer actions.
+The repository is public and has not been submitted as of October 7, 2026.
+The sixteen-statement package is prepared for maintainer submission; any
+later registration remains a separate outcome.
 
 ## Mathematical account
 
@@ -34,6 +35,9 @@ and probability. [Prior art](PRIOR_ART.md) records the comparison and its limits
 
 [THEOREMS.md](THEOREMS.md) maps every selected declaration to its informal
 statement. The explicit interior exponent is sufficient, not optimal.
+The [review disposition](REVIEW.md) retains these sixteen statements.
+The later [atom-geometry note](ATOM_GEOMETRY.md) is supplementary and its
+proposed five Lean additions are excluded from the submission contract.
 Supplementary notes include further informal consequences; a global shuffle
 mixing theorem is outside the formal claim. The source account is included
 in [ENDPOINT.md](ENDPOINT.md) and [EXTENSIONS.md](EXTENSIONS.md).

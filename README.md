@@ -48,6 +48,12 @@ Lean kernel replay. The direct cold build also passed. This documentation
 revision preserves the verified Lean, dependency, Comparator, and build
 inputs; [the verification record](docs/VERIFICATION.md) states the exact scope.
 
+The [October 7 pre-submission review](docs/REVIEW.md) found no blocking
+defect in the sixteen-statement package. Its new
+[atom geometry](docs/ATOM_GEOMETRY.md) is included as supplementary
+mathematics with exact rational checks. It is outside the compared Lean
+claims. The repository is public; Palomar submission remains with the maintainer.
+
 ## Build and replay
 
 Use the pinned Lean toolchain and dependencies:

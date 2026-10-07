@@ -67,8 +67,17 @@ does not independently prove an improved global shuffle mixing theorem.
 finite Brascamp–Lieb inequalities and entropy contraction. A serious short
 note should lead with sharp nonuniform robustness and stability, and use
 entropy and the concrete shuffle input to demonstrate utility. A catalogue
-of routine corollaries alone would add little. Before publication, a
-specialist literature check and independent mathematical review remain useful.
+of routine corollaries alone would add little. A specialist literature
+check and independent human mathematical review remain useful for a paper.
 The sixteen [formal statements](THEOREMS.md) and their
 [verification record](VERIFICATION.md) specify the completed Lean coverage.
 Additional informal consequences are distinguished from those claims.
+
+## Supplementary October 7 geometry
+
+The later [atom-geometry note](ATOM_GEOMETRY.md) derives the all-radius atom
+envelope and small-radius extremal faces directly from the four-label
+marginal equations. Its exponent-four sufficiency is classical Hölder;
+no novelty is claimed for that mechanism or worldwide priority for the
+quantitative geometry. These additions are supplementary mathematical
+arguments with exact finite evidence, outside the sixteen compared claims.

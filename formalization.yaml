@@ -79,8 +79,9 @@ status:
     claimed. The full Linux build, statement comparison, axiom audits, and con-ron, NanoDa, and Lean
     replay passed at proof commit c207efc787a7e1c88aae29dc92d4be5e10297bf2. This documentation revision
     preserves the verified proof and build inputs; see docs/VERIFICATION.md for the exact scope.
-    The general local-exponent theorem in docs/PROOF.md and additional application corollaries are
-    supplementary informal results.
+    The general local-exponent theorem in docs/PROOF.md, additional application corollaries, and
+    the later atom-geometry results in docs/ATOM_GEOMETRY.md are supplementary informal results.
+    The five Lean statements proposed in the October 7 review are not part of this contract.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
@@ -162,19 +163,30 @@ automation:
       and documentation, with separate agents reviewing scope, definitions, and proof assembly. Python
       generates finite witnesses using exact arithmetic; Lean proves the certificate checks and their
       soundness.
+  - method: agent
+    framework: Maintainer-supplied pre-submission review
+    models:
+    - OpenAI GPT-6 Pro
+    tool_setup: Reviewed the original sixteen statements and proposed supplementary atom geometry
+      and five uncompiled Lean additions. GPT-6 Astra agents assessed the supplied review and adapted
+      its mathematical note and exact evidence. The new Lean additions are excluded from this release.
   notes: The responsible maintainer directed the work. Material AI assistance and review limits are
     disclosed in DISCLOSURE.md. Python and numerical discovery are not trusted axioms. Intentional
     Challenge theorem holes are excluded from the proof-development sorry counts.
 review:
   status: agent-reviewed
+  reviewers:
+  - OpenAI GPT-6 Pro (maintainer-supplied October 7 review)
+  - OpenAI GPT-6 Astra agents
   notes: Distinct internal agents reviewed the mathematical arguments, definitions, census coverage,
     and formal proof assembly. This is agent review, not independent human peer review or source-author
     endorsement. Completed mechanical checks and their exact source commits are recorded in docs/VERIFICATION.md.
+    The separate supplied GPT-6 Pro review and its disposition are recorded in docs/REVIEW.md.
     No registry acceptance or worldwide priority is claimed.
 fidelity:
   divergences: The selected statements include the real closed ball, all nonnegative matrices, the
     complete endpoint equality classification, and full-history adaptive kernels on positive-probability
     pasts. Relative entropy is extended-real and includes unsupported laws. The explicit interior
     exponent is sufficient rather than optimal. The supplementary general-dimensional local theorem,
-    shuffle calculation, conditional resampling, and concentration consequences are not separate
-    compared Lean statements.
+    shuffle calculation, conditional resampling, concentration consequences, and later atom-geometry
+    results are not separate compared Lean statements.

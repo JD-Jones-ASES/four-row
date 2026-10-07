@@ -1,8 +1,8 @@
 # four-row
 
 Read README.md, docs/THEOREMS.md, and docs/VERIFICATION.md before changing
-the formalization. Keep the repository private until the maintainer explicitly
-authorizes a visibility change. Submission is a separate maintainer action.
+the formalization. The repository is public as of October 7, 2026.
+Palomar submission remains a separate maintainer action.
 
 Preserve the exact scope of the sixteen principal theorems and the research
 evidence in evidence/. Generated Lean source is untrusted until checked by
