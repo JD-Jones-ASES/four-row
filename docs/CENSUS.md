@@ -60,9 +60,11 @@ python3 scripts/build_census.py
 
 The sequential build runner keeps certificate verification within a bounded
 memory footprint; ordinary `lake build` checks the same declarations.
-For parallel verification, `scripts/build_census_shard.py --shard 0 --shards 8`
-selects one disjoint group of leaf modules. Every shard is required, followed
-by the sequential runner to assemble and check the semantic coverage proof.
+CI uses `scripts/build_census_shard.py --shard 0 --shards 1` for the full
+census chain, followed by the sequential runner to assemble and check the
+semantic coverage proof. Private predecessor imports enforce this ordering
+also during a direct cold Solution build. Splitting the census into more
+shards repeats prerequisite work and is no longer the recommended route.
 
 ## Scoped verification record
 

@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--shard', type=int, required=True)
-    parser.add_argument('--shards', type=int, default=8)
+    parser.add_argument('--shards', type=int, default=1)
     parser.add_argument('--lake', default='lake')
     args = parser.parse_args()
     if args.shards <= 0 or not 0 <= args.shard < args.shards:
