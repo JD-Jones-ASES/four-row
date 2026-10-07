@@ -1,0 +1,19 @@
+{
+  "repository": "JD-Jones-ASES/four-row",
+  "visibility_requirement": "private until user changes it",
+  "candidate_commit": "c207efc787a7e1c88aae29dc92d4be5e10297bf2",
+  "candidate_tree": "51d76d0ad8af5d7a3c259fff2adb14447f5a9040",
+  "baseline_commit": "ff07f4f897d4c190227eeee3f8f752788487dd3b",
+  "baseline_tree": "39406841f153c277dd8f3cb92dc889eef7421b08",
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "mathlib_commit": "a98628e16c11f5167f16124105ddce53efa9bfe5",
+  "elan_version": "v4.2.3",
+  "elan_linux_x86_64_sha256": "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2",
+  "palomar_submission_tools_commit": "d4e41c1d5b0d114c4859e6e5831dc6d3ad1d0d44",
+  "checkers": "Lean default kernel, con-ron and NanoDa bundled with the pinned Lean toolchain; no checker binaries are included.",
+  "local_solution_export_record": {
+    "bytes": 395820546,
+    "sha256": "63f2db60ea902e25dc5f896b0b0c801f7475118c261cce685dd871e1bb4adf29",
+    "scope": "Matching local baseline/candidate records; the Linux artifact does not contain the exported file or its hash."
+  }
+}

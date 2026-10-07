@@ -1,0 +1,246 @@
+name: Private cold-build diagnostic
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: four-row-cold-build-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  cold-build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    env:
+      # Lake uses this directly for its runtime pool, even on a smaller host.
+      # Child Lean compiler threads still default to the host CPU count.
+      LEAN_NUM_THREADS: '16'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install pinned elan and Lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error \
+            https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz \
+            -o "$RUNNER_TEMP/elan.tar.gz"
+          echo "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2  $RUNNER_TEMP/elan.tar.gz" | sha256sum --check
+          mkdir "$RUNNER_TEMP/elan"
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP/elan"
+          "$RUNNER_TEMP/elan/elan-init" -y --no-modify-path --default-toolchain none
+          "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Retrieve pinned Mathlib cache
+        run: python3 scripts/fetch_mathlib_cache.py
+      - name: Provision disposable-runner memory headroom
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build-logs/cold
+          # Match verify.yml: remove optional image runtimes, then reserve swap.
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /usr/share/swift /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL
+          df -h "$RUNNER_TEMP" | tee build-logs/cold/disk-before-swap.txt
+          python3 - <<'PY'
+          import os
+          stat = os.statvfs(os.environ['RUNNER_TEMP'])
+          available = stat.f_bavail * stat.f_frsize
+          required = 20 * 1024**3
+          print(f'Available bytes before swap: {available}', flush=True)
+          if available < required:
+              raise SystemExit('Need 20 GiB free: 16 GiB swap plus 4 GiB runner/log headroom')
+          PY
+          sudo fallocate -l 16G "$RUNNER_TEMP/four-row-cold-build.swap"
+          sudo chmod 600 "$RUNNER_TEMP/four-row-cold-build.swap"
+          sudo mkswap "$RUNNER_TEMP/four-row-cold-build.swap"
+          sudo swapon "$RUNNER_TEMP/four-row-cold-build.swap"
+          free -h | tee build-logs/cold/memory-after-swap.txt
+          swapon --show --bytes | tee build-logs/cold/swap.txt
+      - name: Build the complete Solution from clean project artifacts
+        timeout-minutes: 315
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -u - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import platform
+          import shutil
+          import subprocess
+          import time
+
+          root = Path.cwd()
+          logs = root / 'build-logs/cold'
+          logs.mkdir(exist_ok=True)
+          # Preserve only dependency cache artifacts. Never restore project proofs.
+          project_build = root / '.lake' / 'build'
+          if project_build.is_symlink():
+              raise SystemExit('Unexpected symlink at the project build directory')
+          if project_build.exists():
+              shutil.rmtree(project_build)
+          assert not project_build.exists()
+
+          def read(path):
+              try:
+                  return Path(path).read_text().strip()
+              except OSError:
+                  return None
+
+          membership = read('/proc/self/cgroup') or ''
+          cgroup = None
+          for line in membership.splitlines():
+              if line.startswith('0::'):
+                  candidate = Path('/sys/fs/cgroup') / line[3:].lstrip('/')
+                  if candidate.is_dir():
+                      cgroup = candidate
+          if cgroup is None and Path('/sys/fs/cgroup/memory.current').is_file():
+              # A cgroup namespace can expose its mount root with a different
+              # membership path. Record the actual readable accounting scope.
+              cgroup = Path('/sys/fs/cgroup')
+          cgroup_files = (
+              'memory.current', 'memory.peak', 'memory.max', 'memory.events',
+              'memory.swap.current', 'memory.swap.peak', 'memory.swap.max',
+              'memory.pressure', 'cpu.max', 'cpu.stat',
+              'pids.current', 'pids.peak', 'pids.max',
+          )
+
+          def resource_snapshot():
+              return {
+                  'monotonic_seconds': time.monotonic(),
+                  'meminfo': read('/proc/meminfo'),
+                  'vmstat': read('/proc/vmstat'),
+                  'loadavg': read('/proc/loadavg'),
+                  'cgroup': {name: read(cgroup / name) for name in cgroup_files}
+                            if cgroup else None,
+              }
+
+          # GNU time reports the maximum child RSS, not simultaneous total RSS.
+          # Cgroup peaks cover the runner's current cgroup, including preparation
+          # and other processes in that cgroup; record the baseline explicitly.
+          command = [
+              '/usr/bin/time', '-v', '-o', str(logs / 'time-v.txt'),
+              'timeout', '--signal=TERM', '--kill-after=60s', '18000',
+              'lake', 'build', 'FourRowSolution',
+          ]
+          metadata = {
+              'scope': 'Diagnostic on a stock GitHub runner; not official 16-core/32-GB hardware equivalence',
+              'commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'platform': platform.platform(),
+              'cpu_count': os.cpu_count(),
+              'cpu_affinity': sorted(os.sched_getaffinity(0)),
+              'cpuinfo': read('/proc/cpuinfo'),
+              'swap': read('/proc/swaps'),
+              'lean_num_threads': os.environ.get('LEAN_NUM_THREADS'),
+              'lean_toolchain': read('lean-toolchain'),
+              'lake_version': subprocess.check_output(['lake', '--version'], text=True).strip(),
+              'lake_executable': str(Path(shutil.which('lake')).resolve()),
+              'mathlib_commit': subprocess.check_output(
+                  ['git', '-C', '.lake/packages/mathlib', 'rev-parse', 'HEAD'], text=True).strip(),
+              'project_build_existed_at_start': project_build.exists(),
+              'command': command,
+              'cgroup_membership': membership,
+              'cgroup_path': str(cgroup) if cgroup else None,
+              'cgroup_peak_scope': 'Current runner cgroup, not an isolated build cgroup',
+              'before': resource_snapshot(),
+          }
+          (logs / 'metadata.json').write_text(json.dumps(metadata, indent=2) + '\n')
+          print(metadata['scope'], flush=True)
+          print(f"CPUs: {metadata['cpu_count']}; affinity: {metadata['cpu_affinity']}; Lake runtime threads: 16", flush=True)
+          print('Running lake build FourRowSolution directly, with a 300-minute process timeout.', flush=True)
+
+          def process_snapshot(build_pid):
+              output = subprocess.check_output(
+                  ['ps', '-eo', 'pid=,ppid=,rss=,comm=,args='], text=True)
+              processes = []
+              for line in output.splitlines():
+                  parts = line.split(None, 4)
+                  if len(parts) == 5:
+                      pid, ppid, rss, comm, args = parts
+                      processes.append({'pid': int(pid), 'ppid': int(ppid),
+                                        'rss_kib': int(rss), 'comm': comm, 'args': args})
+              descendants = {build_pid}
+              while True:
+                  expanded = descendants | {p['pid'] for p in processes if p['ppid'] in descendants}
+                  if expanded == descendants:
+                      break
+                  descendants = expanded
+              tree = [p for p in processes if p['pid'] in descendants]
+              for item in tree:
+                  try:
+                      item['executable'] = os.readlink(f"/proc/{item['pid']}/exe")
+                  except OSError:
+                      item['executable'] = None
+              return {
+                  'processes': tree,
+                  'lean_compilers': sum(p['comm'] == 'lean' for p in tree),
+                  # Shared pages can be counted more than once in summed RSS.
+                  'summed_rss_kib': sum(p['rss_kib'] for p in tree),
+              }
+
+          started = time.monotonic()
+          last_report = started
+          maximum_compilers = 0
+          maximum_rss_kib = 0
+          with (logs / 'build.log').open('w') as output, (logs / 'samples.jsonl').open('w') as samples:
+              process = subprocess.Popen(command, stdout=output, stderr=subprocess.STDOUT)
+              while True:
+                  snapshot = resource_snapshot()
+                  try:
+                      snapshot.update(process_snapshot(process.pid))
+                  except (OSError, subprocess.CalledProcessError, ValueError) as error:
+                      # A diagnostic sample failure must not mask the build's
+                      # own exit status or disable its external process timeout.
+                      snapshot.update({'sampling_error': str(error), 'processes': [],
+                                       'lean_compilers': 0, 'summed_rss_kib': 0})
+                  maximum_compilers = max(maximum_compilers, snapshot['lean_compilers'])
+                  maximum_rss_kib = max(maximum_rss_kib, snapshot['summed_rss_kib'])
+                  samples.write(json.dumps(snapshot) + '\n')
+                  samples.flush()
+                  if time.monotonic() - last_report >= 60:
+                      accounting = snapshot['cgroup'] or {}
+                      print(json.dumps({
+                          'elapsed_seconds': round(time.monotonic() - started),
+                          'lean_compilers': snapshot['lean_compilers'],
+                          'summed_rss_kib': snapshot['summed_rss_kib'],
+                          'cgroup_memory_current': accounting.get('memory.current'),
+                          'cgroup_swap_current': accounting.get('memory.swap.current'),
+                      }), flush=True)
+                      last_report = time.monotonic()
+                  exit_code = process.poll()
+                  if exit_code is not None:
+                      break
+                  time.sleep(5)
+          result = {
+              'exit_code': exit_code,
+              'wall_seconds': time.monotonic() - started,
+              'sample_interval_seconds': 5,
+              'observed_maximum_lean_compilers': maximum_compilers,
+              'observed_maximum_summed_rss_kib': maximum_rss_kib,
+              'after': resource_snapshot(),
+          }
+          (logs / 'result.json').write_text(json.dumps(result, indent=2) + '\n')
+          print(json.dumps({key: value for key, value in result.items() if key != 'after'}, indent=2), flush=True)
+          print((logs / 'time-v.txt').read_text(), flush=True)
+          print('Last 100 build-log lines:', flush=True)
+          subprocess.run(['tail', '-n', '100', str(logs / 'build.log')], check=False)
+          raise SystemExit(exit_code)
+          PY
+      - name: Record final runner state
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p build-logs/cold
+          git rev-parse HEAD > build-logs/cold/checked-commit.txt
+          git status --short > build-logs/cold/checked-status.txt
+          free -h > build-logs/cold/memory-final.txt
+          df -h "$RUNNER_TEMP" > build-logs/cold/disk-final.txt
+          cat /proc/swaps > build-logs/cold/swap-final.txt
+      - name: Preserve cold-build diagnostic logs
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: four-row-cold-build-${{ github.sha }}
+          path: build-logs/cold/
+          if-no-files-found: error
+          retention-days: 90

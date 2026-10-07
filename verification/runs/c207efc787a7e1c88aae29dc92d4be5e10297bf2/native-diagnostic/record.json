@@ -1,0 +1,38 @@
+{
+  "commit": "c207efc787a7e1c88aae29dc92d4be5e10297bf2",
+  "recorded_utc": "2026-10-07T05:35:55.974455+00:00",
+  "source_clean": true,
+  "build": "passed, 3551 jobs",
+  "axiom_audit": "passed, 16 principal theorems; propext, Classical.choice, Quot.sound only",
+  "pinned_comparator_statement_and_axiom_passes": "passed; no sandbox or kernel replay in this diagnostic",
+  "durable_checkout": "full build and axiom audit passed at same clean commit",
+  "exports": {
+    "challenge": {
+      "bytes": 71630133,
+      "sha256": "fadabe34d593609d5e4b2c756811043d1fca362f117405cca7586468acee9983"
+    },
+    "solution": {
+      "bytes": 395820546,
+      "sha256": "63f2db60ea902e25dc5f896b0b0c801f7475118c261cce685dd871e1bb4adf29"
+    }
+  },
+  "full_linux_gate": {
+    "run": 37572525271,
+    "status": "pending"
+  },
+  "cold_build": {
+    "run": 37572527284,
+    "status": "passed",
+    "commit": "c207efc787a7e1c88aae29dc92d4be5e10297bf2",
+    "clean": true,
+    "wall_seconds": 5931.6188225060005,
+    "solution_build_jobs": 3547,
+    "scope": "Direct build on stock private 2-CPU runner with swap; not official hardware equivalence"
+  },
+  "log_sha256": {
+    "build.log": "bd2b13b4b3a82fb5ce52f8420f39de058c60dca82340dd4760e10ae2356c8375",
+    "audit.log": "c650d5d38349b1d24c97b5ff8907ceeb5cd33cb78b05382c98ec7bed2e5ef8af",
+    "comparison.log": "4309debe18763a9cdcd4358f4670e15143ff37bb909fa2b5996a17044bb1c884",
+    "validation.json": "cd7f99330d415ce0b5e59f2cde341a6c83f727c54752ad1aba2daf305b6d5985"
+  }
+}

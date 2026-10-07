@@ -1,0 +1,162 @@
+{
+  "run_id": 37572525271,
+  "run_url": "https://github.com/JD-Jones-ASES/four-row/actions/runs/37572525271",
+  "audited_utc": "2026-10-07T08:21:45.073039+00:00",
+  "verdict": "PASS",
+  "source": {
+    "expected_and_checked_sha": "c207efc787a7e1c88aae29dc92d4be5e10297bf2",
+    "checked_status_empty": true,
+    "actions_head_sha_matches": true
+  },
+  "workflow": {
+    "status": "completed",
+    "conclusion": "success",
+    "successful_jobs": 4,
+    "all_steps_success_or_explicitly_skipped": true,
+    "skipped_steps": [],
+    "verify_started": "2026-10-07T05:19:39Z",
+    "verify_completed": "2026-10-07T08:19:42Z",
+    "required_steps": {
+      "Complete Lean build and axiom audit": "success",
+      "Independent exact research replay": "success",
+      "Compare statements and replay independent kernels": "success",
+      "Record checked source": "success",
+      "Preserve verification logs": "success"
+    }
+  },
+  "original_comparator": {
+    "command": "lake comparator --config /home/runner/work/_temp/four-row-comparator.json",
+    "verdict": "Your solution is okay!",
+    "exit_status": 0,
+    "elapsed": "2:42:03",
+    "theorem_count": 16,
+    "scope": "Bundled original Comparator in private Linux CI; resource-only serial wrappers for bundled independent kernels."
+  },
+  "kernels": {
+    "con_ron": {
+      "accepted": true,
+      "verified": true,
+      "workers": 1,
+      "declarations": 36724,
+      "checks_completed": 35929,
+      "checks_total": 35929,
+      "reported_wall_seconds": 4325.068
+    },
+    "nanoda": {
+      "accepted": true,
+      "serial": true,
+      "unpermitted_axioms_hard_errors": true,
+      "wrapper_wall_seconds": 2592.794
+    },
+    "lean_default": {
+      "accepted": true,
+      "wrapper_wall_seconds": 2748.016
+    }
+  },
+  "axiom_audit": {
+    "theorem_names_match_exact_commit_config": true,
+    "all_16_exact_axiom_set": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "theorems": [
+      "FourRowPrincipal.endpoint",
+      "FourRowPrincipal.sharp_stability",
+      "FourRowPrincipal.stability_optimal",
+      "FourRowPrincipal.explicit_extremal_family",
+      "FourRowPrincipal.radius_sharp",
+      "FourRowPrincipal.endpoint_equality",
+      "FourRowPrincipal.explicit_exponent",
+      "FourRowPrincipal.larger_exponents",
+      "FourRowPrincipal.subcritical_threshold",
+      "FourRowPrincipal.entropy",
+      "FourRowPrincipal.observation_contraction",
+      "FourRowPrincipal.entropy_optimal",
+      "FourRowPrincipal.observation_optimal",
+      "FourRowPrincipal.adaptive_tensorization",
+      "FourRowPrincipal.adaptive_probability",
+      "FourRowPrincipal.adaptive_marginals"
+    ],
+    "sorryAx_present": false
+  },
+  "python_replay": {
+    "commands": [
+      "python3 evidence/probe.py",
+      "python3 evidence/audit_census.py"
+    ],
+    "step_conclusion": "success",
+    "exact_probe_output": {
+      "certificates": 131,
+      "coefficient_keys": [
+        196
+      ],
+      "extensions": {
+        "certificates": 131,
+        "negative_controls_rejected": 2,
+        "nonnegative_weighted_squares": 6,
+        "ordinary_squares": 7,
+        "positive_product_ldl_pivots": 4716,
+        "product_blocks": 1572,
+        "scalar_identity_coefficients": 34,
+        "status": "PASS"
+      },
+      "max_denominator": 504000,
+      "negative_controls": 8,
+      "positive_pivots": 13744,
+      "scope": "complete exact finite proof of R_4(2)=1/24",
+      "shuffle_input": {
+        "all_powers_identity": "mu^k = 4^(-k) d + (1-4^(-k)) u, k >= 1",
+        "all_powers_tv": "(2/3)*4^(-k), k >= 1",
+        "k3_exponents": {
+          "eta": "1/378",
+          "half_minus_theta": "1/190",
+          "p": "95/48",
+          "theta": "47/95"
+        },
+        "negative_controls": 3,
+        "powers": [
+          {
+            "k": 1,
+            "tv": "1/6"
+          },
+          {
+            "k": 2,
+            "tv": "1/24"
+          },
+          {
+            "k": 3,
+            "tv": "1/96"
+          }
+        ],
+        "scope": "exact four-site column law; no global mixing claim",
+        "subgroup_orders": [
+          4,
+          4,
+          8
+        ]
+      },
+      "support_orbits": 73
+    },
+    "matches_audited_baseline_output": true,
+    "independent_rational_census": {
+      "support_orbits": 73,
+      "oriented_orbits": 131,
+      "unsigned_labelled_circuits": 24184,
+      "passed": true
+    },
+    "step_wall_seconds": 16.0
+  },
+  "limitations": [
+    "Private Linux preflight acceptance, not a claim of public Palomar submission or registry acceptance.",
+    "Two independent kernels and Lean default kernel accepted; no aggregate checker-memory peak is inferred from outer GNU time RSS.",
+    "The Solution axiom audit excludes the intended 16 Challenge sorry placeholders."
+  ],
+  "evidence_sha256": {
+    "checked-commit.txt": "c825cb8b0a9a1866d965e215e7319228d88509cb82aab4be5df61d51a9d5b659",
+    "checked-status.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "comparator.log": "871f5065c768f8e334a31deb3df7781871e4eeb9e3ba0d76c9840ffa1e9c7c4a",
+    "axiom-audit.log": "8d16f2d508b881ab1d93a9bd7fdda6da90c6af7f8c8547571c9f74af8956d71e",
+    "actions.log": "66baed211c8d5d0f89e77bc8e4c9bffde56e45bdcc8717076476d14bc4463c58"
+  }
+}

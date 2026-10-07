@@ -1,0 +1,351 @@
+{
+  "packaged_utc": "2026-10-07T06:52:26.501126+00:00",
+  "final_candidate_gate_status": "PASS",
+  "copies": [
+    {
+      "path": "baseline-linux/baseline-audit.json",
+      "source": "run-37567252680/baseline-audit.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 5532,
+      "uncompressed_sha256": "95b7c870309587348627c602523034ede73d01ebadb0e0c05735cc6b3f80b772"
+    },
+    {
+      "path": "baseline-linux/checked-commit.txt",
+      "source": "run-37567252680/checked-commit.txt",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 41,
+      "uncompressed_sha256": "82d5e74e81415488b6526499ab4c20faea54a2756efd3d0ab59e0e48a4c29fcb"
+    },
+    {
+      "path": "baseline-linux/checked-status.txt",
+      "source": "run-37567252680/checked-status.txt",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 0,
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline-linux/axiom-audit.log",
+      "source": "run-37567252680/axiom-audit.log",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 1535,
+      "uncompressed_sha256": "8d16f2d508b881ab1d93a9bd7fdda6da90c6af7f8c8547571c9f74af8956d71e"
+    },
+    {
+      "path": "baseline-linux/comparator.log",
+      "source": "run-37567252680/comparator.log",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 10716,
+      "uncompressed_sha256": "ca791d38a4dbfe4c0b619bee275995cb8db9b86dc255052a4ad93c4fdd01a26b"
+    },
+    {
+      "path": "baseline-linux/actions.log.gz",
+      "source": "run-37567252680/actions.log",
+      "encoding": "gzip (mtime 0)",
+      "uncompressed_bytes": 991781,
+      "uncompressed_sha256": "cac9a6abd738ac8c3d45c6133656b6638cfbe08384dcf812f8842cf0bb9320c6"
+    },
+    {
+      "path": "baseline-linux/actions-status.json",
+      "source": "run-37567252680-status.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 57418,
+      "uncompressed_sha256": "c24ef03778690bd5e2e90efa89f95f09b937e1b4236601a0312f459586197fa2"
+    },
+    {
+      "path": "baseline-linux/local-export-diagnostic-record.json",
+      "source": "ff07f4f-local/record.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 1040,
+      "uncompressed_sha256": "5f796d996a5febb40fbf1287b9e77716ea2168313e6d62bc42e9fdb499859271"
+    },
+    {
+      "path": "cold-build/cold-build-audit.json",
+      "source": "run-37572527284/cold-build-audit.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 3097,
+      "uncompressed_sha256": "a09807078c3518dd1b6126f8884fa9a9d2b7491d6363a65b076369201f47470b"
+    },
+    {
+      "path": "cold-build/checked-commit.txt",
+      "source": "run-37572527284/checked-commit.txt",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 41,
+      "uncompressed_sha256": "c825cb8b0a9a1866d965e215e7319228d88509cb82aab4be5df61d51a9d5b659"
+    },
+    {
+      "path": "cold-build/checked-status.txt",
+      "source": "run-37572527284/checked-status.txt",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 0,
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cold-build/metadata.json",
+      "source": "run-37572527284/metadata.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 10790,
+      "uncompressed_sha256": "32552ede25518ba8c2659f8de82428e61248479657d1e97cf93d8cb80068200d"
+    },
+    {
+      "path": "cold-build/result.json",
+      "source": "run-37572527284/result.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 7189,
+      "uncompressed_sha256": "65258b4f7947f26d0f9c068bd414a6c03e29165bf6ffda8f98bb21e46dc3fcf3"
+    },
+    {
+      "path": "cold-build/time-v.txt",
+      "source": "run-37572527284/time-v.txt",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 830,
+      "uncompressed_sha256": "76717846f91e1c64affcb8a5afc129c5d3d9cef4aa60a1abb4372e1abeb1c346"
+    },
+    {
+      "path": "cold-build/build.log",
+      "source": "run-37572527284/build.log",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 15216,
+      "uncompressed_sha256": "47af5441e9f1378cea40f47a31bf764ce0f93d0a6c99170fe8782383743e65ae"
+    },
+    {
+      "path": "cold-build/disk-before-swap.txt",
+      "source": "run-37572527284/disk-before-swap.txt",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 89,
+      "uncompressed_sha256": "76e118c7e2e02bdcc4652bb884269d41735e41140431b26f1e92f3370f5af2ff"
+    },
+    {
+      "path": "cold-build/disk-final.txt",
+      "source": "run-37572527284/disk-final.txt",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 89,
+      "uncompressed_sha256": "f6e5b6041cb35611530c7d8c9ba6db2553565a91f8bb44e4ea960ea1c8380bd1"
+    },
+    {
+      "path": "cold-build/memory-after-swap.txt",
+      "source": "run-37572527284/memory-after-swap.txt",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 207,
+      "uncompressed_sha256": "c574a4cc05cf743cc6dbc605ed1840501bbf71c4a5d5e4dc568d40ea5459c704"
+    },
+    {
+      "path": "cold-build/memory-final.txt",
+      "source": "run-37572527284/memory-final.txt",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 207,
+      "uncompressed_sha256": "85eb353f3a48fe8d9696eb750d22e2dd2f88edfd203020e7256ee069e5429735"
+    },
+    {
+      "path": "cold-build/swap-final.txt",
+      "source": "run-37572527284/swap-final.txt",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 177,
+      "uncompressed_sha256": "21317ee1115cf3eb14f0522d09cd601e83e98c496e2a05570ea61ec93c2f978c"
+    },
+    {
+      "path": "cold-build/swap.txt",
+      "source": "run-37572527284/swap.txt",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 231,
+      "uncompressed_sha256": "07abc696751367e0e5e38a4026fe6631e4ad1dde306d6d16973522446ac4d15c"
+    },
+    {
+      "path": "cold-build/actions.log.gz",
+      "source": "run-37572527284/actions.log",
+      "encoding": "gzip (mtime 0)",
+      "uncompressed_bytes": 128760,
+      "uncompressed_sha256": "209306d067c255b5aa70dc5eae067f9e1b73b3c72772102a94bfefba160d841f"
+    },
+    {
+      "path": "cold-build/samples.jsonl.gz",
+      "source": "run-37572527284/samples.jsonl",
+      "encoding": "gzip (mtime 0)",
+      "uncompressed_bytes": 11324595,
+      "uncompressed_sha256": "68663c3583af099362a6cb761fe6215ce952a22162b64c5fc4966350b0a4e7ec"
+    },
+    {
+      "path": "cold-build/actions-status.json",
+      "source": "run-37572527284-status.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 3132,
+      "uncompressed_sha256": "b8feeec34f74dfc89c2a1ddbface58ac2e1b60b31c7a3c8b0c3ac435195ca14a"
+    },
+    {
+      "path": "cold-build/previous-cancelled-diagnostic.json",
+      "source": "git:c207efc787a7e1c88aae29dc92d4be5e10297bf2:verification/cold-build.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 3495,
+      "uncompressed_sha256": "a23c8d7fa87610a706c7bc39998209ffd54aad5a1f3811fa9e35331bae86633d"
+    },
+    {
+      "path": "native-diagnostic/record.json",
+      "source": "c207efc-local/record.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 1511,
+      "uncompressed_sha256": "d49e3f50c2e5a20fc7902008b59736aab0d8136ff090770532b443e15c625467"
+    },
+    {
+      "path": "native-diagnostic/validation.json",
+      "source": "c207efc-local/validation.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 403,
+      "uncompressed_sha256": "cd7f99330d415ce0b5e59f2cde341a6c83f727c54752ad1aba2daf305b6d5985"
+    },
+    {
+      "path": "native-diagnostic/comparison.log",
+      "source": "c207efc-local/comparison.log",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 430,
+      "uncompressed_sha256": "4309debe18763a9cdcd4358f4670e15143ff37bb909fa2b5996a17044bb1c884"
+    },
+    {
+      "path": "native-diagnostic/audit.log",
+      "source": "c207efc-local/audit.log",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 1669,
+      "uncompressed_sha256": "c650d5d38349b1d24c97b5ff8907ceeb5cd33cb78b05382c98ec7bed2e5ef8af"
+    },
+    {
+      "path": "native-diagnostic/build.log",
+      "source": "c207efc-local/build.log",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 14556,
+      "uncompressed_sha256": "bd2b13b4b3a82fb5ce52f8420f39de058c60dca82340dd4760e10ae2356c8375"
+    },
+    {
+      "path": "source/c207efc/lean-toolchain",
+      "source": "git:c207efc787a7e1c88aae29dc92d4be5e10297bf2:lean-toolchain",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 29,
+      "uncompressed_sha256": "bc84812c94489d1e3e191baa1dc10d5eb684382d7fe9d2a5ab085e72c1c67e47"
+    },
+    {
+      "path": "source/c207efc/lakefile.toml",
+      "source": "git:c207efc787a7e1c88aae29dc92d4be5e10297bf2:lakefile.toml",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 349,
+      "uncompressed_sha256": "7941d080f1b0719148818e7ef678f216f573655600b31fe2c4e1eee74cc04e7b"
+    },
+    {
+      "path": "source/c207efc/lake-manifest.json",
+      "source": "git:c207efc787a7e1c88aae29dc92d4be5e10297bf2:lake-manifest.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 3540,
+      "uncompressed_sha256": "e14bbc65e5fef8ab9277b49633147c8a0601ea8c78690fb010fe6dc2ad289777"
+    },
+    {
+      "path": "source/c207efc/comparator.json",
+      "source": "git:c207efc787a7e1c88aae29dc92d4be5e10297bf2:comparator.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 866,
+      "uncompressed_sha256": "e025b6ad8819210f688fd76e50bc2e92a91fbc5bf1ae67d3ec4c05ea8c559751"
+    },
+    {
+      "path": "source/c207efc/scripts/prepare_comparator.py",
+      "source": "git:c207efc787a7e1c88aae29dc92d4be5e10297bf2:scripts/prepare_comparator.py",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 2058,
+      "uncompressed_sha256": "b18b7ef54c76362883c50d6cc7ca69a1df3f3412ac856b1c8cac6200f0ec10d9"
+    },
+    {
+      "path": "source/c207efc/scripts/fetch_mathlib_cache.py",
+      "source": "git:c207efc787a7e1c88aae29dc92d4be5e10297bf2:scripts/fetch_mathlib_cache.py",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 784,
+      "uncompressed_sha256": "0294945afeba8be38d1a0aaccee24e93410b35d73b9aa4209c54e4bb672f54c8"
+    },
+    {
+      "path": "source/c207efc/scripts/audit_release.py",
+      "source": "git:c207efc787a7e1c88aae29dc92d4be5e10297bf2:scripts/audit_release.py",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 6662,
+      "uncompressed_sha256": "68dc21000f617415de956996ad53c2d3cae64f948cc508f60fb91b6fc8c8c88b"
+    },
+    {
+      "path": "source/c207efc/.github/workflows/verify.yml",
+      "source": "git:c207efc787a7e1c88aae29dc92d4be5e10297bf2:.github/workflows/verify.yml",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 12303,
+      "uncompressed_sha256": "244c5a4d451d19e9392e2a4a0965feaee263666f67eaa5d3f3b4eac31d3119c9"
+    },
+    {
+      "path": "source/c207efc/.github/workflows/cold-build.yml",
+      "source": "git:c207efc787a7e1c88aae29dc92d4be5e10297bf2:.github/workflows/cold-build.yml",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 12102,
+      "uncompressed_sha256": "d2e7412727b2ae476e85e2ff1463841d5701efc45695f328bbc21e0866b3d572"
+    },
+    {
+      "path": "source/ff07f4f/.github/workflows/verify.yml",
+      "source": "git:ff07f4f897d4c190227eeee3f8f752788487dd3b:.github/workflows/verify.yml",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 12360,
+      "uncompressed_sha256": "5533e0528c1c21cd8934d7880ab04391158b488ec25de2703f0c85c540f82dc6"
+    },
+    {
+      "path": "source/ff07f4f-git-tree.txt",
+      "source": "git ls-tree -r --full-tree --long ff07f4f897d4c190227eeee3f8f752788487dd3b",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 29946,
+      "uncompressed_sha256": "efa2b15be1a00023ede81ff759e1d0455ee80da16e83f94f6b78e9d73e77d528"
+    },
+    {
+      "path": "source/c207efc-git-tree.txt",
+      "source": "git ls-tree -r --full-tree --long c207efc787a7e1c88aae29dc92d4be5e10297bf2",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 30036,
+      "uncompressed_sha256": "2b6817480ac7d534a3782e5f9d0fa808333c8841e7938808127f3cb767f20330"
+    },
+    {
+      "path": "final-linux/final-audit.json",
+      "source": "run-37572525271/final-audit.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 5292,
+      "uncompressed_sha256": "a7e01530b2aa03afaeeeb63df32b3cd05f7cf8abbfb27af8e600ed57b0cdae03"
+    },
+    {
+      "path": "final-linux/checked-commit.txt",
+      "source": "run-37572525271/checked-commit.txt",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 41,
+      "uncompressed_sha256": "c825cb8b0a9a1866d965e215e7319228d88509cb82aab4be5df61d51a9d5b659"
+    },
+    {
+      "path": "final-linux/checked-status.txt",
+      "source": "run-37572525271/checked-status.txt",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 0,
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "final-linux/axiom-audit.log",
+      "source": "run-37572525271/axiom-audit.log",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 1535,
+      "uncompressed_sha256": "8d16f2d508b881ab1d93a9bd7fdda6da90c6af7f8c8547571c9f74af8956d71e"
+    },
+    {
+      "path": "final-linux/comparator.log",
+      "source": "run-37572525271/comparator.log",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 10714,
+      "uncompressed_sha256": "871f5065c768f8e334a31deb3df7781871e4eeb9e3ba0d76c9840ffa1e9c7c4a"
+    },
+    {
+      "path": "final-linux/actions.log.gz",
+      "source": "run-37572525271/actions.log",
+      "encoding": "gzip (mtime 0)",
+      "uncompressed_bytes": 331726,
+      "uncompressed_sha256": "66baed211c8d5d0f89e77bc8e4c9bffde56e45bdcc8717076476d14bc4463c58"
+    },
+    {
+      "path": "final-linux/actions-status.json",
+      "source": "run-37572525271-status.json",
+      "encoding": "unchanged bytes",
+      "uncompressed_bytes": 15259,
+      "uncompressed_sha256": "ca36aef06fb7864863de31f126372a6738bfba9868e3343f2b8d89172a5a1d2b"
+    }
+  ],
+  "integrity_scope": "No tests or builds rerun; source and evidence copied, compressed and hashed. No Git/source mutation. Final exact-candidate completed artifacts independently audited before marking PASS. Actions token and authorization values already masked; common credential patterns absent.",
+  "updated_utc": "2026-10-07T08:21:45.073039+00:00"
+}

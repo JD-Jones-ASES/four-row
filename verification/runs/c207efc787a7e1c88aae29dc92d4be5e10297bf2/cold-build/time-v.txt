@@ -1,0 +1,23 @@
+	Command being timed: "timeout --signal=TERM --kill-after=60s 18000 lake build FourRowSolution"
+	User time (seconds): 10709.41
+	System time (seconds): 617.82
+	Percent of CPU this job got: 191%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:38:50
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4051536
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 4168752
+	Minor (reclaiming a frame) page faults: 38544298
+	Voluntary context switches: 4667513
+	Involuntary context switches: 8622759
+	Swaps: 0
+	File system inputs: 95962352
+	File system outputs: 4381232
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

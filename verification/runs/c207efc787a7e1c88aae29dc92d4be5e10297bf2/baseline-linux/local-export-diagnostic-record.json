@@ -1,0 +1,40 @@
+{
+  "source_commit": "ff07f4f897d4c190227eeee3f8f752788487dd3b",
+  "worktree_clean": true,
+  "full_lake_build": {
+    "passed": true,
+    "jobs": 3551
+  },
+  "principal_axioms": {
+    "theorems": 16,
+    "allowed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "official_source_policy": {
+    "passed": true,
+    "modules": 287
+  },
+  "metadata": {
+    "official_contract": "passed",
+    "v0.4_schema": "passed"
+  },
+  "original_comparator_diagnostic": {
+    "comparison": "passed",
+    "axiom_pass": "passed",
+    "theorems": 16,
+    "exports": {
+      "challenge": {
+        "bytes": 71629955,
+        "sha256": "ffe5b9fd0e9cbe2d32b262a03359dba2df6df598b52e8602be58456ae2df733c"
+      },
+      "solution": {
+        "bytes": 395820546,
+        "sha256": "63f2db60ea902e25dc5f896b0b0c801f7475118c261cce685dd871e1bb4adf29"
+      }
+    }
+  },
+  "scope": "Local build, metadata, axiom audit and original comparator diagnostic only. Complete independent kernel replay is pending private Linux run37567252680."
+}

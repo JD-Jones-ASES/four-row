@@ -1,0 +1,15 @@
+{
+  "commit": "c207efc787a7e1c88aae29dc92d4be5e10297bf2",
+  "clean": true,
+  "source_format": {
+    "schema_version": 1,
+    "module_required": true,
+    "maximum_lines": 10000,
+    "files_checked": 287
+  },
+  "official_metadata": true,
+  "v0_4_schema": true,
+  "actionlint": true,
+  "diff_check": true,
+  "scope": "Source/metadata/workflow checks; independent kernel replay remains a separate gate."
+}

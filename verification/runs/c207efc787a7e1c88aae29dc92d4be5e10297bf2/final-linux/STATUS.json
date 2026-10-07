@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "run": 37572525271,
+  "url": "https://github.com/JD-Jones-ASES/four-row/actions/runs/37572525271",
+  "expected_and_checked_commit": "c207efc787a7e1c88aae29dc92d4be5e10297bf2",
+  "checked_status_empty": true,
+  "audited_utc": "2026-10-07T08:21:45.073039+00:00",
+  "scope": "Completed exact-candidate private Linux preflight: original Comparator, two independent kernels and Lean default kernel accepted; 16 principal axiom audits and exact Python replays passed. No public submission or registry acceptance claimed.",
+  "audit": "final-audit.json"
+}

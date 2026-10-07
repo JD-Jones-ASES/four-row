@@ -1,0 +1,7 @@
+Exporting FourRowChallenge with 49 exact Comparator roots
+challenge: 71,630,133 bytes
+Exporting FourRowSolution with 49 exact Comparator roots
+solution: 395,820,546 bytes
+DIAGNOSTIC: all 16 theorem statements and their transitive definition closure match.
+DIAGNOSTIC: the pinned Comparator axiom pass accepted every configured declaration.
+No kernel replay or sandbox was performed; this is not the final Linux verification gate.

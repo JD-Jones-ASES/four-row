@@ -1,0 +1,140 @@
+Resolving dependencies
+Building FourRowChallenge
+⚠ [3118/3119] Replayed FourRowChallenge
+warning: FourRowChallenge.lean:156:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:160:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:165:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:170:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:176:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:181:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:186:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:191:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:196:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:201:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:206:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:212:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:217:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:222:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:229:8: declaration uses `sorry`
+warning: FourRowChallenge.lean:233:8: declaration uses `sorry`
+Build completed successfully (3119 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, FourRowPrincipal.endpoint, FourRowPrincipal.sharp_stability, FourRowPrincipal.stability_optimal, FourRowPrincipal.explicit_extremal_family, FourRowPrincipal.radius_sharp, FourRowPrincipal.endpoint_equality, FourRowPrincipal.explicit_exponent, FourRowPrincipal.larger_exponents, FourRowPrincipal.subcritical_threshold, FourRowPrincipal.entropy, FourRowPrincipal.observation_contraction, FourRowPrincipal.entropy_optimal, FourRowPrincipal.observation_optimal, FourRowPrincipal.adaptive_tensorization, FourRowPrincipal.adaptive_probability, FourRowPrincipal.adaptive_marginals, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from FourRowChallenge
+Building FourRowSolution
+⚠ [3189/3258] Replayed FourRow.Census
+warning: FourRow/Census.lean:72:0: automatically included section variable(s) unused in theorem `FourRow.Census.integer_left_inverse`:
+  [DecidableEq κ]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq κ] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Build completed successfully (3547 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, FourRowPrincipal.endpoint, FourRowPrincipal.sharp_stability, FourRowPrincipal.stability_optimal, FourRowPrincipal.explicit_extremal_family, FourRowPrincipal.radius_sharp, FourRowPrincipal.endpoint_equality, FourRowPrincipal.explicit_exponent, FourRowPrincipal.larger_exponents, FourRowPrincipal.subcritical_threshold, FourRowPrincipal.entropy, FourRowPrincipal.observation_contraction, FourRowPrincipal.entropy_optimal, FourRowPrincipal.observation_optimal, FourRowPrincipal.adaptive_tensorization, FourRowPrincipal.adaptive_probability, FourRowPrincipal.adaptive_marginals, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from FourRowSolution
+Running con-ron kernel on solution
+con-ron: 1 inductive blocks modelled in-process: Lean.Syntax (30 generated records, checked by the fold as declarations and not counted as records of the file)
+con-ron: parse done: 36754 fold records — 36746 declarations after the 8 built-in prelude records (8 stream copies of prelude records dropped) t=2.203s (parse 2.203s)
+con-ron: install 0/36754 basis t=2.203s
+con-ron: install 1000/36754 inductive GroupWithZero t=2.707s
+con-ron: install 2000/36754 def _private.Init.SimpLemmas.0.and_assoc.match_1_3 t=4.590s
+con-ron: install 3000/36754 def List.find? t=4.679s
+con-ron: install 4000/36754 thm abs_eq t=4.718s
+con-ron: install 5000/36754 thm Int.eq_neg_natAbs_of_nonpos t=4.823s
+con-ron: install 6000/36754 thm Equiv.swap_apply_def t=4.956s
+con-ron: install 7000/36754 thm Lean.Grind.or_eq_of_eq_false_left t=5.091s
+con-ron: install 8000/36754 thm Multiset.prod_induction t=5.204s
+con-ron: install 9000/36754 def Set.instSingletonSet t=5.358s
+con-ron: install 10000/36754 thm Int.greatestOfBdd._proof_3 t=5.474s
+con-ron: install 11000/36754 inductive AddMonoidHom t=5.605s
+con-ron: install 12000/36754 thm Std.TransCmp.toOrientedCmp t=5.820s
+con-ron: install 13000/36754 thm NormedRing.toNonUnitalNormedRing._proof_9 t=6.096s
+con-ron: install 14000/36754 thm Set.disjoint_iUnion_left t=6.250s
+con-ron: install 15000/36754 thm Set.pairwise_singleton t=6.516s
+con-ron: install 16000/36754 def Cardinal.instPowCardinal t=6.645s
+con-ron: install 17000/36754 def Module.End.instOne t=6.783s
+con-ron: install 18000/36754 thm compareLex.eq_1 t=6.914s
+con-ron: install 19000/36754 thm Subsemiring.toSemiring._proof_2 t=7.071s
+con-ron: install 20000/36754 thm AddMonoidHom.toMultiplicativeLeft._proof_1 t=7.227s
+con-ron: install 21000/36754 thm Topology.IsInducing.closure_eq_preimage_closure_image t=7.338s
+con-ron: install 22000/36754 thm exists_pos_add_of_lt' t=7.527s
+con-ron: install 23000/36754 thm SeminormFamily.basisSets_mem t=7.790s
+con-ron: install 24000/36754 def LinearPMap.mkSpanSingleton' t=8.143s
+con-ron: install 25000/36754 thm FourRow.circuitFamily_nonempty t=8.356s
+con-ron: install 26000/36754 thm _private.FourRow.CensusData.Max20.0.FourRow.Census.Max20.checked._proof_1_1 t=10.776s
+con-ron: install 27000/36754 thm FourRow.gramIdentity023 t=10.959s
+con-ron: install 28000/36754 thm FourRow.pairedPermanent_le t=11.577s
+con-ron: install 29000/36754 thm _private.Mathlib.Order.Cover.0.not_covBy._simp_1_2 t=11.736s
+con-ron: install 30000/36754 thm nnnorm_smul t=11.908s
+con-ron: install 31000/36754 thm AntilipschitzWith.isUniformInducing t=12.195s
+con-ron: install 32000/36754 thm HasFDerivWithinAt.hasFDerivAt t=12.505s
+con-ron: install 33000/36754 thm _private.Init.Data.List.Sort.Basic.0.List.merge.eq_1 t=12.796s
+con-ron: install 34000/36754 thm Finset.disjoint_singleton_right._simp_1 t=12.927s
+con-ron: install 35000/36754 thm AddCommute.eq_1 t=13.159s
+con-ron: install 36000/36754 thm hasFDerivAt_iff_isLittleO t=13.347s
+con-ron: install done: 36754/36754 declarations installed, 35929 checks pending t=15.949s (install 13.746s)
+con-ron: check 1000/35929 theorem inv_ne_zero t=16.106s
+con-ron: check 2000/35929 theorem IsOrderedCancelAddMonoid._proof_1 t=16.393s
+con-ron: check 3000/35929 theorem Lean.Omega.Constraint.addInequality_sat t=16.838s
+con-ron: check 4000/35929 theorem Semiring.toGrindSemiring._proof_11 t=17.472s
+con-ron: check 5000/35929 theorem Function.Surjective.monoid._proof_3 t=18.403s
+con-ron: check 6000/35929 theorem Lean.Grind.Order.lt_of_not_le t=19.134s
+con-ron: check 7000/35929 theorem List.reverse_perm t=19.829s
+con-ron: check 8000/35929 theorem NNReal.instIsStrictOrderedRing_1 t=20.504s
+con-ron: check 9000/35929 theorem Lean.Grind.AC.imp_eq t=20.834s
+con-ron: check 10000/35929 theorem le_iInf_const t=21.362s
+con-ron: check 11000/35929 theorem Mathlib.Tactic.FieldSimp.NF.eval_cons_of_pow_eq_zero t=21.951s
+con-ron: check 12000/35929 definition Module.toDistribMulAction t=261.711s
+con-ron: check 13000/35929 definition _private.Mathlib.Order.WithBot.0.WithTop.lt_iff_exists_coe_btwn'.match_1_3 t=262.542s
+con-ron: check 14000/35929 theorem NormedField.toNormedCommRing._proof_1 t=263.175s
+con-ron: check 15000/35929 definition Units.instSMul t=264.024s
+con-ron: check 16000/35929 definition Cardinal.toENat t=264.625s
+con-ron: check 17000/35929 definition Set.sigmaToiUnion t=265.417s
+con-ron: check 18000/35929 theorem _private.Init.Data.Nat.MinMax.0.Nat.min_comm._simp_1_4 t=266.038s
+con-ron: check 19000/35929 definition _private.Mathlib.Data.Multiset.Bind.0.Multiset.mem_sigma.match_1_1 t=266.959s
+con-ron: check 20000/35929 theorem Ideal.span.eq_1 t=268.275s
+con-ron: check 21000/35929 definition _private.Mathlib.LinearAlgebra.FreeModule.Basic.0.Module.free_def.match_1_1 t=269.237s
+con-ron: check 22000/35929 definition Set.powerset t=270.222s
+con-ron: check 23000/35929 theorem NNRat.instSemifield._proof_3 t=271.028s
+con-ron: check 24000/35929 theorem LocallyConvexSpace.ofBasisZero t=272.468s
+con-ron: check 25000/35929 definition FourRow.Census.IndependentRecord.matrix t=856.009s
+con-ron: check 26000/35929 definition FourRow.PolynomialCertificate.fastnorm t=1789.188s
+con-ron: check 27000/35929 theorem FourRow.gram105 t=3822.851s
+con-ron: check 28000/35929 theorem Finset.Ico_disjoint_Ico_consecutive t=4312.045s
+con-ron: check 29000/35929 definition Asymptotics.instTransIsBigOTVSIsLittleOTVS t=4313.450s
+con-ron: check 30000/35929 theorem HasDerivAt.hasDerivWithinAt t=4315.004s
+con-ron: check 31000/35929 theorem Rat.denseRange_cast t=4316.828s
+con-ron: check 32000/35929 definition _private.Batteries.Data.List.Perm.0.List.Nodup.perm_iff_eq_of_sublist.match_1_2 t=4318.542s
+con-ron: check 33000/35929 theorem hasSum_single t=4319.891s
+con-ron: check 34000/35929 theorem Summable.of_norm_bounded t=4321.359s
+con-ron: check 35000/35929 theorem Std.instSymmEqBoolBeqTrueOfLawfulOrderBEq t=4323.011s
+con-ron: check done: 35929/35929 t=4325.068s (check 4309.119s)
+con-ron: done: parse 2.203s, install 13.746s, check 4309.119s, 1 worker t=4325.068s
+con-ron: accepted 36724 declarations (--verified)
+con-ron kernel accepts the solution
+Running nanoda kernel on solution
+NanoDa: serial replay; unpermitted axioms are hard errors.
+nanoda kernel accepts the solution
+Running Lean default kernel on solution
+Lean default kernel accepts the solution
+Your solution is okay!
+	Command being timed: "lake comparator --config /home/runner/work/_temp/four-row-comparator.json"
+	User time (seconds): 21.02
+	System time (seconds): 1.14
+	Percent of CPU this job got: 0%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:42:03
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 807068
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 310
+	Minor (reclaiming a frame) page faults: 12990
+	Voluntary context switches: 114230
+	Involuntary context switches: 343
+	Swaps: 0
+	File system inputs: 3576
+	File system outputs: 913016
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,85 @@
+{
+  "scope": "Successful direct cold Lean build on a stock smaller GitHub runner with swap; not an official Palomar hardware equivalence or independent-kernel replay claim.",
+  "run": 37572527284,
+  "commit": "c207efc787a7e1c88aae29dc92d4be5e10297bf2",
+  "checked_status_empty": true,
+  "project_build_cache_at_start": false,
+  "command": "lake build FourRowSolution",
+  "exit_code": 0,
+  "host": {
+    "cpus": 2,
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "ram_kib": 8128876,
+    "swap_total_kib": 19922936,
+    "lake_runtime_threads": "16",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39"
+  },
+  "wall_seconds": 5931.6188225060005,
+  "gnu_time_elapsed": "1:38:50",
+  "built_project_modules": 285,
+  "all_246_certificate_leaf_and_table_modules_built": true,
+  "final_target_built": "FourRowSolution",
+  "concurrency": {
+    "samples": 1177,
+    "sampling_interval_seconds": 5,
+    "maximum_all_lean_compilers": 10,
+    "maximum_major_certificate_compilers": 3,
+    "category_maxima": {
+      "gram_leaf": 2,
+      "census_leaf": 1,
+      "table_check": 1,
+      "certificate_parent": 1,
+      "other": 7
+    },
+    "ten_compiler_peak_note": "At 132\u2013148 seconds, two Gram leaves and CensusTableData overlapped with seven analytic modules.",
+    "certificate_parent_class": [
+      "FourRow.CensusTableData",
+      "FourRow.CensusIndependence",
+      "FourRow.Grams"
+    ]
+  },
+  "resources": {
+    "cgroup_memory_peak_bytes": 7810322432,
+    "cgroup_swap_peak_bytes": 4265709568,
+    "gnu_time_maximum_child_rss_kib": 4051536,
+    "observed_sum_rss_peak_kib": 18499008,
+    "cgroup_oom_deltas": {
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    },
+    "host_oom_kill_delta": 0,
+    "swap_in_pages": 6310050,
+    "swap_out_pages": 9707046,
+    "page_size_bytes": 4096,
+    "memory_psi_full_stall_seconds": 101.792794,
+    "memory_psi_full_stall_fraction": 0.01716104777565501,
+    "mean_utilized_cpu_cores": 1.9246837066945481
+  },
+  "comparison_to_cancelled_run_37566527443": {
+    "old_outcome": "Deliberately cancelled after 3639 sampled seconds; no completed build verdict",
+    "old_major_compiler_peak": 16,
+    "old_cgroup_swap_peak_bytes": 17618853888,
+    "old_full_memory_stall_fraction": 0.33127053603890355,
+    "comparison": "The bounded certificate chains completed all proof modules while avoiding the sustained sixteen-Gram pileup. Hardware classes match at 2 CPUs / 7.75 GiB plus swap, but these were separate runner instances, so this is an operational comparison rather than a controlled performance experiment."
+  },
+  "limitations": [
+    "Five-second sampling can miss brief process peaks.",
+    "Cgroup memory includes runner processes and reclaimable file cache.",
+    "Summed RSS double-counts shared mapped pages; GNU time maximum child RSS is not an aggregate.",
+    "No claim of official 16 CPU / 32 GB hardware equivalence."
+  ],
+  "source_files": [
+    "metadata.json",
+    "result.json",
+    "samples.jsonl",
+    "checked-commit.txt",
+    "checked-status.txt",
+    "time-v.txt",
+    "build.log",
+    "actions.log"
+  ]
+}

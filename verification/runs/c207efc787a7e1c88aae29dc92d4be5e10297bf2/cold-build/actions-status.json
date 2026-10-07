@@ -1,0 +1,98 @@
+{
+  "conclusion": "success",
+  "headSha": "c207efc787a7e1c88aae29dc92d4be5e10297bf2",
+  "jobs": [
+    {
+      "completedAt": "2026-10-07T06:21:50Z",
+      "conclusion": "success",
+      "databaseId": 112634124930,
+      "name": "cold-build",
+      "startedAt": "2026-10-07T04:39:47Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-07T04:39:49Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-07T04:39:48Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-07T04:39:50Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 2,
+          "startedAt": "2026-10-07T04:39:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-07T04:40:08Z",
+          "conclusion": "success",
+          "name": "Install pinned elan and Lean",
+          "number": 3,
+          "startedAt": "2026-10-07T04:39:50Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-07T04:41:18Z",
+          "conclusion": "success",
+          "name": "Retrieve pinned Mathlib cache",
+          "number": 4,
+          "startedAt": "2026-10-07T04:40:08Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-07T04:42:54Z",
+          "conclusion": "success",
+          "name": "Provision disposable-runner memory headroom",
+          "number": 5,
+          "startedAt": "2026-10-07T04:41:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-07T06:21:46Z",
+          "conclusion": "success",
+          "name": "Build the complete Solution from clean project artifacts",
+          "number": 6,
+          "startedAt": "2026-10-07T04:42:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-07T06:21:47Z",
+          "conclusion": "success",
+          "name": "Record final runner state",
+          "number": 7,
+          "startedAt": "2026-10-07T06:21:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-07T06:21:48Z",
+          "conclusion": "success",
+          "name": "Preserve cold-build diagnostic logs",
+          "number": 8,
+          "startedAt": "2026-10-07T06:21:47Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-07T06:21:48Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 16,
+          "startedAt": "2026-10-07T06:21:48Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-07T06:21:48Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 17,
+          "startedAt": "2026-10-07T06:21:48Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/JD-Jones-ASES/four-row/actions/runs/37572527284/job/112634124930"
+    }
+  ],
+  "status": "completed"
+}
