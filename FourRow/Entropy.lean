@@ -103,7 +103,7 @@ private theorem entropyRows_positive (ρ : Law) (hρ : Probability ρ)
 
 /-- KL of each marginal against uniform measure on four points. -/
 def marginalEntropySum (ρ : Law) : ℝ :=
-  ∑ i : Row, finiteKL (marginal ρ i) (fun _ => 1/4)
+  ∑ i : Row, finiteKL (marginal ρ i) (fun _ => 1/((4 : ℕ) : ℝ))
 
 theorem marginalEntropySum_nonneg (ρ : Law) (hρ : Probability ρ) :
     0 ≤ marginalEntropySum ρ := by
@@ -188,7 +188,7 @@ theorem endpoint_entropy (hEndpoint : EndpointBound)
 
 /-- Observe a uniformly chosen row label together with its image. -/
 def observationLaw (ρ : Law) : Row × Row → ℝ :=
-  fun ij => marginal ρ ij.1 ij.2 / 4
+  fun ij => marginal ρ ij.1 ij.2 / ((4 : ℕ) : ℝ)
 
 def observationUniform : Row × Row → ℝ := fun _ => 1/16
 
@@ -203,7 +203,7 @@ theorem observationLaw_of_balanced (ν : Law) (hν : Balanced ν) :
 /-- The factor one fourth is an exact entropy identity. -/
 theorem observation_entropy_identity (ρ : Law) :
     finiteKL (observationLaw ρ) observationUniform = marginalEntropySum ρ/4 := by
-  simp only [finiteKL, observationLaw, observationUniform, marginalEntropySum]
+  simp only [finiteKL, observationLaw, observationUniform, marginalEntropySum, Nat.cast_ofNat]
   rw [Fintype.sum_prod_type]
   simp_rw [Finset.sum_div]
   apply Finset.sum_congr rfl

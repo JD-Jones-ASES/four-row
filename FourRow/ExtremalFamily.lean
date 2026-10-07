@@ -13,10 +13,10 @@ noncomputable section
 uniform measure on the nine derangements, minus uniform measure on the six
 transpositions. In S₄ these classes have respectively four, zero, and two
 fixed points. -/
-def extremalLaw (r : ℝ) : Law := fun σ => 1/24 + r *
-  (if (Finset.univ.filter (fun i : Row => σ i = i)).card = 4 then 1/2
-   else if (Finset.univ.filter (fun i : Row => σ i = i)).card = 0 then 1/18
-   else if (Finset.univ.filter (fun i : Row => σ i = i)).card = 2 then -1/6
+def extremalLaw (r : ℝ) : Law := fun σ => 1/((24 : ℕ) : ℝ) + r *
+  (if (Finset.univ.filter (fun i : Row => σ i = i)).card = 4 then 1/((2 : ℕ) : ℝ)
+   else if (Finset.univ.filter (fun i : Row => σ i = i)).card = 0 then 1/((18 : ℕ) : ℝ)
+   else if (Finset.univ.filter (fun i : Row => σ i = i)).card = 2 then -1/((6 : ℕ) : ℝ)
    else 0)
 
 theorem extremalLaw_eq_sharpLaw (r : ℝ) : extremalLaw r = sharpLaw r := by

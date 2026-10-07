@@ -15,7 +15,10 @@ Only Mathlib is imported. Probability laws and entries are real, entries are
 nonnegative, and the total-variation balls are closed. No finite census,
 certificate, rational-law, or endpoint theorem is an assumption. The theorem
 holes are confined to this challenge; FourRowSolution supplies closed proofs.
-Interior exponents and entropy coefficients are sufficient, not claimed optimal.
+The interior exponent bound is sufficient; endpoint entropy and observation
+coefficients are sharp.
+Explicit Nat casts keep exported numeric definition bodies identical across
+modules by avoiding file-local sharing of auxiliary numeral proofs.
 -/
 namespace FourRow
 noncomputable section
@@ -55,13 +58,13 @@ def NormalizedRows (A : Rows) : Prop := ∀ i, (∑ j : Row, A i j ^ 2) / 4 = 1
 /-- Sum of row variances when rows satisfy NormalizedRows. -/
 def varianceSum (A : Rows) : ℝ := ∑ i : Row, (1 - ((∑ j : Row, A i j) / 4)^2)
 /-- Uniform mean of four real numbers. -/
-def meanFour (f : Vector) : ℝ := (∑ i : Fin 4, f i)/4
+def meanFour (f : Vector) : ℝ := (∑ i : Fin 4, f i)/((4 : ℕ) : ℝ)
 /-- Uniform p-th moment, used only for nonnegative rows and positive p. -/
 def powerMoment (f : Vector) (p : ℝ) : ℝ := meanFour (fun i => f i ^ p)
 /-- Probability-Lp norm under the uniform four-point measure. -/
 def powerNorm (f : Vector) (p : ℝ) : ℝ := powerMoment f p ^ (1/p)
 /-- The explicit sufficient exponent, ranging from 71/36 to two. -/
-def explicitExponent (r : ℝ) : ℝ := 2-(1-24*r)/36
+def explicitExponent (r : ℝ) : ℝ := ((2 : ℕ) : ℝ)-(1-((24 : ℕ) : ℝ)*r)/((36 : ℕ) : ℝ)
 /-- Complete endpoint equality shapes: a zero row; constant rows; or rows
 supported on a matching permutation having law mass 1/16. -/
 def EndpointEqualityShape (ν : Law) (A : Rows) : Prop :=
@@ -84,21 +87,21 @@ def marginal (ρ : Law) (i j : Row) : ℝ := ∑ σ : Perm4,
   if σ i = j then ρ σ else 0
 /-- Sum of the four marginal relative entropies against uniform measure. -/
 def marginalEntropySum (ρ : Law) : ℝ :=
-  ∑ i : Row, finiteKL (marginal ρ i) (fun _ => 1/4)
+  ∑ i : Row, finiteKL (marginal ρ i) (fun _ => 1/((4 : ℕ) : ℝ))
 /-- Joint law of an independent uniformly chosen row and its image. -/
 def observationLaw (ρ : Law) : Row × Row → ℝ :=
-  fun ij => marginal ρ ij.1 ij.2 / 4
+  fun ij => marginal ρ ij.1 ij.2 / ((4 : ℕ) : ℝ)
 /-- Matching singleton rows, normalized in probability L². -/
-def sharpRows : Rows := fun i j => if i = j then 2 else 0
+def sharpRows : Rows := fun i j => if i = j then ((2 : ℕ) : ℝ) else 0
 
 /-- Perturb uniform measure by one half of the identity atom, one half of
 uniform measure on the nine derangements, minus uniform measure on the six
 transpositions. In S₄ these classes have respectively four, zero, and two
 fixed points. -/
-def extremalLaw (r : ℝ) : Law := fun σ => 1/24 + r *
-  (if (Finset.univ.filter (fun i : Row => σ i = i)).card = 4 then 1/2
-   else if (Finset.univ.filter (fun i : Row => σ i = i)).card = 0 then 1/18
-   else if (Finset.univ.filter (fun i : Row => σ i = i)).card = 2 then -1/6
+def extremalLaw (r : ℝ) : Law := fun σ => 1/((24 : ℕ) : ℝ) + r *
+  (if (Finset.univ.filter (fun i : Row => σ i = i)).card = 4 then 1/((2 : ℕ) : ℝ)
+   else if (Finset.univ.filter (fun i : Row => σ i = i)).card = 0 then 1/((18 : ℕ) : ℝ)
+   else if (Finset.univ.filter (fun i : Row => σ i = i)).card = 2 then -1/((6 : ℕ) : ℝ)
    else 0)
 
 
@@ -137,7 +140,7 @@ def rowHistory (i : Row) : (n : ℕ) → PermHistory n → RowHistory n
   | n+1, h => (rowHistory i n h.1, h.2 i)
 /-- Lp norm under uniform product measure on the 4^n row histories. -/
 def historyNorm (n : ℕ) (F : RowHistory n → ℝ) (p : ℝ) : ℝ :=
-  ((∑ x, F x^p)/(4:ℝ)^n)^(1/p)
+  ((∑ x, F x^p)/((4 : ℕ) : ℝ)^n)^(1/p)
 /-- Only positive-probability full pasts must have their conditional law in
 the balanced radius-r ball. No condition is imposed at null pasts. -/
 def Admissible (K : StepKernels) (r : ℝ) (n : ℕ) : Prop :=

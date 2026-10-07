@@ -71,7 +71,7 @@ theorem sharpLaw_inBall (δ : ℝ) (hδ : 0 ≤ δ) (hδ' : δ ≤ 1/4) :
     le_of_eq (sharpLaw_distance δ hδ)⟩
 
 /-- Matching singleton rows, normalized for the uniform four-point measure. -/
-def sharpRows : Rows := fun i j => if i = j then 2 else 0
+def sharpRows : Rows := fun i j => if i = j then ((2 : ℕ) : ℝ) else 0
 
 theorem sharpRows_nonnegative : NonnegativeRows sharpRows := by
   intro i j

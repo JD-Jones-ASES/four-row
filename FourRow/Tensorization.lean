@@ -49,7 +49,7 @@ def rowHistory (i : Row) : (n : ℕ) → PermHistory n → RowHistory n
 
 /-- Probability Lp norm under uniform product measure on n row observations. -/
 def historyNorm (n : ℕ) (F : RowHistory n → ℝ) (p : ℝ) : ℝ :=
-  ((∑ x, F x^p)/(4:ℝ)^n)^(1/p)
+  ((∑ x, F x^p)/((4 : ℕ) : ℝ)^n)^(1/p)
 
 /-- Admissibility only at positive-probability full pasts. -/
 def Admissible (K : StepKernels) (r : ℝ) (n : ℕ) : Prop :=

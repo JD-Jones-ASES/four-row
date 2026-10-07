@@ -14,7 +14,7 @@ noncomputable section
 open Set
 
 /-- Uniform mean on the four columns. -/
-def meanFour (f : Vector) : ℝ := (∑ i : Fin 4, f i)/4
+def meanFour (f : Vector) : ℝ := (∑ i : Fin 4, f i)/((4 : ℕ) : ℝ)
 
 def varianceFour (f : Vector) : ℝ := meanFour (fun i => f i^2) - meanFour f ^ 2
 
@@ -253,7 +253,7 @@ theorem product_powerNorm_lower (A : Rows) (hA : NonnegativeRows A) (hn : Normal
   have hexp := Real.add_one_le_exp (∑ i, logPowerNorm (A i) p)
   linarith only [hsum,hexp]
 
-def explicitExponent (r : ℝ) : ℝ := 2-(1-24*r)/36
+def explicitExponent (r : ℝ) : ℝ := ((2 : ℕ) : ℝ)-(1-((24 : ℕ) : ℝ)*r)/((36 : ℕ) : ℝ)
 
 /-- Explicit interior exponent for normalized rows. -/
 theorem explicitExponent_normalized (hEndpoint : EndpointBound)
