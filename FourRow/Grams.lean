@@ -148,528 +148,528 @@ theorem gram_strong (k : Fin 131) (a : Cell → ℝ) :
   rw [defect_explicit, square_sum_explicit, weighted_sum_explicit]
   fin_cases k
   · have hw : weights 0 = ![3/2, 1/2, 1, 1, 1, 1, 1/2, 3/2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram000 a
   · have hw : weights 1 = ![4/3, 2/3, 2/3, 4/3, 4/3, 2/3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram001 a
   · have hw : weights 2 = ![1, 1, 4/3, 2/3, 2/3, 4/3, 2/3, 4/3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram002 a
   · have hw : weights 3 = ![1, 1, 1, 4/3, 2/3, 1, 1, 1, 2/3, 1, 4/3, 1, 4/3, 2/3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram003 a
   · have hw : weights 4 = ![3/2, 3/4, 1, 1, 1, 3/4, 3/4, 1, 1, 1, 5/4, 1, 1, 5/4, 3/4, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram004 a
   · have hw : weights 5 = ![1/2, 5/4, 1, 1, 1, 5/4, 5/4, 1, 1, 1, 3/4, 1, 1, 3/4, 5/4, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram005 a
   · have hw : weights 6 = ![5/4, 3/4, 5/4, 1, 1, 3/4, 1, 1, 3/4, 1, 5/4, 1, 3/4, 5/4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram006 a
   · have hw : weights 7 = ![3/4, 5/4, 3/4, 1, 1, 5/4, 1, 1, 5/4, 1, 3/4, 1, 5/4, 3/4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram007 a
   · have hw : weights 8 = ![1, 1, 5/4, 1, 1, 3/4, 5/4, 3/4, 3/4, 1, 5/4, 1, 3/4, 5/4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram008 a
   · have hw : weights 9 = ![1, 1, 3/4, 1, 1, 5/4, 3/4, 5/4, 5/4, 1, 3/4, 1, 5/4, 3/4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram009 a
   · have hw : weights 10 = ![1, 1, 1, 1, 5/4, 3/4, 1, 1, 5/4, 3/4, 3/4, 5/4, 3/4, 5/4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram010 a
   · have hw : weights 11 = ![1, 5/4, 1, 3/4, 3/4, 5/4, 3/4, 1, 5/4, 1, 1, 1, 5/4, 1, 3/4, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram011 a
   · have hw : weights 12 = ![5/4, 1, 3/4, 1, 5/4, 3/4, 1, 3/4, 5/4, 1, 1, 1, 1, 5/4, 3/4, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram012 a
   · have hw : weights 13 = ![1, 6/5, 1, 3/5, 1, 6/5, 4/5, 1, 7/5, 1, 4/5, 1, 1, 6/5, 4/5, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram013 a
   · have hw : weights 14 = ![1, 1, 5/4, 1, 1, 3/4, 1, 1, 1, 3/4, 5/4, 1, 1, 1, 3/4, 5/4, 1, 1, 3/4, 5/4, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram014 a
   · have hw : weights 15 = ![1, 1, 3/4, 1, 1, 5/4, 1, 1, 1, 5/4, 3/4, 1, 1, 1, 5/4, 3/4, 1, 1, 5/4, 3/4, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram015 a
   · have hw : weights 16 = ![1, 1, 5/4, 3/4, 1, 1, 1, 1, 1, 1, 5/4, 3/4, 1, 1, 3/4, 5/4, 1, 1, 3/4, 5/4, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram016 a
   · have hw : weights 17 = ![5/4, 1, 3/4, 1, 1, 1, 1, 1, 1, 5/4, 3/4, 1, 1, 1, 1, 3/4, 5/4, 1, 5/4, 3/4, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram017 a
   · have hw : weights 18 = ![1, 1, 1, 5/4, 3/4, 1, 1, 1, 3/4, 1, 1, 5/4, 5/4, 1, 1, 3/4, 1, 1, 1, 3/4, 5/4, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram018 a
   · have hw : weights 19 = ![6/5, 3/5, 1, 6/5, 6/5, 4/5, 1, 6/5, 4/5, 1, 1, 1, 4/5, 1, 6/5, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram019 a
   · have hw : weights 20 = ![4/5, 7/5, 1, 4/5, 4/5, 6/5, 1, 4/5, 6/5, 1, 1, 1, 6/5, 1, 4/5, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram020 a
   · have hw : weights 21 = ![6/5, 1, 3/5, 6/5, 6/5, 4/5, 1, 4/5, 6/5, 1, 1, 1, 6/5, 1, 4/5, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram021 a
   · have hw : weights 22 = ![4/5, 1, 7/5, 4/5, 4/5, 6/5, 1, 6/5, 4/5, 1, 1, 1, 4/5, 1, 6/5, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram022 a
   · have hw : weights 23 = ![1, 6/5, 4/5, 6/5, 1, 4/5, 6/5, 3/5, 1, 1, 6/5, 1, 6/5, 1, 4/5, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram023 a
   · have hw : weights 24 = ![1, 4/5, 6/5, 4/5, 1, 6/5, 4/5, 7/5, 1, 1, 4/5, 1, 4/5, 1, 6/5, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram024 a
   · have hw : weights 25 = ![1, 6/5, 4/5, 1, 6/5, 4/5, 6/5, 3/5, 6/5, 1, 1, 1, 1, 6/5, 4/5, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram025 a
   · have hw : weights 26 = ![1, 4/5, 6/5, 1, 4/5, 6/5, 4/5, 7/5, 4/5, 1, 1, 1, 1, 4/5, 6/5, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram026 a
   · have hw : weights 27 = ![1, 7/6, 4/3, 2/3, 2/3, 7/6, 5/6, 1, 1, 1, 7/6, 1, 1, 7/6, 5/6, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram027 a
   · have hw : weights 28 = ![1, 5/6, 2/3, 4/3, 4/3, 5/6, 7/6, 1, 1, 1, 5/6, 1, 1, 5/6, 7/6, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram028 a
   · have hw : weights 29 = ![7/5, 4/5, 4/5, 1, 1, 1, 1, 1, 1, 6/5, 1, 4/5, 1, 1, 4/5, 1, 6/5, 1, 6/5, 4/5, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram029 a
   · have hw : weights 30 = ![3/5, 6/5, 6/5, 1, 1, 1, 1, 1, 1, 4/5, 1, 6/5, 1, 1, 6/5, 1, 4/5, 1, 4/5, 6/5, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram030 a
   · have hw : weights 31 = ![1, 6/5, 6/5, 1, 1, 3/5, 1, 1, 1, 4/5, 1, 6/5, 1, 1, 4/5, 1, 6/5, 1, 4/5, 6/5, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram031 a
   · have hw : weights 32 = ![1, 4/5, 4/5, 1, 1, 7/5, 1, 1, 1, 6/5, 1, 4/5, 1, 1, 6/5, 1, 4/5, 1, 6/5, 4/5, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram032 a
   · have hw : weights 33 = ![7/6, 1, 1, 7/6, 2/3, 1, 1, 1, 5/6, 1, 1, 7/6, 1, 1, 1, 5/6, 7/6, 1, 4/3, 2/3, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram033 a
   · have hw : weights 34 = ![5/6, 1, 1, 5/6, 4/3, 1, 1, 1, 7/6, 1, 1, 5/6, 1, 1, 1, 7/6, 5/6, 1, 2/3, 4/3, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram034 a
   · have hw : weights 35 = ![1, 6/5, 6/5, 4/5, 4/5, 1, 4/5, 1, 6/5, 4/5, 1, 6/5, 1, 6/5, 4/5, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram035 a
   · have hw : weights 36 = ![1, 7/6, 7/6, 1, 5/6, 5/6, 5/6, 1, 7/6, 2/3, 1, 4/3, 1, 7/6, 5/6, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram036 a
   · have hw : weights 37 = ![1, 5/6, 5/6, 1, 7/6, 7/6, 7/6, 1, 5/6, 4/3, 1, 2/3, 1, 5/6, 7/6, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram037 a
   · have hw : weights 38 = ![6/5, 1, 4/5, 4/5, 6/5, 1, 1, 4/5, 6/5, 6/5, 1, 4/5, 1, 6/5, 4/5, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram038 a
   · have hw : weights 39 = ![6/5, 1, 6/5, 1, 4/5, 4/5, 4/5, 1, 1, 4/5, 6/5, 6/5, 1, 6/5, 4/5, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram039 a
   · have hw : weights 40 = ![4/5, 1, 4/5, 1, 6/5, 6/5, 6/5, 1, 1, 6/5, 4/5, 4/5, 1, 4/5, 6/5, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram040 a
   · have hw : weights 41 = ![1, 8/7, 9/7, 1, 5/7, 6/7, 6/7, 1, 1, 5/7, 8/7, 9/7, 1, 8/7, 6/7, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram041 a
   · have hw : weights 42 = ![7/6, 1, 1, 2/3, 7/6, 1, 1, 5/6, 7/6, 7/6, 1, 5/6, 5/6, 4/3, 5/6, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram042 a
   · have hw : weights 43 = ![5/6, 1, 1, 4/3, 5/6, 1, 1, 7/6, 5/6, 5/6, 1, 7/6, 7/6, 2/3, 7/6, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram043 a
   · have hw : weights 44 = ![7/6, 1, 1, 1, 7/6, 2/3, 1, 5/6, 7/6, 5/6, 1, 7/6, 5/6, 4/3, 5/6, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram044 a
   · have hw : weights 45 = ![5/6, 1, 1, 1, 5/6, 4/3, 1, 7/6, 5/6, 7/6, 1, 5/6, 7/6, 2/3, 7/6, 1, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram045 a
   · have hw : weights 46 = ![1, 8/7, 5/7, 1, 1, 8/7, 6/7, 1, 1, 9/7, 6/7, 1, 9/7, 6/7, 8/7, 5/7, 1, 1, 1, 1, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram046 a
   · have hw : weights 47 = ![1, 6/5, 1, 1, 1, 4/5, 4/5, 1, 6/5, 4/5, 1, 6/5, 6/5, 1, 4/5, 1, 1, 1, 4/5, 6/5, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram047 a
   · have hw : weights 48 = ![1, 4/5, 1, 1, 1, 6/5, 6/5, 1, 4/5, 6/5, 1, 4/5, 4/5, 1, 6/5, 1, 1, 1, 6/5, 4/5, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram048 a
   · have hw : weights 49 = ![6/5, 1, 1, 4/5, 1, 1, 4/5, 1, 1, 6/5, 6/5, 4/5, 6/5, 1, 4/5, 1, 1, 1, 4/5, 6/5, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram049 a
   · have hw : weights 50 = ![4/5, 1, 1, 6/5, 1, 1, 6/5, 1, 1, 4/5, 4/5, 6/5, 4/5, 1, 6/5, 1, 1, 1, 6/5, 4/5, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram050 a
   · have hw : weights 51 = ![6/5, 4/5, 1, 1, 1, 1, 6/5, 1, 4/5, 6/5, 1, 4/5, 4/5, 1, 1, 1, 6/5, 1, 6/5, 4/5, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram051 a
   · have hw : weights 52 = ![4/5, 6/5, 1, 1, 1, 1, 4/5, 1, 6/5, 4/5, 1, 6/5, 6/5, 1, 1, 1, 4/5, 1, 4/5, 6/5, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram052 a
   · have hw : weights 53 = ![4/3, 2/3, 1, 1, 1, 1, 1, 7/6, 5/6, 7/6, 1, 5/6, 5/6, 1, 1, 1, 7/6, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram053 a
   · have hw : weights 54 = ![2/3, 4/3, 1, 1, 1, 1, 1, 5/6, 7/6, 5/6, 1, 7/6, 7/6, 1, 1, 1, 5/6, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram054 a
   · have hw : weights 55 = ![1, 7/6, 5/6, 1, 1, 1, 4/3, 2/3, 1, 7/6, 1, 5/6, 1, 1, 5/6, 1, 7/6, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram055 a
   · have hw : weights 56 = ![1, 5/6, 7/6, 1, 1, 1, 2/3, 4/3, 1, 5/6, 1, 7/6, 1, 1, 7/6, 1, 5/6, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram056 a
   · have hw : weights 57 = ![4/3, 5/6, 5/6, 1, 1, 1, 1, 1, 5/6, 4/3, 1, 5/6, 1, 1, 1, 5/6, 7/6, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram057 a
   · have hw : weights 58 = ![2/3, 7/6, 7/6, 1, 1, 1, 1, 1, 7/6, 2/3, 1, 7/6, 1, 1, 1, 7/6, 5/6, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram058 a
   · have hw : weights 59 = ![8/7, 1, 5/7, 8/7, 1, 1, 1, 1, 8/7, 1, 5/7, 8/7, 1, 1, 1, 6/7, 8/7, 1, 9/7, 5/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram059 a
   · have hw : weights 60 = ![6/7, 1, 9/7, 6/7, 1, 1, 1, 1, 6/7, 1, 9/7, 6/7, 1, 1, 1, 8/7, 6/7, 1, 5/7, 9/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram060 a
   · have hw : weights 61 = ![7/6, 2/3, 1, 1, 1, 7/6, 1, 7/6, 5/6, 7/6, 1, 5/6, 5/6, 1, 7/6, 1, 1, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram061 a
   · have hw : weights 62 = ![5/6, 4/3, 1, 1, 1, 5/6, 1, 5/6, 7/6, 5/6, 1, 7/6, 7/6, 1, 5/6, 1, 1, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram062 a
   · have hw : weights 63 = ![7/6, 1, 2/3, 1, 1, 7/6, 1, 5/6, 7/6, 7/6, 1, 5/6, 7/6, 1, 5/6, 1, 1, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram063 a
   · have hw : weights 64 = ![5/6, 1, 4/3, 1, 1, 5/6, 1, 7/6, 5/6, 5/6, 1, 7/6, 5/6, 1, 7/6, 1, 1, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram064 a
   · have hw : weights 65 = ![7/6, 1, 1, 1, 1, 5/6, 2/3, 7/6, 7/6, 5/6, 1, 7/6, 7/6, 1, 5/6, 1, 1, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram065 a
   · have hw : weights 66 = ![5/6, 1, 1, 1, 1, 7/6, 4/3, 5/6, 5/6, 7/6, 1, 5/6, 5/6, 1, 7/6, 1, 1, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram066 a
   · have hw : weights 67 = ![1, 8/7, 8/7, 5/7, 1, 1, 6/7, 1, 1, 8/7, 8/7, 6/7, 8/7, 1, 6/7, 1, 1, 1, 5/7, 9/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram067 a
   · have hw : weights 68 = ![1, 6/7, 6/7, 9/7, 1, 1, 8/7, 1, 1, 6/7, 6/7, 8/7, 6/7, 1, 8/7, 1, 1, 1, 9/7, 5/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram068 a
   · have hw : weights 69 = ![1, 8/7, 8/7, 1, 1, 5/7, 6/7, 1, 1, 6/7, 8/7, 8/7, 8/7, 1, 6/7, 1, 1, 1, 5/7, 9/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram069 a
   · have hw : weights 70 = ![1, 6/7, 6/7, 1, 1, 9/7, 8/7, 1, 1, 8/7, 6/7, 6/7, 6/7, 1, 8/7, 1, 1, 1, 9/7, 5/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram070 a
   · have hw : weights 71 = ![8/7, 1, 1, 6/7, 1, 1, 1, 6/7, 6/7, 9/7, 9/7, 5/7, 8/7, 1, 6/7, 1, 1, 1, 6/7, 8/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram071 a
   · have hw : weights 72 = ![6/7, 1, 1, 8/7, 1, 1, 1, 8/7, 8/7, 5/7, 5/7, 9/7, 6/7, 1, 8/7, 1, 1, 1, 8/7, 6/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram072 a
   · have hw : weights 73 = ![1, 8/7, 8/7, 1, 5/7, 1, 6/7, 1, 8/7, 5/7, 1, 9/7, 1, 8/7, 6/7, 1, 1, 1, 8/7, 6/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram073 a
   · have hw : weights 74 = ![1, 6/7, 6/7, 1, 9/7, 1, 8/7, 1, 6/7, 9/7, 1, 5/7, 1, 6/7, 8/7, 1, 1, 1, 6/7, 8/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram074 a
   · have hw : weights 75 = ![1, 8/7, 8/7, 1, 1, 5/7, 6/7, 1, 8/7, 5/7, 1, 9/7, 1, 8/7, 6/7, 1, 1, 1, 6/7, 8/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram075 a
   · have hw : weights 76 = ![1, 6/7, 6/7, 1, 1, 9/7, 8/7, 1, 6/7, 9/7, 1, 5/7, 1, 6/7, 8/7, 1, 1, 1, 8/7, 6/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram076 a
   · have hw : weights 77 = ![10/7, 5/7, 6/7, 1, 1, 1, 6/7, 1, 1, 8/7, 8/7, 6/7, 1, 8/7, 6/7, 1, 1, 1, 8/7, 6/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram077 a
   · have hw : weights 78 = ![4/7, 9/7, 8/7, 1, 1, 1, 8/7, 1, 1, 6/7, 6/7, 8/7, 1, 6/7, 8/7, 1, 1, 1, 6/7, 8/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram078 a
   · have hw : weights 79 = ![7/6, 1, 7/6, 2/3, 1, 1, 5/6, 1, 1, 7/6, 7/6, 5/6, 1, 7/6, 5/6, 1, 1, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram079 a
   · have hw : weights 80 = ![5/6, 1, 5/6, 4/3, 1, 1, 7/6, 1, 1, 5/6, 5/6, 7/6, 1, 5/6, 7/6, 1, 1, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram080 a
   · have hw : weights 81 = ![1, 9/8, 5/4, 5/8, 1, 1, 7/8, 1, 1, 9/8, 9/8, 7/8, 1, 9/8, 7/8, 1, 1, 1, 3/4, 5/4, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram081 a
   · have hw : weights 82 = ![1, 7/8, 3/4, 11/8, 1, 1, 9/8, 1, 1, 7/8, 7/8, 9/8, 1, 7/8, 9/8, 1, 1, 1, 5/4, 3/4, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram082 a
   · have hw : weights 83 = ![1, 9/8, 5/4, 1, 5/8, 1, 7/8, 1, 1, 3/4, 9/8, 5/4, 1, 9/8, 7/8, 1, 1, 1, 9/8, 7/8, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram083 a
   · have hw : weights 84 = ![1, 7/8, 3/4, 1, 11/8, 1, 9/8, 1, 1, 5/4, 7/8, 3/4, 1, 7/8, 9/8, 1, 1, 1, 7/8, 9/8, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram084 a
   · have hw : weights 85 = ![7/6, 1, 7/6, 1, 1, 2/3, 5/6, 1, 1, 5/6, 7/6, 7/6, 1, 7/6, 5/6, 1, 1, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram085 a
   · have hw : weights 86 = ![5/6, 1, 5/6, 1, 1, 4/3, 7/6, 1, 1, 7/6, 5/6, 5/6, 1, 5/6, 7/6, 1, 1, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram086 a
   · have hw : weights 87 = ![1, 10/9, 11/9, 1, 1, 2/3, 8/9, 1, 1, 7/9, 10/9, 11/9, 1, 10/9, 8/9, 1, 1, 1, 7/9, 11/9, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram087 a
   · have hw : weights 88 = ![1, 8/9, 7/9, 1, 1, 4/3, 10/9, 1, 1, 11/9, 8/9, 7/9, 1, 8/9, 10/9, 1, 1, 1, 11/9, 7/9, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram088 a
   · have hw : weights 89 = ![4/3, 5/6, 5/6, 1, 1, 1, 1, 5/6, 1, 7/6, 7/6, 5/6, 1, 7/6, 5/6, 1, 1, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram089 a
   · have hw : weights 90 = ![2/3, 7/6, 7/6, 1, 1, 1, 1, 7/6, 1, 5/6, 5/6, 7/6, 1, 5/6, 7/6, 1, 1, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram090 a
   · have hw : weights 91 = ![1, 7/6, 7/6, 2/3, 1, 1, 1, 5/6, 1, 7/6, 7/6, 5/6, 1, 7/6, 5/6, 1, 1, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram091 a
   · have hw : weights 92 = ![1, 5/6, 5/6, 4/3, 1, 1, 1, 7/6, 1, 5/6, 5/6, 7/6, 1, 5/6, 7/6, 1, 1, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram092 a
   · have hw : weights 93 = ![1, 7/6, 7/6, 1, 2/3, 1, 1, 5/6, 1, 5/6, 7/6, 7/6, 1, 7/6, 5/6, 1, 1, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram093 a
   · have hw : weights 94 = ![1, 5/6, 5/6, 1, 4/3, 1, 1, 7/6, 1, 7/6, 5/6, 5/6, 1, 5/6, 7/6, 1, 1, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram094 a
   · have hw : weights 95 = ![1, 7/6, 7/6, 1, 1, 2/3, 1, 5/6, 1, 5/6, 7/6, 7/6, 1, 7/6, 5/6, 1, 1, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram095 a
   · have hw : weights 96 = ![1, 5/6, 5/6, 1, 1, 4/3, 1, 7/6, 1, 7/6, 5/6, 5/6, 1, 5/6, 7/6, 1, 1, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram096 a
   · have hw : weights 97 = ![7/6, 1, 5/6, 1, 1, 1, 7/6, 2/3, 1, 7/6, 7/6, 5/6, 1, 7/6, 5/6, 1, 1, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram097 a
   · have hw : weights 98 = ![5/6, 1, 7/6, 1, 1, 1, 5/6, 4/3, 1, 5/6, 5/6, 7/6, 1, 5/6, 7/6, 1, 1, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram098 a
   · have hw : weights 99 = ![1, 8/7, 6/7, 1, 1, 1, 9/7, 4/7, 1, 8/7, 8/7, 6/7, 1, 8/7, 6/7, 1, 1, 1, 8/7, 6/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram099 a
   · have hw : weights 100 = ![1, 6/7, 8/7, 1, 1, 1, 5/7, 10/7, 1, 6/7, 6/7, 8/7, 1, 6/7, 8/7, 1, 1, 1, 6/7, 8/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram100 a
   · have hw : weights 101 = ![1, 9/8, 7/8, 1, 1, 1, 7/8, 1, 11/8, 3/4, 3/4, 5/4, 1, 9/8, 7/8, 1, 1, 1, 9/8, 7/8, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram101 a
   · have hw : weights 102 = ![1, 7/8, 9/8, 1, 1, 1, 9/8, 1, 5/8, 5/4, 5/4, 3/4, 1, 7/8, 9/8, 1, 1, 1, 7/8, 9/8, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram102 a
   · have hw : weights 103 = ![1, 7/6, 5/6, 1, 1, 1, 1, 5/6, 4/3, 5/6, 5/6, 7/6, 1, 7/6, 5/6, 1, 1, 1, 7/6, 5/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram103 a
   · have hw : weights 104 = ![1, 5/6, 7/6, 1, 1, 1, 1, 7/6, 2/3, 7/6, 7/6, 5/6, 1, 5/6, 7/6, 1, 1, 1, 5/6, 7/6, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram104 a
   · have hw : weights 105 = ![8/7, 1, 1, 8/7, 1, 5/7, 1, 6/7, 1, 6/7, 9/7, 1, 8/7, 1, 5/7, 8/7, 1, 1, 6/7, 8/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram105 a
   · have hw : weights 106 = ![6/7, 1, 1, 6/7, 1, 9/7, 1, 8/7, 1, 8/7, 5/7, 1, 6/7, 1, 9/7, 6/7, 1, 1, 8/7, 6/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram106 a
   · have hw : weights 107 = ![1, 8/7, 6/7, 1, 1, 1, 5/7, 1, 9/7, 6/7, 1, 8/7, 9/7, 1, 6/7, 1, 6/7, 1, 6/7, 8/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram107 a
   · have hw : weights 108 = ![1, 6/7, 8/7, 1, 1, 1, 9/7, 1, 5/7, 8/7, 1, 6/7, 5/7, 1, 8/7, 1, 8/7, 1, 8/7, 6/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram108 a
   · have hw : weights 109 = ![1, 8/7, 6/7, 1, 1, 1, 1, 5/7, 1, 8/7, 9/7, 6/7, 9/7, 1, 6/7, 1, 6/7, 1, 6/7, 8/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram109 a
   · have hw : weights 110 = ![1, 6/7, 8/7, 1, 1, 1, 1, 9/7, 1, 6/7, 5/7, 8/7, 5/7, 1, 8/7, 1, 8/7, 1, 8/7, 6/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram110 a
   · have hw : weights 111 = ![1, 8/7, 6/7, 1, 1, 1, 1, 5/7, 9/7, 6/7, 1, 8/7, 1, 9/7, 6/7, 1, 6/7, 1, 8/7, 6/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram111 a
   · have hw : weights 112 = ![1, 6/7, 8/7, 1, 1, 1, 1, 9/7, 5/7, 8/7, 1, 6/7, 1, 5/7, 8/7, 1, 8/7, 1, 6/7, 8/7, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram112 a
   · have hw : weights 113 = ![1, 9/8, 7/8, 1, 1, 1, 5/4, 1, 1, 9/8, 3/4, 7/8, 1, 3/4, 7/8, 1, 11/8, 1, 9/8, 7/8, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram113 a
   · have hw : weights 114 = ![1, 7/8, 9/8, 1, 1, 1, 3/4, 1, 1, 7/8, 5/4, 9/8, 1, 5/4, 9/8, 1, 5/8, 1, 7/8, 9/8, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram114 a
   · have hw : weights 115 = ![9/8, 3/4, 1, 9/8, 1, 1, 5/4, 1, 7/8, 1, 1, 7/8, 3/4, 1, 1, 9/8, 9/8, 1, 5/4, 3/4, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram115 a
   · have hw : weights 116 = ![7/8, 5/4, 1, 7/8, 1, 1, 3/4, 1, 9/8, 1, 1, 9/8, 5/4, 1, 1, 7/8, 7/8, 1, 3/4, 5/4, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram116 a
   · have hw : weights 117 = ![13/10, 3/5, 1, 11/10, 1, 1, 1, 6/5, 9/10, 1, 1, 9/10, 4/5, 1, 1, 11/10, 11/10, 1, 6/5, 4/5, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram117 a
   · have hw : weights 118 = ![7/10, 7/5, 1, 9/10, 1, 1, 1, 4/5, 11/10, 1, 1, 11/10, 6/5, 1, 1, 9/10, 9/10, 1, 4/5, 6/5, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram118 a
   · have hw : weights 119 = ![10/9, 1, 1, 8/9, 1, 1, 5/9, 11/9, 10/9, 1, 1, 10/9, 11/9, 1, 1, 8/9, 8/9, 1, 7/9, 11/9, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram119 a
   · have hw : weights 120 = ![8/9, 1, 1, 10/9, 1, 1, 13/9, 7/9, 8/9, 1, 1, 8/9, 7/9, 1, 1, 10/9, 10/9, 1, 11/9, 7/9, 1, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram120 a
   · have hw : weights 121 = ![1, 1, 8/7, 5/7, 8/7, 1, 8/7, 1, 1, 8/7, 1, 5/7, 5/7, 1, 1, 8/7, 8/7, 1, 1, 8/7, 6/7, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram121 a
   · have hw : weights 122 = ![1, 1, 6/7, 9/7, 6/7, 1, 6/7, 1, 1, 6/7, 1, 9/7, 9/7, 1, 1, 6/7, 6/7, 1, 1, 6/7, 8/7, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram122 a
   · have hw : weights 123 = ![9/8, 5/8, 9/8, 1, 1, 9/8, 1, 9/8, 3/4, 9/8, 1, 1, 1, 9/8, 1, 1, 1, 7/8, 1, 3/4, 5/4, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram123 a
   · have hw : weights 124 = ![7/8, 11/8, 7/8, 1, 1, 7/8, 1, 7/8, 5/4, 7/8, 1, 1, 1, 7/8, 1, 1, 1, 9/8, 1, 5/4, 3/4, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram124 a
   · have hw : weights 125 = ![10/9, 1, 7/9, 4/3, 1, 7/9, 1, 10/9, 10/9, 7/9, 1, 1, 1, 7/9, 1, 1, 1, 11/9, 1, 10/9, 8/9, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram125 a
   · have hw : weights 126 = ![8/9, 1, 11/9, 2/3, 1, 11/9, 1, 8/9, 8/9, 11/9, 1, 1, 1, 11/9, 1, 1, 1, 7/9, 1, 8/9, 10/9, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram126 a
   · have hw : weights 127 = ![9/8, 1, 3/4, 1, 11/8, 3/4, 1, 3/4, 9/8, 9/8, 1, 1, 1, 9/8, 1, 1, 1, 7/8, 1, 9/8, 7/8, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram127 a
   · have hw : weights 128 = ![7/8, 1, 5/4, 1, 5/8, 5/4, 1, 5/4, 7/8, 7/8, 1, 1, 1, 7/8, 1, 1, 1, 9/8, 1, 7/8, 9/8, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram128 a
   · have hw : weights 129 = ![1, 9/8, 9/8, 3/4, 1, 1, 1, 1, 1, 9/8, 9/8, 3/4, 3/4, 1, 9/8, 1, 1, 9/8, 1, 5/4, 3/4, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram129 a
   · have hw : weights 130 = ![1, 7/8, 7/8, 5/4, 1, 1, 1, 1, 1, 7/8, 7/8, 5/4, 5/4, 1, 7/8, 1, 1, 7/8, 1, 3/4, 5/4, 1, 1, 1] := rfl
-    simp only [hw]
     norm_num
+    norm_num [hw]
     simpa only [one_mul, sub_nonneg] using gram130 a
 
 theorem gram_defect_bound (k : Fin 131) (a : Cell → ℝ) :

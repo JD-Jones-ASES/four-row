@@ -187,6 +187,19 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # These optional image runtimes are unrelated to this Lean/Python job.
+          # Free their disk space before reserving swap on the disposable runner.
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /usr/share/swift /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL
+          df -h "$RUNNER_TEMP"
+          python3 - <<'PY'
+          import os
+          stat = os.statvfs(os.environ['RUNNER_TEMP'])
+          available = stat.f_bavail * stat.f_frsize
+          required = 20 * 1024**3
+          print(f'Available bytes before swap: {available}', flush=True)
+          if available < required:
+              raise SystemExit('Need 20 GiB free: 16 GiB swap plus 4 GiB runner/log headroom')
+          PY
           sudo fallocate -l 16G "$RUNNER_TEMP/four-row.swap"
           sudo chmod 600 "$RUNNER_TEMP/four-row.swap"
           sudo mkswap "$RUNNER_TEMP/four-row.swap"
@@ -237,7 +250,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 scripts/prepare_comparator.py "$RUNNER_TEMP/four-row-comparator.json"
-          lake comparator --config "$RUNNER_TEMP/four-row-comparator.json" 2>&1 | tee comparator.log
+          /usr/bin/time -v lake comparator --config "$RUNNER_TEMP/four-row-comparator.json" 2>&1 | tee comparator.log
       - name: Record checked source
         if: always()
         run: |
