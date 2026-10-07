@@ -1,5 +1,9 @@
-import FourRow.GramData
-import FourRow.Relabel
+module
+
+public import FourRow.GramData
+public import FourRow.Relabel
+
+@[expose] public section
 
 namespace FourRow
 open scoped BigOperators

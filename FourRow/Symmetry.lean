@@ -1,5 +1,9 @@
-import FourRow.Relabel
-import FourRow.GramData
+module
+
+public import FourRow.Relabel
+public import FourRow.GramData
+
+@[expose] public section
 
 namespace FourRow
 noncomputable section

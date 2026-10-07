@@ -1,4 +1,8 @@
-import FourRow.Definitions
+module
+
+public import FourRow.Definitions
+
+@[expose] public section
 
 namespace FourRow
 open scoped BigOperators

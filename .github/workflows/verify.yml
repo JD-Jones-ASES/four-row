@@ -5,7 +5,7 @@ on:
       stage:
         description: Certificate build or complete release verification
         type: choice
-        options: [full, certificates]
+        options: [full, certificates, census]
         default: full
 permissions:
   contents: read
@@ -14,6 +14,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   gram-certificates:
+    if: inputs.stage != 'census'
     runs-on: ubuntu-24.04
     timeout-minutes: 150
     strategy:
@@ -48,7 +49,7 @@ jobs:
           path: |
             .lake/build/lib/lean/FourRow/Grams
             .lake/build/ir/FourRow/Grams
-          key: ${{ runner.os }}-four-row-grams-${{ matrix.shard }}-of-8-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'FourRow/Grams/*.lean') }}
+          key: ${{ runner.os }}-four-row-grams-${{ matrix.shard }}-of-8-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.toml', 'FourRow/Grams/*.lean', 'FourRow/PolynomialCertificate.lean') }}
       - name: Build independent Gram shard with bounded memory
         run: python3 scripts/build_grams.py --jobs 1 --shard ${{ matrix.shard }} --shards 8
       - name: Save exact Gram shard cache
@@ -76,8 +77,71 @@ jobs:
           include-hidden-files: true
           path: .lake/gram-build/
           retention-days: 90
+  census-certificates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    env:
+      LEAN_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install pinned elan and Lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error \
+            https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz \
+            -o "$RUNNER_TEMP/elan.tar.gz"
+          echo "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2  $RUNNER_TEMP/elan.tar.gz" | sha256sum --check
+          mkdir "$RUNNER_TEMP/elan"
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP/elan"
+          "$RUNNER_TEMP/elan/elan-init" -y --no-modify-path --default-toolchain none
+          "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Retrieve pinned Mathlib cache
+        run: lake exe cache get
+      - name: Restore exact census shard cache
+        id: census-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            .lake/build/lib/lean/FourRow/CensusData
+            .lake/build/ir/FourRow/CensusData
+          key: ${{ runner.os }}-four-row-census-leaves-${{ matrix.shard }}-of-8-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'FourRow/Census*.lean', 'FourRow/CensusData/*.lean', 'FourRow/CensusTableChecks/*.lean', 'FourRow/Finite.lean', 'FourRow/Circuit.lean', 'FourRow/Relabel.lean', 'FourRow/LookupTree.lean') }}
+      - name: Check census shard with bounded memory
+        run: python3 scripts/build_census_shard.py --shard ${{ matrix.shard }} --shards 8
+      - name: Save exact census shard cache
+        if: steps.census-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            .lake/build/lib/lean/FourRow/CensusData
+            .lake/build/ir/FourRow/CensusData
+          key: ${{ steps.census-cache.outputs.cache-primary-key }}
+      - name: Transfer checked census modules
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: census-proof-${{ matrix.shard }}
+          include-hidden-files: true
+          path: |
+            .lake/build/lib/lean/FourRow/CensusData
+            .lake/build/ir/FourRow/CensusData
+          retention-days: 7
+      - name: Preserve census build logs
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: census-log-${{ matrix.shard }}
+          include-hidden-files: true
+          path: build-logs/census-shards/
+          retention-days: 90
   verify:
-    needs: gram-certificates
+    needs: [gram-certificates, census-certificates]
     runs-on: ubuntu-24.04
     timeout-minutes: 350
     env:
@@ -107,11 +171,36 @@ jobs:
           pattern: gram-proof-*
           path: .lake/build
           merge-multiple: true
+      - name: Retrieve checked census modules from this exact run
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: census-proof-*
+          path: .lake/build
+          merge-multiple: true
+      - name: Check restored certificate artifact layout
+        run: python3 scripts/check_certificate_artifacts.py
+      - name: Restore exact census proof cache
+        id: census-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            .lake/build/lib/lean/FourRow/Census*
+            .lake/build/ir/FourRow/Census*
+          key: ${{ runner.os }}-four-row-census-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'FourRow/Census*.lean', 'FourRow/CensusData/*.lean', 'FourRow/CensusTableChecks/*.lean', 'FourRow/Finite.lean', 'FourRow/Circuit.lean', 'FourRow/Relabel.lean', 'FourRow/LookupTree.lean') }}
       - name: Build exhaustive census with bounded memory
         run: python3 scripts/build_census.py
+      - name: Save exact census proof cache
+        if: steps.census-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            .lake/build/lib/lean/FourRow/Census*
+            .lake/build/ir/FourRow/Census*
+          key: ${{ steps.census-cache.outputs.cache-primary-key }}
       - name: Complete Lean build and axiom audit
         if: inputs.stage == 'full'
         run: |
+          python3 scripts/build_grams.py --jobs 1
           lake build
           python3 scripts/audit_release.py
       - name: Independent exact research replay

@@ -1,4 +1,8 @@
-import FourRow.Symmetry
+module
+
+public import FourRow.Symmetry
+
+@[expose] public section
 
 /-! Assembly of the closed real endpoint from the support-cover census and
 quartic inequalities. -/

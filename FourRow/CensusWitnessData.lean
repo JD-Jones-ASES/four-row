@@ -1,21 +1,31 @@
-import FourRow.CensusTableData
+module
+
+public import FourRow.CensusMask
+
+@[expose] public section
 
 namespace FourRow.Census
 abbrev ExtensionWitness := (Fin 5109 ⊕ Fin 73) × Fin 576
 
-/-- Pointwise bit checks avoid expensive repeated finite-set image construction. -/
+def extendedMask (i : Fin 5109) (p : PermIndex) : ℕ :=
+  independentMasks.get i.val ||| 2 ^ p.val
+
+/-- Existing coordinates are immediate. Other cases check one exact image mask. -/
 def ValidExtension (i : Fin 5109) (p : PermIndex) (e : ExtensionWitness) : Prop :=
-  match e.1 with
-  | Sum.inl k => ∀ q : PermIndex,
-      (independentMasks.get k.val).testBit q.val ↔
-      literalAction e.2 q = p ∨ (independentMasks.get i.val).testBit (literalAction e.2 q).val
-  | Sum.inr k => ∀ q : PermIndex,
-      (circuitMasks.get k.val).testBit q.val →
-      literalAction e.2 q = p ∨ (independentMasks.get i.val).testBit (literalAction e.2 q).val
+  if (independentMasks.get i.val).testBit p.val then True else
+  match e with
+  | (Sum.inl k, g) =>
+      imageMask (literalAction g) (independentMasks.get k.val) = extendedMask i p
+  | (Sum.inr k, g) =>
+      let moved := imageMask (literalAction g) (circuitMasks.get k.val)
+      moved &&& extendedMask i p = moved
 
 instance (i : Fin 5109) (p : PermIndex) (e : ExtensionWitness) : Decidable (ValidExtension i p e) := by
   unfold ValidExtension
-  cases e.1 <;> infer_instance
+  split
+  · infer_instance
+  · rcases e with ⟨k,g⟩
+    cases k <;> infer_instance
 
 theorem mem_independentSupport (i : Fin 5109) (p : PermIndex) :
     p ∈ independentSupport i ↔ (independentMasks.get i.val).testBit p.val := by
@@ -25,4 +35,7 @@ theorem mem_circuitSupport (i : Fin 73) (p : PermIndex) :
     p ∈ circuitSupport i ↔ (circuitMasks.get i.val).testBit p.val := by
   simp [circuitSupport,maskSupport]
 
+theorem maskSupport_extendedMask (i : Fin 5109) (p : PermIndex) :
+    maskSupport (extendedMask i p) = insert p (independentSupport i) :=
+  maskSupport_insertBit _ _
 end FourRow.Census

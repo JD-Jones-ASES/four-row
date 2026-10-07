@@ -18,7 +18,7 @@ Write
 \]
 
 All laws and entries are real. Every matrix in the inequalities is
-nonnegative; zeros are allowed. The balls are closed. No theorem assumes
+nonnegative; zeros are allowed. The balls are closed. No principal theorem assumes
 rational weights, strictly positive entries, census completeness, a
 certificate predicate, or the endpoint inequality itself.
 
@@ -53,7 +53,7 @@ same ball. `explicit_extremal_family` identifies a witnessing law
 
 For \(0\le r\le1/4\), this is a balanced probability law with exact TV
 distance \(r\). On \(A=2I\), its value is \(2/3+8r\) and the variance sum
-is three, so equality holds in the sharp stability bound.
+is three, so equality holds in the sharp stability bound when \(r\le1/24\).
 
 `endpoint_equality` classifies **all** nonnegative equality cases in the
 square-root-free endpoint inequality. Their union is:

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Emit exact signed-circuit/Gram orbit identities, checked by Lean's kernel."""
+from lean_source import write_lean
 from pathlib import Path
 import json
 from fractions import Fraction as Q
@@ -51,4 +52,4 @@ theorem {label}_orientation_rat : ∀ k : Fin 73, ∀ p : PermIndex,
       (primitiveL1 k : ℚ) * representative ({label}Gram k) p := by decide +kernel
 '''
 src+='end FourRow.Census\n'
-(ROOT/'FourRow/Orientations.lean').write_text(src)
+write_lean(ROOT/'FourRow/Orientations.lean',src)

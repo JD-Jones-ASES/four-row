@@ -1,4 +1,8 @@
-import FourRow.Exponent
+module
+
+public import FourRow.Exponent
+
+@[expose] public section
 
 /-! Monotonicity of finite probability Lp norms, and all exponents above p(r). -/
 namespace FourRow

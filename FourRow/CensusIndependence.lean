@@ -1,46 +1,51 @@
-import FourRow.CensusData.Max00
-import FourRow.CensusData.Max01
-import FourRow.CensusData.Max02
-import FourRow.CensusData.Max03
-import FourRow.CensusData.Max04
-import FourRow.CensusData.Max05
-import FourRow.CensusData.Max06
-import FourRow.CensusData.Max07
-import FourRow.CensusData.Max08
-import FourRow.CensusData.Max09
-import FourRow.CensusData.Max10
-import FourRow.CensusData.Max11
-import FourRow.CensusData.Max12
-import FourRow.CensusData.Max13
-import FourRow.CensusData.Max14
-import FourRow.CensusData.Max15
-import FourRow.CensusData.Max16
-import FourRow.CensusData.Max17
-import FourRow.CensusData.Max18
-import FourRow.CensusData.Max19
-import FourRow.CensusData.Max20
-import FourRow.CensusData.Max21
-import FourRow.CensusData.Max22
-import FourRow.CensusData.Max23
-import FourRow.CensusData.Max24
-import FourRow.CensusData.Max25
-import FourRow.CensusData.Max26
-import FourRow.CensusData.Max27
-import FourRow.CensusData.Max28
-import FourRow.CensusData.Max29
-import FourRow.CensusData.Max30
-import FourRow.CensusData.Max31
-import FourRow.CensusData.Max32
-import FourRow.CensusData.Max33
-import FourRow.CensusData.Max34
-import FourRow.CensusData.Max35
-import FourRow.CensusData.Max36
-import FourRow.CensusData.Max37
-import FourRow.CensusData.Max38
-import FourRow.CensusData.Max39
-import FourRow.CensusData.Max40
-import FourRow.CensusRelabel
-import FourRow.CensusTables
+module
+
+public import FourRow.CensusData.Max00
+public import FourRow.CensusData.Max01
+public import FourRow.CensusData.Max02
+public import FourRow.CensusData.Max03
+public import FourRow.CensusData.Max04
+public import FourRow.CensusData.Max05
+public import FourRow.CensusData.Max06
+public import FourRow.CensusData.Max07
+public import FourRow.CensusData.Max08
+public import FourRow.CensusData.Max09
+public import FourRow.CensusData.Max10
+public import FourRow.CensusData.Max11
+public import FourRow.CensusData.Max12
+public import FourRow.CensusData.Max13
+public import FourRow.CensusData.Max14
+public import FourRow.CensusData.Max15
+public import FourRow.CensusData.Max16
+public import FourRow.CensusData.Max17
+public import FourRow.CensusData.Max18
+public import FourRow.CensusData.Max19
+public import FourRow.CensusData.Max20
+public import FourRow.CensusData.Max21
+public import FourRow.CensusData.Max22
+public import FourRow.CensusData.Max23
+public import FourRow.CensusData.Max24
+public import FourRow.CensusData.Max25
+public import FourRow.CensusData.Max26
+public import FourRow.CensusData.Max27
+public import FourRow.CensusData.Max28
+public import FourRow.CensusData.Max29
+public import FourRow.CensusData.Max30
+public import FourRow.CensusData.Max31
+public import FourRow.CensusData.Max32
+public import FourRow.CensusData.Max33
+public import FourRow.CensusData.Max34
+public import FourRow.CensusData.Max35
+public import FourRow.CensusData.Max36
+public import FourRow.CensusData.Max37
+public import FourRow.CensusData.Max38
+public import FourRow.CensusData.Max39
+public import FourRow.CensusData.Max40
+public import FourRow.CensusRelabel
+public import FourRow.CensusTables
+public import FourRow.CensusWitnessData
+
+@[expose] public section
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0
 namespace FourRow.Census
@@ -341,9 +346,430 @@ def augmentationData : LookupTree (Fin 1282 × Fin 576) := (.node (.node (.node 
 
 def augmentation (i : Fin 5109) : Fin 1282 × Fin 576 := augmentationData.get i.val
 
-theorem augmentation_checked : ∀ i : Fin 5109,
-  independentSupport i ⊆ (independentSupport (maxSource (augmentation i).1)).image
-    (literalAction (augmentation i).2) := by decide +kernel
+def ValidAugmentation (i : Fin 5109) : Prop := ∀ q : PermIndex,
+  (independentMasks.get i.val).testBit (literalAction (augmentation i).2 q).val →
+  (independentMasks.get (maxSource (augmentation i).1).val).testBit q.val
+
+instance (i : Fin 5109) : Decidable (ValidAugmentation i) := inferInstanceAs (Decidable (∀ _, _))
+
+theorem augmentation_block_00 : ∀ i : Fin 128,
+  ValidAugmentation ⟨0+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_01 : ∀ i : Fin 128,
+  ValidAugmentation ⟨128+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_02 : ∀ i : Fin 128,
+  ValidAugmentation ⟨256+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_03 : ∀ i : Fin 128,
+  ValidAugmentation ⟨384+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_04 : ∀ i : Fin 128,
+  ValidAugmentation ⟨512+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_05 : ∀ i : Fin 128,
+  ValidAugmentation ⟨640+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_06 : ∀ i : Fin 128,
+  ValidAugmentation ⟨768+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_07 : ∀ i : Fin 128,
+  ValidAugmentation ⟨896+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_08 : ∀ i : Fin 128,
+  ValidAugmentation ⟨1024+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_09 : ∀ i : Fin 128,
+  ValidAugmentation ⟨1152+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_10 : ∀ i : Fin 128,
+  ValidAugmentation ⟨1280+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_11 : ∀ i : Fin 128,
+  ValidAugmentation ⟨1408+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_12 : ∀ i : Fin 128,
+  ValidAugmentation ⟨1536+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_13 : ∀ i : Fin 128,
+  ValidAugmentation ⟨1664+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_14 : ∀ i : Fin 128,
+  ValidAugmentation ⟨1792+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_15 : ∀ i : Fin 128,
+  ValidAugmentation ⟨1920+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_16 : ∀ i : Fin 128,
+  ValidAugmentation ⟨2048+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_17 : ∀ i : Fin 128,
+  ValidAugmentation ⟨2176+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_18 : ∀ i : Fin 128,
+  ValidAugmentation ⟨2304+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_19 : ∀ i : Fin 128,
+  ValidAugmentation ⟨2432+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_20 : ∀ i : Fin 128,
+  ValidAugmentation ⟨2560+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_21 : ∀ i : Fin 128,
+  ValidAugmentation ⟨2688+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_22 : ∀ i : Fin 128,
+  ValidAugmentation ⟨2816+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_23 : ∀ i : Fin 128,
+  ValidAugmentation ⟨2944+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_24 : ∀ i : Fin 128,
+  ValidAugmentation ⟨3072+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_25 : ∀ i : Fin 128,
+  ValidAugmentation ⟨3200+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_26 : ∀ i : Fin 128,
+  ValidAugmentation ⟨3328+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_27 : ∀ i : Fin 128,
+  ValidAugmentation ⟨3456+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_28 : ∀ i : Fin 128,
+  ValidAugmentation ⟨3584+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_29 : ∀ i : Fin 128,
+  ValidAugmentation ⟨3712+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_30 : ∀ i : Fin 128,
+  ValidAugmentation ⟨3840+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_31 : ∀ i : Fin 128,
+  ValidAugmentation ⟨3968+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_32 : ∀ i : Fin 128,
+  ValidAugmentation ⟨4096+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_33 : ∀ i : Fin 128,
+  ValidAugmentation ⟨4224+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_34 : ∀ i : Fin 128,
+  ValidAugmentation ⟨4352+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_35 : ∀ i : Fin 128,
+  ValidAugmentation ⟨4480+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_36 : ∀ i : Fin 128,
+  ValidAugmentation ⟨4608+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_37 : ∀ i : Fin 128,
+  ValidAugmentation ⟨4736+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_38 : ∀ i : Fin 128,
+  ValidAugmentation ⟨4864+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_block_39 : ∀ i : Fin 117,
+  ValidAugmentation ⟨4992+i.val, by omega⟩ := by decide +kernel
+
+theorem augmentation_valid (i : Fin 5109) : ValidAugmentation i := by
+  have hb : i.val / 128 < 40 := by omega
+  interval_cases h : i.val / 128
+  · have hi : i.val - 0 < 128 := by omega
+    have heq : i = (⟨0 + (i.val-0),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_00 ⟨i.val-0,hi⟩
+  · have hi : i.val - 128 < 128 := by omega
+    have heq : i = (⟨128 + (i.val-128),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_01 ⟨i.val-128,hi⟩
+  · have hi : i.val - 256 < 128 := by omega
+    have heq : i = (⟨256 + (i.val-256),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_02 ⟨i.val-256,hi⟩
+  · have hi : i.val - 384 < 128 := by omega
+    have heq : i = (⟨384 + (i.val-384),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_03 ⟨i.val-384,hi⟩
+  · have hi : i.val - 512 < 128 := by omega
+    have heq : i = (⟨512 + (i.val-512),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_04 ⟨i.val-512,hi⟩
+  · have hi : i.val - 640 < 128 := by omega
+    have heq : i = (⟨640 + (i.val-640),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_05 ⟨i.val-640,hi⟩
+  · have hi : i.val - 768 < 128 := by omega
+    have heq : i = (⟨768 + (i.val-768),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_06 ⟨i.val-768,hi⟩
+  · have hi : i.val - 896 < 128 := by omega
+    have heq : i = (⟨896 + (i.val-896),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_07 ⟨i.val-896,hi⟩
+  · have hi : i.val - 1024 < 128 := by omega
+    have heq : i = (⟨1024 + (i.val-1024),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_08 ⟨i.val-1024,hi⟩
+  · have hi : i.val - 1152 < 128 := by omega
+    have heq : i = (⟨1152 + (i.val-1152),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_09 ⟨i.val-1152,hi⟩
+  · have hi : i.val - 1280 < 128 := by omega
+    have heq : i = (⟨1280 + (i.val-1280),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_10 ⟨i.val-1280,hi⟩
+  · have hi : i.val - 1408 < 128 := by omega
+    have heq : i = (⟨1408 + (i.val-1408),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_11 ⟨i.val-1408,hi⟩
+  · have hi : i.val - 1536 < 128 := by omega
+    have heq : i = (⟨1536 + (i.val-1536),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_12 ⟨i.val-1536,hi⟩
+  · have hi : i.val - 1664 < 128 := by omega
+    have heq : i = (⟨1664 + (i.val-1664),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_13 ⟨i.val-1664,hi⟩
+  · have hi : i.val - 1792 < 128 := by omega
+    have heq : i = (⟨1792 + (i.val-1792),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_14 ⟨i.val-1792,hi⟩
+  · have hi : i.val - 1920 < 128 := by omega
+    have heq : i = (⟨1920 + (i.val-1920),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_15 ⟨i.val-1920,hi⟩
+  · have hi : i.val - 2048 < 128 := by omega
+    have heq : i = (⟨2048 + (i.val-2048),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_16 ⟨i.val-2048,hi⟩
+  · have hi : i.val - 2176 < 128 := by omega
+    have heq : i = (⟨2176 + (i.val-2176),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_17 ⟨i.val-2176,hi⟩
+  · have hi : i.val - 2304 < 128 := by omega
+    have heq : i = (⟨2304 + (i.val-2304),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_18 ⟨i.val-2304,hi⟩
+  · have hi : i.val - 2432 < 128 := by omega
+    have heq : i = (⟨2432 + (i.val-2432),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_19 ⟨i.val-2432,hi⟩
+  · have hi : i.val - 2560 < 128 := by omega
+    have heq : i = (⟨2560 + (i.val-2560),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_20 ⟨i.val-2560,hi⟩
+  · have hi : i.val - 2688 < 128 := by omega
+    have heq : i = (⟨2688 + (i.val-2688),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_21 ⟨i.val-2688,hi⟩
+  · have hi : i.val - 2816 < 128 := by omega
+    have heq : i = (⟨2816 + (i.val-2816),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_22 ⟨i.val-2816,hi⟩
+  · have hi : i.val - 2944 < 128 := by omega
+    have heq : i = (⟨2944 + (i.val-2944),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_23 ⟨i.val-2944,hi⟩
+  · have hi : i.val - 3072 < 128 := by omega
+    have heq : i = (⟨3072 + (i.val-3072),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_24 ⟨i.val-3072,hi⟩
+  · have hi : i.val - 3200 < 128 := by omega
+    have heq : i = (⟨3200 + (i.val-3200),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_25 ⟨i.val-3200,hi⟩
+  · have hi : i.val - 3328 < 128 := by omega
+    have heq : i = (⟨3328 + (i.val-3328),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_26 ⟨i.val-3328,hi⟩
+  · have hi : i.val - 3456 < 128 := by omega
+    have heq : i = (⟨3456 + (i.val-3456),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_27 ⟨i.val-3456,hi⟩
+  · have hi : i.val - 3584 < 128 := by omega
+    have heq : i = (⟨3584 + (i.val-3584),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_28 ⟨i.val-3584,hi⟩
+  · have hi : i.val - 3712 < 128 := by omega
+    have heq : i = (⟨3712 + (i.val-3712),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_29 ⟨i.val-3712,hi⟩
+  · have hi : i.val - 3840 < 128 := by omega
+    have heq : i = (⟨3840 + (i.val-3840),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_30 ⟨i.val-3840,hi⟩
+  · have hi : i.val - 3968 < 128 := by omega
+    have heq : i = (⟨3968 + (i.val-3968),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_31 ⟨i.val-3968,hi⟩
+  · have hi : i.val - 4096 < 128 := by omega
+    have heq : i = (⟨4096 + (i.val-4096),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_32 ⟨i.val-4096,hi⟩
+  · have hi : i.val - 4224 < 128 := by omega
+    have heq : i = (⟨4224 + (i.val-4224),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_33 ⟨i.val-4224,hi⟩
+  · have hi : i.val - 4352 < 128 := by omega
+    have heq : i = (⟨4352 + (i.val-4352),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_34 ⟨i.val-4352,hi⟩
+  · have hi : i.val - 4480 < 128 := by omega
+    have heq : i = (⟨4480 + (i.val-4480),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_35 ⟨i.val-4480,hi⟩
+  · have hi : i.val - 4608 < 128 := by omega
+    have heq : i = (⟨4608 + (i.val-4608),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_36 ⟨i.val-4608,hi⟩
+  · have hi : i.val - 4736 < 128 := by omega
+    have heq : i = (⟨4736 + (i.val-4736),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_37 ⟨i.val-4736,hi⟩
+  · have hi : i.val - 4864 < 128 := by omega
+    have heq : i = (⟨4864 + (i.val-4864),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_38 ⟨i.val-4864,hi⟩
+  · have hi : i.val - 4992 < 117 := by omega
+    have heq : i = (⟨4992 + (i.val-4992),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_39 ⟨i.val-4992,hi⟩
+
+theorem augmentation_checked (i : Fin 5109) :
+    independentSupport i ⊆ (independentSupport (maxSource (augmentation i).1)).image
+      (literalAction (augmentation i).2) := by
+  intro p hp
+  let q := (action (relabel (augmentation i).2)).symm p
+  have hq : literalAction (augmentation i).2 q = p := by
+    rw [literalAction_eq]
+    exact (action (relabel (augmentation i).2)).apply_symm_apply p
+  apply Finset.mem_image.mpr
+  refine ⟨q,?_,hq⟩
+  apply (mem_independentSupport _ _).mpr
+  apply augmentation_valid i q
+  have hs := (mem_independentSupport i p).mp hp
+  simpa only [hq] using hs
 
 theorem all_independent (i : Fin 5109) : IndependentSupport (independentSupport i) := by
   apply independent_moved_subset (relabel (augmentation i).2) (maximal_independent (augmentation i).1)

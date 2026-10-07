@@ -1,4 +1,8 @@
-import FourRow.Endpoint
+module
+
+public import FourRow.Endpoint
+
+@[expose] public section
 
 namespace FourRow
 noncomputable section

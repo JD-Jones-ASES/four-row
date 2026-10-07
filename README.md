@@ -6,9 +6,11 @@ permanent inequality, based on Analytic-Lab's October 6, 2026 handoff.
 **Development in progress. This snapshot is not yet submission-ready.**
 The full mathematical research result is proved by exact computer-assisted
 arguments in [the endpoint note](docs/ENDPOINT.md) and
-[the extensions](docs/EXTENSIONS.md). The Lean development is separate from
-that evidence and must prove the full real-law coverage before claiming the
-endpoint theorem. No publication or Palomar submission has been made.
+[the extensions](docs/EXTENSIONS.md). The
+[sixteen principal statements](docs/THEOREMS.md) include full real-law
+coverage, boundary cases, sharpness, entropy and adaptive histories. Complete
+Lean assembly and independent kernel replay remain the release gate.
+No publication or Palomar submission has been made.
 
 For every balanced real probability law on the 24 permutations within total
 variation distance `r ≤ 1/24` of uniform, and nonnegative rows normalized in
@@ -40,14 +42,18 @@ Install the pinned Lean toolchain with elan, then run:
 
 ```sh
 lake exe cache get
-python3 scripts/build_grams.py --jobs 3
+python3 scripts/build_grams.py --jobs 1
+python3 scripts/build_census.py
 lake build
+python3 scripts/audit_release.py
 ```
 
 `lean-toolchain` and `lake-manifest.json` pin Lean and all dependencies.
 The generated Gram modules contain explicit rational sum-of-squares proofs;
 Python generates source text, while Lean checks the polynomial identities.
 The generation script and original certificate data are committed.
+See [verification and reproduction](docs/VERIFICATION.md) for the source
+guards, private Linux workflow, statement comparison and independent kernels.
 
 ## Provenance
 

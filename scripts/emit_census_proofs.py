@@ -3,6 +3,7 @@
 import json
 from lean_table import tree
 from itertools import permutations
+from lean_source import write_lean
 from pathlib import Path
 from emit_census_lean import vec, rec
 ROOT=Path(__file__).resolve().parents[1]
@@ -49,9 +50,9 @@ theorem independent (i : Fin {n}) : IndependentSupport (independentSupport (sour
   exact (record i).kernel_eq_zero (checked i).1 x hx (by simpa only [(checked i).2] using hs)
 end FourRow.Census.{ns}
 '''
-    (out/(ns+'.lean')).write_text(s);imports.append(f'import FourRow.CensusData.{ns}')
+    write_lean(out/(ns+'.lean'),s);imports.append(f'import FourRow.CensusData.{ns}')
 # Independent-support augmentation is checked against literal actions.
-s='\n'.join(imports)+'\nimport FourRow.CensusRelabel\nimport FourRow.CensusTables'+'''
+s='\n'.join(imports)+'\nimport FourRow.CensusRelabel\nimport FourRow.CensusTables\nimport FourRow.CensusWitnessData'+'''
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0
 namespace FourRow.Census
@@ -76,16 +77,55 @@ s+='def augmentationData : LookupTree (Fin 1282 × Fin 576) := '+tree(f'({k},{g}
 
 def augmentation (i : Fin 5109) : Fin 1282 × Fin 576 := augmentationData.get i.val
 
-theorem augmentation_checked : ∀ i : Fin 5109,
-  independentSupport i ⊆ (independentSupport (maxSource (augmentation i).1)).image
-    (literalAction (augmentation i).2) := by decide +kernel
+def ValidAugmentation (i : Fin 5109) : Prop := ∀ q : PermIndex,
+  (independentMasks.get i.val).testBit (literalAction (augmentation i).2 q).val →
+  (independentMasks.get (maxSource (augmentation i).1).val).testBit q.val
+
+instance (i : Fin 5109) : Decidable (ValidAugmentation i) := inferInstanceAs (Decidable (∀ _, _))
+'''
+for b in range(40):
+    n=min(128,5109-128*b)
+    s+=f'''
+theorem augmentation_block_{b:02} : ∀ i : Fin {n},
+  ValidAugmentation ⟨{128*b}+i.val, by omega⟩ := by decide +kernel
+'''
+s+='''
+theorem augmentation_valid (i : Fin 5109) : ValidAugmentation i := by
+  have hb : i.val / 128 < 40 := by omega
+  interval_cases h : i.val / 128
+'''
+for b in range(40):
+    n=min(128,5109-128*b)
+    s+=f'''  · have hi : i.val - {128*b} < {n} := by omega
+    have heq : i = (⟨{128*b} + (i.val-{128*b}),by omega⟩ : Fin 5109) := by
+      apply Fin.ext
+      simp only
+      omega
+    rw [heq]
+    exact augmentation_block_{b:02} ⟨i.val-{128*b},hi⟩
+'''
+s+='''
+theorem augmentation_checked (i : Fin 5109) :
+    independentSupport i ⊆ (independentSupport (maxSource (augmentation i).1)).image
+      (literalAction (augmentation i).2) := by
+  intro p hp
+  let q := (action (relabel (augmentation i).2)).symm p
+  have hq : literalAction (augmentation i).2 q = p := by
+    rw [literalAction_eq]
+    exact (action (relabel (augmentation i).2)).apply_symm_apply p
+  apply Finset.mem_image.mpr
+  refine ⟨q,?_,hq⟩
+  apply (mem_independentSupport _ _).mpr
+  apply augmentation_valid i q
+  have hs := (mem_independentSupport i p).mp hp
+  simpa only [hq] using hs
 
 theorem all_independent (i : Fin 5109) : IndependentSupport (independentSupport i) := by
   apply independent_moved_subset (relabel (augmentation i).2) (maximal_independent (augmentation i).1)
   simpa only [moved, actionHom_apply, ← literalAction_eq] using augmentation_checked i
 end FourRow.Census
 '''
-(ROOT/'FourRow/CensusIndependence.lean').write_text(s)
+write_lean(ROOT/'FourRow/CensusIndependence.lean',s)
 # Extension closure witnesses, with checked target dimensions.
 for b in range(40):
     start=128*b;chosen=inds[start:start+128];n=len(chosen);ns=f'Extension{b:02}'
@@ -110,7 +150,7 @@ theorem checked : ∀ i : Fin {n}, ∀ p : PermIndex,
   ValidExtension (source i) p (witness i p) := by decide +kernel
 end FourRow.Census.{ns}
 '''
-    (out/(ns+'.lean')).write_text(s)
+    write_lean(out/(ns+'.lean'),s)
 print('Emitted41 maximal-inverse modules, augmentation, and40 extension modules.')
 s='\n'.join(f'import FourRow.CensusData.Extension{b:02}' for b in range(40))+'''
 import FourRow.CensusIndependence
@@ -169,4 +209,4 @@ theorem support_cover (x : PermIndex → ℝ) (hx : Kernel x) (hne : x ≠ 0) :
       exact (Finset.mem_filter.mp hs).2 hp
 end FourRow.Census
 '''
-(ROOT/'FourRow/CensusCoverage.lean').write_text(s)
+write_lean(ROOT/'FourRow/CensusCoverage.lean',s)

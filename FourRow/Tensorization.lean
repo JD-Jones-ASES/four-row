@@ -1,4 +1,8 @@
-import FourRow.Exponent
+module
+
+public import FourRow.Exponent
+
+@[expose] public section
 
 /-! Adaptive tensorization. Kernels may depend on the complete permutation
 history. Conditions are imposed only on positive-probability histories. -/

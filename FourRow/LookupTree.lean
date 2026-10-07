@@ -1,3 +1,7 @@
+module
+
+
+@[expose] public section
 /-! Kernel-friendly logarithmic lookup for literal finite certificate tables.
 Arrays reduce to lists in the kernel; this tree avoids repeated linear scans.
 No lookup correctness axiom is needed: every concrete use is kernel checked.

@@ -1,6 +1,10 @@
-import FourRow.Definitions
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Data.EReal.Operations
+module
+
+public import FourRow.Definitions
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+public import Mathlib.Data.EReal.Operations
+
+@[expose] public section
 
 /-! Finite entropy duality. The real-valued formula is used only when the
 reference law supports the first law; the extended version assigns infinity

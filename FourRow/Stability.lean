@@ -1,5 +1,9 @@
-import FourRow.Definitions
-import FourRow.Uniform
+module
+
+public import FourRow.Definitions
+public import FourRow.Uniform
+
+@[expose] public section
 
 /-! Sharp stability follows from the separately checked endpoint bound and
 an exact radial decomposition of every real balanced law in the closed ball. -/

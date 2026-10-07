@@ -1,5 +1,9 @@
-import FourRow.Exponent
-import FourRow.Sharpness
+module
+
+public import FourRow.Exponent
+public import FourRow.Sharpness
+
+@[expose] public section
 
 namespace FourRow
 noncomputable section

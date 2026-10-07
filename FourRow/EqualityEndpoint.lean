@@ -1,5 +1,9 @@
-import FourRow.Equality
-import FourRow.Normalization
+module
+
+public import FourRow.Equality
+public import FourRow.Normalization
+
+@[expose] public section
 
 namespace FourRow
 noncomputable section

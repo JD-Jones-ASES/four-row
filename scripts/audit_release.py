@@ -55,6 +55,11 @@ def run(lake, *args):
                                    stderr=subprocess.STDOUT)
 
 
+def source_imports(code):
+    lines = re.findall(r"^(?:public )?(?:meta )?import\s+([^\n]+)", code, re.M)
+    return [module for line in lines for module in line.split()]
+
+
 def audit(lake, structure_only=False):
     config = json.loads((ROOT / "comparator.json").read_text())
     require(set(config) <= {"challenge_module", "solution_module", "theorem_names",
@@ -71,16 +76,23 @@ def audit(lake, structure_only=False):
     text = challenge.read_text()
     require(len(text.encode()) <= 100_000 and len(text.splitlines()) <= 1000,
             "Challenge exceeds the policy size ceiling")
-    imports = re.findall(r"^import\s+(\S+)", lean_code(text), re.M)
+    imports = source_imports(lean_code(text))
     require(imports and all(m == "Mathlib" or m.startswith("Mathlib.") for m in imports),
             "Challenge must import only Mathlib")
-    for source in [solution, *sorted((ROOT / "FourRow").rglob("*.lean"))]:
+    sources = [*sorted(ROOT.glob("*.lean")), *sorted((ROOT / "FourRow").rglob("*.lean"))]
+    for source in sources:
         code = lean_code(source.read_text())
+        require(code.lstrip().startswith("module\n"),
+                f"Missing module header in {source.relative_to(ROOT)}")
+        require(len(source.read_text().splitlines()) <= 10_000,
+                f"Lean source exceeds 10000 lines: {source.relative_to(ROOT)}")
+        if source == challenge:
+            continue
         banned = re.search(r"\b(sorry|admit|axiom|native_decide|ofReduceBool|unsafe)\b", code)
         require(banned is None, f"Forbidden proof token in {source.relative_to(ROOT)}: "
                 f"{banned.group() if banned else ''}")
-        require(not re.search(r"^import\s+" + re.escape(config["challenge_module"]) + r"\b",
-                              code, re.M), "The solution must not import challenge holes")
+        require(config["challenge_module"] not in source_imports(code),
+                "The solution must not import challenge holes")
 
     srcpath = run(lake, "env", "python3", "-c",
                   "import os; print(os.environ['LEAN_SRC_PATH'])").strip()

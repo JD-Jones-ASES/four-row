@@ -1,7 +1,11 @@
-import Mathlib.Analysis.Real.Sqrt
-import Mathlib.LinearAlgebra.Matrix.Permanent
-import Mathlib.GroupTheory.Perm.Fin
-import Mathlib.Tactic
+module
+
+public import Mathlib.Analysis.Real.Sqrt
+public import Mathlib.LinearAlgebra.Matrix.Permanent
+public import Mathlib.GroupTheory.Perm.Fin
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Uniform four-row stability

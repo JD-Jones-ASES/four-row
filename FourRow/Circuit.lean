@@ -1,6 +1,10 @@
-import Mathlib.Analysis.Convex.KreinMilman
-import Mathlib.Topology.Algebra.Module.FiniteDimension
-import Mathlib.Tactic
+module
+
+public import Mathlib.Analysis.Convex.KreinMilman
+public import Mathlib.Topology.Algebra.Module.FiniteDimension
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Real all-law reduction

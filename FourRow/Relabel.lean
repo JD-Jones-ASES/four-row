@@ -1,6 +1,10 @@
-import FourRow.Finite
-import FourRow.Definitions
-import FourRow.Circuit
+module
+
+public import FourRow.Finite
+public import FourRow.Definitions
+public import FourRow.Circuit
+
+@[expose] public section
 
 namespace FourRow
 noncomputable section

@@ -1,37 +1,39 @@
-import FourRow.CensusWitnessData
-import FourRow.CensusTables
-import FourRow.CensusRelabel
+module
+
+public import FourRow.CensusWitnessData
+public import FourRow.CensusTables
+public import FourRow.CensusRelabel
+
+@[expose] public section
+
 namespace FourRow.Census
+
 theorem extension_of_witness {i : Fin 5109} {p : PermIndex} (e : ExtensionWitness)
     (he : ValidExtension i p e) :
     (∃ g k, insert p (independentSupport i) = moved actionHom g (independentSupport k)) ∨
     (∃ g k, moved actionHom g (circuitSupport k) ⊆ insert p (independentSupport i)) := by
+  by_cases hp : p ∈ independentSupport i
+  · left
+    exact ⟨1,i,by simp [Finset.insert_eq_of_mem hp]⟩
+  have hp' : ¬ (independentMasks.get i.val).testBit p.val :=
+    fun h => hp ((mem_independentSupport i p).mpr h)
   rcases e with ⟨k,g⟩
   cases k with
   | inl k =>
     left
     refine ⟨relabel g,k,?_⟩
-    have hh : ∀ q, q ∈ independentSupport k ↔
-        action (relabel g) q ∈ insert p (independentSupport i) := by
-      simpa only [ValidExtension,mem_independentSupport,Finset.mem_insert,literalAction_eq] using he
-    ext q
-    constructor
-    · intro hq
-      apply Finset.mem_image.mpr
-      refine ⟨(action (relabel g)).symm q,?_,(action (relabel g)).apply_symm_apply q⟩
-      apply (hh _).mpr
-      simpa using hq
-    · intro hq
-      rcases Finset.mem_image.mp hq with ⟨t,ht,rfl⟩
-      exact (hh t).mp ht
+    have hh : imageMask (literalAction g) (independentMasks.get k.val) = extendedMask i p := by
+      simpa only [ValidExtension,hp',ite_false] using he
+    have hs := congrArg maskSupport hh
+    simpa only [maskSupport_imageMask,maskSupport_extendedMask,independentSupport,
+      moved,actionHom_apply,← literalAction_eq] using hs.symm
   | inr k =>
     right
     refine ⟨relabel g,k,?_⟩
-    have hh : ∀ q, q ∈ circuitSupport k →
-        action (relabel g) q ∈ insert p (independentSupport i) := by
-      simpa only [ValidExtension,mem_circuitSupport,mem_independentSupport,
-        Finset.mem_insert,literalAction_eq] using he
-    intro q hq
-    rcases Finset.mem_image.mp hq with ⟨t,ht,rfl⟩
-    exact hh t ht
+    have hh : imageMask (literalAction g) (circuitMasks.get k.val) &&& extendedMask i p =
+        imageMask (literalAction g) (circuitMasks.get k.val) := by
+      simpa only [ValidExtension,hp',ite_false] using he
+    have hs := maskSupport_subset_of_land_eq hh
+    simpa only [maskSupport_imageMask,maskSupport_extendedMask,circuitSupport,
+      moved,actionHom_apply,← literalAction_eq] using hs
 end FourRow.Census

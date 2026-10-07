@@ -1,6 +1,10 @@
-import FourRow.Finite
-import Mathlib.Data.Finset.Card
-import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
+module
+
+public import FourRow.Finite
+public import Mathlib.Data.Finset.Card
+public import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
+
+@[expose] public section
 
 /-! Soundness lemmas for a proof-carrying support-extension census.
 

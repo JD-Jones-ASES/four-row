@@ -1,45 +1,49 @@
-import FourRow.CensusData.Extension00
-import FourRow.CensusData.Extension01
-import FourRow.CensusData.Extension02
-import FourRow.CensusData.Extension03
-import FourRow.CensusData.Extension04
-import FourRow.CensusData.Extension05
-import FourRow.CensusData.Extension06
-import FourRow.CensusData.Extension07
-import FourRow.CensusData.Extension08
-import FourRow.CensusData.Extension09
-import FourRow.CensusData.Extension10
-import FourRow.CensusData.Extension11
-import FourRow.CensusData.Extension12
-import FourRow.CensusData.Extension13
-import FourRow.CensusData.Extension14
-import FourRow.CensusData.Extension15
-import FourRow.CensusData.Extension16
-import FourRow.CensusData.Extension17
-import FourRow.CensusData.Extension18
-import FourRow.CensusData.Extension19
-import FourRow.CensusData.Extension20
-import FourRow.CensusData.Extension21
-import FourRow.CensusData.Extension22
-import FourRow.CensusData.Extension23
-import FourRow.CensusData.Extension24
-import FourRow.CensusData.Extension25
-import FourRow.CensusData.Extension26
-import FourRow.CensusData.Extension27
-import FourRow.CensusData.Extension28
-import FourRow.CensusData.Extension29
-import FourRow.CensusData.Extension30
-import FourRow.CensusData.Extension31
-import FourRow.CensusData.Extension32
-import FourRow.CensusData.Extension33
-import FourRow.CensusData.Extension34
-import FourRow.CensusData.Extension35
-import FourRow.CensusData.Extension36
-import FourRow.CensusData.Extension37
-import FourRow.CensusData.Extension38
-import FourRow.CensusData.Extension39
-import FourRow.CensusIndependence
-import FourRow.CensusWitness
+module
+
+public import FourRow.CensusData.Extension00
+public import FourRow.CensusData.Extension01
+public import FourRow.CensusData.Extension02
+public import FourRow.CensusData.Extension03
+public import FourRow.CensusData.Extension04
+public import FourRow.CensusData.Extension05
+public import FourRow.CensusData.Extension06
+public import FourRow.CensusData.Extension07
+public import FourRow.CensusData.Extension08
+public import FourRow.CensusData.Extension09
+public import FourRow.CensusData.Extension10
+public import FourRow.CensusData.Extension11
+public import FourRow.CensusData.Extension12
+public import FourRow.CensusData.Extension13
+public import FourRow.CensusData.Extension14
+public import FourRow.CensusData.Extension15
+public import FourRow.CensusData.Extension16
+public import FourRow.CensusData.Extension17
+public import FourRow.CensusData.Extension18
+public import FourRow.CensusData.Extension19
+public import FourRow.CensusData.Extension20
+public import FourRow.CensusData.Extension21
+public import FourRow.CensusData.Extension22
+public import FourRow.CensusData.Extension23
+public import FourRow.CensusData.Extension24
+public import FourRow.CensusData.Extension25
+public import FourRow.CensusData.Extension26
+public import FourRow.CensusData.Extension27
+public import FourRow.CensusData.Extension28
+public import FourRow.CensusData.Extension29
+public import FourRow.CensusData.Extension30
+public import FourRow.CensusData.Extension31
+public import FourRow.CensusData.Extension32
+public import FourRow.CensusData.Extension33
+public import FourRow.CensusData.Extension34
+public import FourRow.CensusData.Extension35
+public import FourRow.CensusData.Extension36
+public import FourRow.CensusData.Extension37
+public import FourRow.CensusData.Extension38
+public import FourRow.CensusData.Extension39
+public import FourRow.CensusIndependence
+public import FourRow.CensusWitness
+
+@[expose] public section
 namespace FourRow.Census
 set_option maxHeartbeats 0
 

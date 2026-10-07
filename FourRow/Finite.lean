@@ -1,7 +1,11 @@
-import Mathlib.Data.Fintype.EquivFin
-import Mathlib.GroupTheory.Perm.Fin
-import Mathlib.Data.Fin.VecNotation
-import Mathlib.Tactic
+module
+
+public import Mathlib.Data.Fintype.EquivFin
+public import Mathlib.GroupTheory.Perm.Fin
+public import Mathlib.Data.Fin.VecNotation
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! Literal lexicographic indexing of the four-row problem. -/
 namespace FourRow

@@ -1,7 +1,11 @@
-import FourRow.EndpointTheorem
-import FourRow.ExtremalFamily
-import FourRow.SharpExponent
-import FourRow.SharpEntropy
-import FourRow.EntropyExponent
-import FourRow.NormMonotonicity
-import FourRow.Tensorization
+module
+
+public import FourRow.EndpointTheorem
+public import FourRow.ExtremalFamily
+public import FourRow.SharpExponent
+public import FourRow.SharpEntropy
+public import FourRow.EntropyExponent
+public import FourRow.NormMonotonicity
+public import FourRow.Tensorization
+
+@[expose] public section

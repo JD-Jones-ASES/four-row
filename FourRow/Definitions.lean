@@ -1,6 +1,10 @@
-import FourRow.Finite
-import Mathlib.LinearAlgebra.Matrix.Permanent
-import Mathlib.Analysis.Real.Sqrt
+module
+
+public import FourRow.Finite
+public import Mathlib.LinearAlgebra.Matrix.Permanent
+public import Mathlib.Analysis.Real.Sqrt
+
+@[expose] public section
 
 /-! Human-facing real laws, balanced marginals, and total variation balls. -/
 namespace FourRow

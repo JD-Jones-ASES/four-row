@@ -1,8 +1,12 @@
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Mathlib.Data.EReal.Operations
-import Mathlib.LinearAlgebra.Matrix.Permanent
-import Mathlib.GroupTheory.Perm.Fin
-import Mathlib.Tactic
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+public import Mathlib.Data.EReal.Operations
+public import Mathlib.LinearAlgebra.Matrix.Permanent
+public import Mathlib.GroupTheory.Perm.Fin
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Four-row robustness: standalone mathematical contract

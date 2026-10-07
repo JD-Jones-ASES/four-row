@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Emit explicit rational weighted-square identities; Lean checks every identity."""
+from lean_source import write_lean
 from pathlib import Path
 import json
 from fractions import Fraction as Q
@@ -56,7 +57,7 @@ theorem gram{index:03d} (a : Fin 16 → ℝ) :
   positivity
 end FourRow
 '''
- p=ROOT/'FourRow'/'Grams'/f'G{index:03d}.lean';p.parent.mkdir(exist_ok=True);p.write_text(src)
+ p=ROOT/'FourRow'/'Grams'/f'G{index:03d}.lean';p.parent.mkdir(exist_ok=True);write_lean(p,src)
  return len(src)
 if __name__=='__main__':
  import argparse

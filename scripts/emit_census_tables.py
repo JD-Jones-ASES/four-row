@@ -3,12 +3,13 @@
 import json
 from lean_table import tree
 from itertools import permutations
+from lean_source import write_lean
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 data=json.loads((ROOT/'evidence/support-closure.json').read_text())
 def vec(xs): return '!['+','.join(map(str,xs))+']'
 def write(path,text):
-    temp=path.with_suffix(path.suffix+'.tmp');temp.write_text(text);temp.replace(path)
+    write_lean(path,text)
 perms=list(permutations(range(4)));lookup={p:i for i,p in enumerate(perms)}
 actions=[]
 for r in perms:

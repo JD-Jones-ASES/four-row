@@ -1,4 +1,8 @@
-import FourRow.Finite
+module
+
+public import FourRow.Finite
+
+@[expose] public section
 
 namespace FourRow
 set_option maxRecDepth 100000

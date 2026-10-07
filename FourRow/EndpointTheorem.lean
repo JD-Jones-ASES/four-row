@@ -1,7 +1,11 @@
-import FourRow.CertificateTransfer
-import FourRow.CensusCoverage
-import FourRow.Grams
-import FourRow.EqualityEndpoint
+module
+
+public import FourRow.CertificateTransfer
+public import FourRow.CensusCoverage
+public import FourRow.Grams
+public import FourRow.EqualityEndpoint
+
+@[expose] public section
 
 /-!
 # The certified four-row endpoint

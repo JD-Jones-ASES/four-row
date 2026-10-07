@@ -1,5 +1,9 @@
-import FourRow.CensusTableData
-import FourRow.GramData
+module
+
+public import FourRow.CensusTableData
+public import FourRow.GramData
+
+@[expose] public section
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0
 namespace FourRow.Census

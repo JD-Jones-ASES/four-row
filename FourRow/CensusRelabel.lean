@@ -1,5 +1,9 @@
-import FourRow.Census
-import FourRow.Relabel
+module
+
+public import FourRow.Census
+public import FourRow.Relabel
+
+@[expose] public section
 namespace FourRow.Census
 theorem independent_moved_subset {S T : Finset PermIndex} (g : Relabel)
     (hT : IndependentSupport T) (hST : S ⊆ moved actionHom g T) : IndependentSupport S := by

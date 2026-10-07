@@ -1,6 +1,10 @@
-import FourRow.Orientations
-import FourRow.CensusTables
-import FourRow.OrbitTransfer
+module
+
+public import FourRow.Orientations
+public import FourRow.CensusTables
+public import FourRow.OrbitTransfer
+
+@[expose] public section
 
 namespace FourRow
 noncomputable section
@@ -28,6 +32,7 @@ theorem primitive_normalized_positive (k : Fin 73) :
   rw [primitiveReal_mass]
   have h := Census.positive_orientation_rat k p
   rw [Census.literalAction_eq] at h
+  dsimp only [primitiveReal, representativeReal]
   exact_mod_cast h
 
 theorem primitive_normalized_negative (k : Fin 73) :
@@ -41,6 +46,7 @@ theorem primitive_normalized_negative (k : Fin 73) :
     rw [primitiveReal_mass]
     have h := Census.negative_orientation_rat k p
     rw [Census.literalAction_eq] at h
+    dsimp only [primitiveReal, representativeReal]
     exact_mod_cast h
   simpa only [neg_div, neg_smul] using normalized_moved_of_crossmul _ _ _ _
     (ne_of_gt (primitiveReal_mass_pos k)) hxy

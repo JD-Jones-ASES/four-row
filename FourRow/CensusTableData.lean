@@ -1,5 +1,9 @@
-import FourRow.Finite
-import FourRow.LookupTree
+module
+
+public import FourRow.Finite
+public import FourRow.LookupTree
+
+@[expose] public section
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0
 namespace FourRow.Census

@@ -1,39 +1,43 @@
-import FourRow.CensusTableData
-import Mathlib.Algebra.BigOperators.Ring.Finset
-import FourRow.CensusTableChecks.Action00
-import FourRow.CensusTableChecks.Action01
-import FourRow.CensusTableChecks.Action02
-import FourRow.CensusTableChecks.Action03
-import FourRow.CensusTableChecks.Action04
-import FourRow.CensusTableChecks.Action05
-import FourRow.CensusTableChecks.Action06
-import FourRow.CensusTableChecks.Action07
-import FourRow.CensusTableChecks.Action08
-import FourRow.CensusTableChecks.Action09
-import FourRow.CensusTableChecks.Action10
-import FourRow.CensusTableChecks.Action11
-import FourRow.CensusTableChecks.Action12
-import FourRow.CensusTableChecks.Action13
-import FourRow.CensusTableChecks.Action14
-import FourRow.CensusTableChecks.Action15
-import FourRow.CensusTableChecks.Action16
-import FourRow.CensusTableChecks.Action17
-import FourRow.CensusTableChecks.Action18
-import FourRow.CensusTableChecks.Action19
-import FourRow.CensusTableChecks.Action20
-import FourRow.CensusTableChecks.Action21
-import FourRow.CensusTableChecks.Action22
-import FourRow.CensusTableChecks.Action23
-import FourRow.CensusTableChecks.Primitive00
-import FourRow.CensusTableChecks.Primitive01
-import FourRow.CensusTableChecks.Primitive02
-import FourRow.CensusTableChecks.Primitive03
-import FourRow.CensusTableChecks.Primitive04
-import FourRow.CensusTableChecks.Primitive05
-import FourRow.CensusTableChecks.Primitive06
-import FourRow.CensusTableChecks.Primitive07
-import FourRow.CensusTableChecks.Primitive08
-import FourRow.CensusTableChecks.Primitive09
+module
+
+public import FourRow.CensusTableData
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+public import FourRow.CensusTableChecks.Action00
+public import FourRow.CensusTableChecks.Action01
+public import FourRow.CensusTableChecks.Action02
+public import FourRow.CensusTableChecks.Action03
+public import FourRow.CensusTableChecks.Action04
+public import FourRow.CensusTableChecks.Action05
+public import FourRow.CensusTableChecks.Action06
+public import FourRow.CensusTableChecks.Action07
+public import FourRow.CensusTableChecks.Action08
+public import FourRow.CensusTableChecks.Action09
+public import FourRow.CensusTableChecks.Action10
+public import FourRow.CensusTableChecks.Action11
+public import FourRow.CensusTableChecks.Action12
+public import FourRow.CensusTableChecks.Action13
+public import FourRow.CensusTableChecks.Action14
+public import FourRow.CensusTableChecks.Action15
+public import FourRow.CensusTableChecks.Action16
+public import FourRow.CensusTableChecks.Action17
+public import FourRow.CensusTableChecks.Action18
+public import FourRow.CensusTableChecks.Action19
+public import FourRow.CensusTableChecks.Action20
+public import FourRow.CensusTableChecks.Action21
+public import FourRow.CensusTableChecks.Action22
+public import FourRow.CensusTableChecks.Action23
+public import FourRow.CensusTableChecks.Primitive00
+public import FourRow.CensusTableChecks.Primitive01
+public import FourRow.CensusTableChecks.Primitive02
+public import FourRow.CensusTableChecks.Primitive03
+public import FourRow.CensusTableChecks.Primitive04
+public import FourRow.CensusTableChecks.Primitive05
+public import FourRow.CensusTableChecks.Primitive06
+public import FourRow.CensusTableChecks.Primitive07
+public import FourRow.CensusTableChecks.Primitive08
+public import FourRow.CensusTableChecks.Primitive09
+
+@[expose] public section
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0
 namespace FourRow.Census

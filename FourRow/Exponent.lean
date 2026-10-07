@@ -1,8 +1,12 @@
-import FourRow.Stability
-import FourRow.Entropy
-import Mathlib.Analysis.SpecialFunctions.Pow.Deriv
-import Mathlib.Analysis.Calculus.MeanValue
-import Mathlib.Analysis.Calculus.Deriv.MeanValue
+module
+
+public import FourRow.Stability
+public import FourRow.Entropy
+public import Mathlib.Analysis.SpecialFunctions.Pow.Deriv
+public import Mathlib.Analysis.Calculus.MeanValue
+public import Mathlib.Analysis.Calculus.Deriv.MeanValue
+
+@[expose] public section
 
 /-! Explicit exponents from stability and finite probability Lp norms. -/
 namespace FourRow

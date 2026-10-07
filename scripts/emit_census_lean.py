@@ -3,6 +3,7 @@
 import argparse
 import json
 from itertools import permutations
+from lean_source import write_lean
 from pathlib import Path
 
 
@@ -26,6 +27,6 @@ def main():
       'end FourRow.Census.Benchmark']
     # getElem! needs a harmless default.
     lines.insert(4,'instance : Inhabited IndependentRecord := ⟨⟨0,![],![],1,![],![]⟩⟩')
-    (out/'CensusBenchmark.lean').write_text('\n'.join(lines)+'\n')
+    write_lean(out/'CensusBenchmark.lean','\n'.join(lines)+'\n')
 
 if __name__=='__main__':main()

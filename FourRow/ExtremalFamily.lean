@@ -1,4 +1,8 @@
-import FourRow.Sharpness
+module
+
+public import FourRow.Sharpness
+
+@[expose] public section
 
 /-! A human-facing description of the sharpness family, independent of the
 lexicographic indexing used to check it. -/

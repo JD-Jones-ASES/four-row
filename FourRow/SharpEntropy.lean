@@ -1,5 +1,9 @@
-import FourRow.Entropy
-import FourRow.Sharpness
+module
+
+public import FourRow.Entropy
+public import FourRow.Sharpness
+
+@[expose] public section
 
 namespace FourRow
 noncomputable section

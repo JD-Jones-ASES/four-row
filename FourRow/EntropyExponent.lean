@@ -1,4 +1,8 @@
-import FourRow.Exponent
+module
+
+public import FourRow.Exponent
+
+@[expose] public section
 
 /-! Generic finite Lp/entropy duality and its explicit-radius specialization. -/
 namespace FourRow
