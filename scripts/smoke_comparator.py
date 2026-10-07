@@ -37,5 +37,7 @@ end KernelSmoke
     config['solution_module'] = 'SmokeSolution'
     config['theorem_names'] = ['KernelSmoke.checked']
     config_path.write_text(json.dumps(config, indent=2) + '\n')
+    subprocess.run(['lake', 'build', 'SmokeChallenge', 'SmokeSolution'],
+                   cwd=scratch, check=True)
     subprocess.run(['lake', 'comparator', '--config', str(config_path)],
                    cwd=scratch, check=True)
