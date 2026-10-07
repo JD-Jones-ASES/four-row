@@ -1,0 +1,14 @@
+{
+  "repository": "JD-Jones-ASES/Analytic-Lab",
+  "commit": "a763c72511bef8bb915449576581222a9dc1fb05",
+  "files": {
+    "census.py": "b1cdc210957eea0f089b9b1f65c4d482f35c828bfea4f7b364b28e829a82b0bb",
+    "certificates.json": "f3fd0a1d522ab8bfbee5be5ff73730d1e337af9bdaa5537ead2a89df7b26b951",
+    "circuits.json": "dd2571809b05d009293a6d908fe8ffbd782dc2ec3b9bfc787afb0a303b11c696",
+    "extensions.py": "053c31437ac82e726dc5a85e0c8ea91ea50cf311b69f3cd68b625416a9f644bd",
+    "probe.py": "77929eab34ebcc26265016776bdb139d5dd2e094a130c0c42b98457821e8698d",
+    "audit_census.py": "97b14db57e939a8507e0fc3e46787b20ae58becd76bf62e67f1f8d9713e52f90",
+    "verify.py": "384c3d42f71cf091c2738560d820c139e1d1511e70bab0c47e21d46bc8ae7b59",
+    "shuffle_input.py": "645b62db80bbb2bd3c22b4f87b90165db3d2fa74c34a2db259ca62f2c1cadc0b"
+  }
+}
