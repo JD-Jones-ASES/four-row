@@ -1,5 +1,8 @@
 import FourRow.Stability
 import FourRow.Entropy
+import Mathlib.Analysis.SpecialFunctions.Pow.Deriv
+import Mathlib.Analysis.Calculus.MeanValue
+import Mathlib.Analysis.Calculus.Deriv.MeanValue
 
 /-! Explicit exponents from stability and finite probability Lp norms. -/
 namespace FourRow
@@ -73,12 +76,12 @@ theorem rpow_lower_two (x p : ℝ) (hx : 0 ≤ x) (hx2 : x ≤ 2)
     ring
   rwa [hid] at hm
 
-theorem normalized_entry_le_two (f : Vector) (hf : ∀ i, 0 ≤ f i)
+theorem normalized_entry_le_two (f : Vector) (_hf : ∀ i, 0 ≤ f i)
     (hn : meanFour (fun i => f i^2) = 1) (i : Fin 4) : f i ≤ 2 := by
   have hsingle := Finset.single_le_sum (s := Finset.univ)
     (f := fun j => f j^2) (fun j _ => sq_nonneg (f j)) (Finset.mem_univ i)
   unfold meanFour at hn
-  nlinarith only [hsingle,hn,hf i]
+  nlinarith only [hsingle,hn,_hf i]
 
 theorem powerMoment_lower (f : Vector) (hf : ∀ i, 0 ≤ f i)
     (hn : meanFour (fun i => f i^2) = 1) (p : ℝ) (hp : 1 ≤ p) (hp2 : p ≤ 2) :
@@ -104,7 +107,8 @@ theorem meanEntropy_le_variance (g : Vector) (hg : ∀ i, 0 ≤ g i)
     have hp : 0 < g i := lt_of_le_of_ne (hg i) (Ne.symm hz)
     have h := mul_le_mul_of_nonneg_left
       (Real.log_le_sub_one_of_pos (div_pos hp hm)) (hg i)
-    convert h using 1 <;> ring
+    convert h using 1
+    ring
   have h := Finset.sum_le_sum (s := Finset.univ) (fun i _ => hi i)
   rw [Finset.sum_sub_distrib,← Finset.sum_div] at h
   have hm0 : (∑ i, g i) ≠ 0 := by
@@ -116,7 +120,6 @@ theorem meanEntropy_le_variance (g : Vector) (hg : ∀ i, 0 ≤ g i)
     _ = varianceFour g/meanFour g := by
       dsimp [varianceFour,meanFour]
       field_simp
-      <;> ring
 
 private theorem hasDerivAt_nonneg_const_rpow (a p : ℝ) (ha : 0 ≤ a) (hp : 0 < p) :
     HasDerivAt (fun t : ℝ => a^t) (a^p*Real.log a) p := by
@@ -162,7 +165,6 @@ theorem logPowerNorm_hasDerivAt (f : Vector) (hf : ∀ i, 0 ≤ f i) (p : ℝ)
   · rw [powerEntropy_identity f hf p hp hm]
     simp only [id_eq,mul_one]
     field_simp [ne_of_gt hp,ne_of_gt hm]
-    <;> ring
 
 /-- Uniform derivative bound along the exponent interval. -/
 theorem logPowerNorm_derivative_le (f : Vector) (hf : ∀ i, 0 ≤ f i)

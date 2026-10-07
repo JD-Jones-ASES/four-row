@@ -1,0 +1,103 @@
+name: Private verification
+on:
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: Certificate build or complete release verification
+        type: choice
+        options: [full, certificates]
+        default: full
+permissions:
+  contents: read
+concurrency:
+  group: four-row-verification-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    env:
+      LEAN_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install pinned elan and Lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error \
+            https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz \
+            -o "$RUNNER_TEMP/elan.tar.gz"
+          echo "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2  $RUNNER_TEMP/elan.tar.gz" | sha256sum --check
+          mkdir "$RUNNER_TEMP/elan"
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP/elan"
+          "$RUNNER_TEMP/elan/elan-init" -y --no-modify-path --default-toolchain none
+          "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Retrieve pinned Mathlib cache
+        run: lake exe cache get
+      - name: Restore exact Gram proof cache
+        id: gram-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            .lake/build/lib/lean/FourRow/Grams
+            .lake/build/ir/FourRow/Grams
+          key: ${{ runner.os }}-four-row-grams-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'FourRow/Grams/*.lean') }}
+      - name: Build all Gram certificates with bounded memory
+        run: python3 scripts/build_grams.py --jobs 1
+      - name: Save exact Gram proof cache
+        if: steps.gram-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            .lake/build/lib/lean/FourRow/Grams
+            .lake/build/ir/FourRow/Grams
+          key: ${{ steps.gram-cache.outputs.cache-primary-key }}
+      - name: Build exhaustive census with bounded memory
+        run: python3 scripts/build_census.py
+      - name: Complete Lean build and axiom audit
+        if: inputs.stage == 'full'
+        run: |
+          lake build
+          python3 scripts/audit_release.py
+      - name: Independent exact research replay
+        if: inputs.stage == 'full'
+        run: python3 evidence/probe.py
+      - name: Install pinned bubblewrap
+        if: inputs.stage == 'full'
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq meson ninja-build libcap-dev pkg-config
+          git clone --filter=blob:none https://github.com/PalomarRegistry/PalomarSubmission.git "$RUNNER_TEMP/palomar-tools"
+          git -C "$RUNNER_TEMP/palomar-tools" checkout d4e41c1d5b0d114c4859e6e5831dc6d3ad1d0d44
+          echo "COMPARATOR_BWRAP=$("$RUNNER_TEMP/palomar-tools/scripts/install_bwrap.sh" "$RUNNER_TEMP/bwrap-bin")" >> "$GITHUB_ENV"
+      - name: Compare statements and replay independent kernels
+        if: inputs.stage == 'full'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/prepare_comparator.py "$RUNNER_TEMP/four-row-comparator.json"
+          lake comparator --config "$RUNNER_TEMP/four-row-comparator.json" 2>&1 | tee comparator.log
+      - name: Record checked source
+        if: always()
+        run: |
+          git rev-parse HEAD > checked-commit.txt
+          git status --short > checked-status.txt
+      - name: Preserve verification logs
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: four-row-verification-${{ github.sha }}
+          path: |
+            checked-commit.txt
+            checked-status.txt
+            comparator.log
+            axiom-audit.log
+            .lake/gram-build/
+            build-logs/census/
+          if-no-files-found: error
+          retention-days: 90

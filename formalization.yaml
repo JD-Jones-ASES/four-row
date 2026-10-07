@@ -1,0 +1,55 @@
+version: v0.4
+project:
+  name: Sharp robustness and stability of the four-row permanent inequality
+  description: >-
+    A formalization of the exact balanced total-variation robustness radius
+    1/24 for the four-row permanent inequality, the optimal variance-deficit
+    coefficient (1-24r)/9, complete nonnegative equality cases, and explicit
+    subcritical-exponent and entropy consequences. The finite endpoint proof
+    checks exhaustive support coverage and rational Gram identities in Lean.
+    Development and release verification are still in progress.
+  authors: [JD Jones]
+  responsible_maintainers: [JD Jones]
+  license: MIT
+classification:
+  arxiv: [math.CO, math.PR]
+  msc2020: ['15A15', '60E15', '26D15']
+sources:
+  - title: Sharp four-row permanent robustness and extensions, Analytic-Lab
+    type: other
+    relationship: formalizes
+    url: https://github.com/JD-Jones-ASES/Analytic-Lab/tree/a763c72511bef8bb915449576581222a9dc1fb05
+    notes: >-
+      The source repository is private. The complete mathematical notes and
+      exact source evidence used here are included in docs/ and evidence/.
+      The source result was developed by Astra under JD Jones's direction;
+      this formalization is source-based, not its first presentation.
+  - title: Classical finite Brascamp-Lieb and entropy duality
+    type: paper
+    relationship: background
+    url: https://arxiv.org/abs/0710.0870
+    notes: The project proves the required finite duality argument directly.
+automation:
+  methods:
+    - method: agent
+      tool: OpenAI Codex
+      model: Astra
+      notes: >-
+        The primary agent and parallel agents wrote the Lean proofs, generated
+        explicit rational proof source, checked scope and reviewed one another's
+        arguments. Python-generated data and numerical discovery are not trusted
+        axioms. Lean checks the formal proof terms.
+review:
+  status: agent-reviewed
+  notes: >-
+    Distinct internal agents reviewed the research and formalization arguments.
+    This is not external human peer review. Exact release verification is pending;
+    no claim of Palomar acceptance, registration or worldwide novelty is made.
+status: in-progress
+scope:
+  notes: >-
+    Arbitrary real balanced laws in the closed TV ball and all nonnegative real
+    matrices, including zero rows. The explicit interior exponent is sufficient,
+    not claimed optimal. A new global shuffle mixing theorem and worldwide
+    novelty are not claimed. The copied notes distinguish further informal
+    consequences from the final compared declarations.
