@@ -40,6 +40,7 @@ import FourRow.CensusData.Max38
 import FourRow.CensusData.Max39
 import FourRow.CensusData.Max40
 import FourRow.CensusRelabel
+import FourRow.CensusTables
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0
 namespace FourRow.Census

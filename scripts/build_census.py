@@ -8,12 +8,18 @@ ROOT=Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--lake',default='lake')
 p.add_argument('--start',type=int,default=0)
+p.add_argument('--start-module')
 a=p.parse_args()
-modules=['FourRow.CensusTables','FourRow.CensusWitness']
+modules=['FourRow.CensusTableData']
+modules += [f'FourRow.CensusTableChecks.Action{i:02}' for i in range(24)]
+modules += [f'FourRow.CensusTableChecks.Primitive{i:02}' for i in range(10)]
+modules += ['FourRow.CensusTables','FourRow.CensusWitness']
 modules += [f'FourRow.CensusData.Max{i:02}' for i in range(41)]
 modules += ['FourRow.CensusIndependence']
 modules += [f'FourRow.CensusData.Extension{i:02}' for i in range(40)]
 modules += ['FourRow.CensusCoverage']
+if a.start_module:
+    a.start=modules.index(a.start_module)
 logs=ROOT/'build-logs'/'census';logs.mkdir(parents=True,exist_ok=True)
 for idx,mod in enumerate(modules[a.start:],a.start):
     started=time.monotonic()

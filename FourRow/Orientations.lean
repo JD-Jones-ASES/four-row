@@ -1,4 +1,4 @@
-import FourRow.CensusTables
+import FourRow.CensusTableData
 import FourRow.GramData
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0

@@ -1,4 +1,5 @@
 import FourRow.Orientations
+import FourRow.CensusTables
 import FourRow.OrbitTransfer
 
 namespace FourRow

@@ -12,7 +12,7 @@ def rec(record):
     c=record['certificate']
     perms=list(permutations(range(4)))
     b=[[int(perms[j][i//4]==i%4) for j in cols] for i in c['rows']]
-    return f'⟨{len(cols)},{vec(cols)},{vec(c["rows"])},{c["scale"]},{vec(vec(row) for row in c["inverse"])},{vec(vec(row) for row in b)}⟩' 
+    return f'⟨{len(cols)},{vec(cols)},{vec(c["rows"])},{c["scale"]},{vec(vec(row) for row in c["inverse"])},{vec(vec(row) for row in b)}⟩'
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--input',type=Path,required=True);p.add_argument('--root',type=Path,required=True);p.add_argument('--sample',type=int,default=64);a=p.parse_args()

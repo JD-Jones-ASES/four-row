@@ -29,7 +29,7 @@ for sign in (1,-1):
         rows.append(found)
     pairs.append(rows)
 def vec(xs):return '!['+','.join(map(str,xs))+']'
-src='''import FourRow.CensusTables
+src='''import FourRow.CensusTableData
 import FourRow.GramData
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0

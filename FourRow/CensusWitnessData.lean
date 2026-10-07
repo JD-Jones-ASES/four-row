@@ -1,4 +1,4 @@
-import FourRow.CensusTables
+import FourRow.CensusTableData
 
 namespace FourRow.Census
 abbrev ExtensionWitness := (Fin 5109 ⊕ Fin 73) × Fin 576

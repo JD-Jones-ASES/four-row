@@ -1,0 +1,27 @@
+{
+  "challenge_module": "FourRowChallenge",
+  "solution_module": "FourRowSolution",
+  "theorem_names": [
+    "FourRowPrincipal.endpoint",
+    "FourRowPrincipal.sharp_stability",
+    "FourRowPrincipal.stability_optimal",
+    "FourRowPrincipal.explicit_extremal_family",
+    "FourRowPrincipal.radius_sharp",
+    "FourRowPrincipal.endpoint_equality",
+    "FourRowPrincipal.explicit_exponent",
+    "FourRowPrincipal.larger_exponents",
+    "FourRowPrincipal.subcritical_threshold",
+    "FourRowPrincipal.entropy",
+    "FourRowPrincipal.observation_contraction",
+    "FourRowPrincipal.entropy_optimal",
+    "FourRowPrincipal.observation_optimal",
+    "FourRowPrincipal.adaptive_tensorization",
+    "FourRowPrincipal.adaptive_probability",
+    "FourRowPrincipal.adaptive_marginals"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

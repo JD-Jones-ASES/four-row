@@ -30,7 +30,8 @@ imports=[]
 for b in range(41):
     start=32*b;chosen=inds[3827+start:3827+start+32];n=len(chosen)
     ns=f'Max{b:02}'
-    s=f'''import FourRow.CensusTables
+    s=f'''import FourRow.CensusTableData
+import FourRow.Census
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0
 namespace FourRow.Census.{ns}
@@ -50,7 +51,7 @@ end FourRow.Census.{ns}
 '''
     (out/(ns+'.lean')).write_text(s);imports.append(f'import FourRow.CensusData.{ns}')
 # Independent-support augmentation is checked against literal actions.
-s='\n'.join(imports)+'\nimport FourRow.CensusRelabel'+'''
+s='\n'.join(imports)+'\nimport FourRow.CensusRelabel\nimport FourRow.CensusTables'+'''
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0
 namespace FourRow.Census

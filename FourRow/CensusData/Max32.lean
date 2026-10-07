@@ -1,4 +1,5 @@
-import FourRow.CensusTables
+import FourRow.CensusTableData
+import FourRow.Census
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0
 namespace FourRow.Census.Max32

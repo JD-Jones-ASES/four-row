@@ -1,4 +1,5 @@
 import FourRow.CensusWitnessData
+import FourRow.CensusTables
 import FourRow.CensusRelabel
 namespace FourRow.Census
 theorem extension_of_witness {i : Fin 5109} {p : PermIndex} (e : ExtensionWitness)

@@ -13,7 +13,71 @@ concurrency:
   group: four-row-verification-${{ github.ref }}
   cancel-in-progress: false
 jobs:
+  gram-certificates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    env:
+      LEAN_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install pinned elan and Lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error \
+            https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz \
+            -o "$RUNNER_TEMP/elan.tar.gz"
+          echo "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2  $RUNNER_TEMP/elan.tar.gz" | sha256sum --check
+          mkdir "$RUNNER_TEMP/elan"
+          tar -xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP/elan"
+          "$RUNNER_TEMP/elan/elan-init" -y --no-modify-path --default-toolchain none
+          "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Retrieve pinned Mathlib cache
+        run: lake exe cache get
+      - name: Restore exact Gram shard cache
+        id: gram-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            .lake/build/lib/lean/FourRow/Grams
+            .lake/build/ir/FourRow/Grams
+          key: ${{ runner.os }}-four-row-grams-${{ matrix.shard }}-of-8-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'FourRow/Grams/*.lean') }}
+      - name: Build independent Gram shard with bounded memory
+        run: python3 scripts/build_grams.py --jobs 1 --shard ${{ matrix.shard }} --shards 8
+      - name: Save exact Gram shard cache
+        if: steps.gram-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            .lake/build/lib/lean/FourRow/Grams
+            .lake/build/ir/FourRow/Grams
+          key: ${{ steps.gram-cache.outputs.cache-primary-key }}
+      - name: Transfer checked Gram modules
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: gram-proof-${{ matrix.shard }}
+          include-hidden-files: true
+          path: |
+            .lake/build/lib/lean/FourRow/Grams
+            .lake/build/ir/FourRow/Grams
+          retention-days: 7
+      - name: Preserve Gram build logs
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: gram-log-${{ matrix.shard }}
+          include-hidden-files: true
+          path: .lake/gram-build/
+          retention-days: 90
   verify:
+    needs: gram-certificates
     runs-on: ubuntu-24.04
     timeout-minutes: 350
     env:
@@ -37,24 +101,12 @@ jobs:
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Retrieve pinned Mathlib cache
         run: lake exe cache get
-      - name: Restore exact Gram proof cache
-        id: gram-cache
-        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+      - name: Retrieve checked Gram modules from this exact run
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          path: |
-            .lake/build/lib/lean/FourRow/Grams
-            .lake/build/ir/FourRow/Grams
-          key: ${{ runner.os }}-four-row-grams-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'FourRow/Grams/*.lean') }}
-      - name: Build all Gram certificates with bounded memory
-        run: python3 scripts/build_grams.py --jobs 1
-      - name: Save exact Gram proof cache
-        if: steps.gram-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
-        with:
-          path: |
-            .lake/build/lib/lean/FourRow/Grams
-            .lake/build/ir/FourRow/Grams
-          key: ${{ steps.gram-cache.outputs.cache-primary-key }}
+          pattern: gram-proof-*
+          path: .lake/build
+          merge-multiple: true
       - name: Build exhaustive census with bounded memory
         run: python3 scripts/build_census.py
       - name: Complete Lean build and axiom audit
@@ -64,7 +116,9 @@ jobs:
           python3 scripts/audit_release.py
       - name: Independent exact research replay
         if: inputs.stage == 'full'
-        run: python3 evidence/probe.py
+        run: |
+          python3 evidence/probe.py
+          python3 evidence/audit_census.py
       - name: Install pinned bubblewrap
         if: inputs.stage == 'full'
         shell: bash
@@ -92,6 +146,7 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: four-row-verification-${{ github.sha }}
+          include-hidden-files: true
           path: |
             checked-commit.txt
             checked-status.txt
