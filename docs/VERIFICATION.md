@@ -35,10 +35,15 @@ python3 evidence/audit_census.py
 git diff --check
 ```
 
-Prebuilding the generated certificates sequentially bounds memory use. A
-plain `lake build` from a cold cache can launch too many large independent
-proofs simultaneously. `--jobs 1` is the conservative default; use more
-only with sufficient memory. `FOUR_ROW_LAKE` selects the Lake executable
+The sequential prebuild commands are the conservative local route. A direct
+cold `lake build FourRowSolution` also follows explicit private import chains:
+two Gram chains (G000–G064 and G065–G130), plus one census chain through table
+checks, maximal-support witnesses, independence, and support extensions.
+Thus at most three large certificate modules compile simultaneously; other
+modules may also compile, so this is not a total process or memory bound.
+The ordering imports add no mathematical assumption and leave theorem bodies
+unchanged. `--jobs 1` remains the conservative Gram-builder default.
+`FOUR_ROW_LAKE` selects the Lake executable
 for the Gram builder and release audit; the census builder has `--lake`.
 
 `audit_release.py` checks that the Challenge and Solution resolve uniquely
@@ -55,9 +60,10 @@ independent statement of record, and its holes are never imported into
 ## Private Linux verification
 
 [The workflow](../.github/workflows/verify.yml) is manually dispatched. Its
-eight Gram jobs and eight census jobs check disjoint certificate sets against
-the same immutable source. Checked artifacts are transferred to the dependent verification
-job, which builds the exhaustive census and the full public API, audits all
+two Gram jobs and one census job check the certificate chains against the
+same immutable source. Checked artifacts, including private proof data and
+census phase parents, are transferred to the dependent verification job,
+which builds the exhaustive census and the full public API, audits all
 principal axioms, and runs the two exact Python replays.
 
 The final step runs the toolchain's `lake comparator` with the named
@@ -83,6 +89,21 @@ counts as a verified release. The workflow records its exact source SHA,
 worktree status, build logs, comparison output, and axiom audit in private
 Actions artifacts. A cached proof never substitutes for the independent
 replay of the exported declarations.
+
+## Direct cold-build diagnostic
+
+[The cold-build workflow](../.github/workflows/cold-build.yml) starts with no
+project build artifacts, retrieves only the pinned Mathlib cache, and runs
+`lake build FourRowSolution` with `LEAN_NUM_THREADS=16`. It records process,
+resident-memory, swap, pressure, and elapsed-time samples. This checks the
+direct build route used by the inspected submission tooling, on the smaller
+private GitHub runner; it is not an official submission preflight.
+
+[The diagnostic record](../verification/cold-build.json) preserves the earlier
+unbounded-layout run. It was cancelled after one hour: sixteen concurrent
+Lean compilers caused sustained swap thrashing, with no Lean error or OOM
+kill recorded. That observation motivated the import chains. Cancellation
+does not establish a failed theorem or a failure on official hardware.
 
 ## Research evidence and generation
 

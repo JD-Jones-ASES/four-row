@@ -3,6 +3,8 @@ module
 public import FourRow.CensusTableData
 public import FourRow.Census
 
+import FourRow.CensusData.Max39
+
 @[expose] public section
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0

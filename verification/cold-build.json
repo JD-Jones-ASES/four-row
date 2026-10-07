@@ -1,0 +1,85 @@
+{
+  "scope": "Cancelled bounded cold-build diagnostic on a smaller GitHub runner; not a completed build or an official Palomar hardware failure.",
+  "status": "CANCELLED",
+  "source_commit": "b0c4a2be9a5fa9ffe0b7b218bcd4a190c91c59ba",
+  "private_ci_run": "https://github.com/JD-Jones-ASES/four-row/actions/runs/37566527443",
+  "command": "lake build FourRowSolution",
+  "project_build_cache_present_at_start": false,
+  "toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "mathlib_commit": "a98628e16c11f5167f16124105ddce53efa9bfe5",
+  "host": {
+    "platform": "ubuntu-24.04 x86_64 GitHub-hosted runner",
+    "cpus": 2,
+    "ram_kib": 8128876,
+    "swap_total_kib": 19922936,
+    "lake_runtime_threads": 16
+  },
+  "observations": {
+    "samples": 720,
+    "sampled_seconds": 3639.313660115,
+    "max_concurrent_lean_compilers": 16,
+    "samples_with_16_compilers": 707,
+    "persistent_gram_compilers": "G115 through G130; same sixteen process IDs remained to cancellation, with no Gram leaf completed.",
+    "completed_project_modules": [
+      "FourRow.LookupTree",
+      "FourRow.PolynomialCertificate",
+      "FourRow.Circuit",
+      "FourRow.Finite",
+      "FourRow.Uniform"
+    ],
+    "cgroup_memory_peak_bytes": 7801696256,
+    "cgroup_swap_peak_bytes": 17618853888,
+    "swap_in_page_delta": 21109800,
+    "swap_out_page_delta": 24753828,
+    "major_page_fault_delta": 21063716,
+    "memory_pressure_full_stall_seconds": 1205.597387,
+    "memory_pressure_full_stall_fraction": 0.33127053603890355,
+    "last_30_minutes_mean_cpu_cores": 0.18394680098976324,
+    "cgroup_oom_delta": 0,
+    "cgroup_oom_kill_delta": 0,
+    "host_oom_kill_delta": 0,
+    "logged_lean_errors": 0,
+    "final_time_report_available": false,
+    "interpretation": "Sustained swap pressure stalled sixteen simultaneous Gram compilations; the run was deliberately cancelled, not observed to fail in Lean or be OOM-killed."
+  },
+  "metric_limits": [
+    "Cgroup memory includes preparation, other runner processes, and reclaimable file cache.",
+    "The stock 2-CPU runner with swap is not equivalent to the official 16-CPU/32-GB Palomar profile.",
+    "Cancellation prevented a final build exit status and GNU time report."
+  ],
+  "compiler_benchmarks": {
+    "scope": "Independent pre-chain source compilation into temporary outputs on the local macOS development machine; these are compiler RSS measurements, not NanoDa/con-ron measurements or aggregate Linux bounds.",
+    "method": "Python resource.getrusage(RUSAGE_CHILDREN) or per-child os.wait4; macOS reports ru_maxrss in bytes.",
+    "cases": [
+      {
+        "module": "FourRow.Grams.G074",
+        "threads": "default",
+        "status": "passed",
+        "seconds": 15.970372750074603,
+        "peak_rss_bytes": 3761913856
+      },
+      {
+        "module": "FourRow.Grams.G074",
+        "threads": 1,
+        "status": "passed",
+        "seconds": 22.863622208009474,
+        "peak_rss_bytes": 3732488192,
+        "note": "All four output artifacts were byte-identical to the default-thread build; memory reduction was below 1 percent."
+      },
+      {
+        "module": "FourRow.CensusData.Max00",
+        "threads": "default",
+        "status": "passed",
+        "seconds": 16.590153499972075,
+        "peak_rss_bytes": 4246241280
+      },
+      {
+        "module": "FourRow.CensusData.Extension00",
+        "threads": "default",
+        "status": "passed",
+        "seconds": 14.5938815419795,
+        "peak_rss_bytes": 3674079232
+      }
+    ]
+  }
+}

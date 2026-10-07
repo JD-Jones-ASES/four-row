@@ -105,9 +105,11 @@ def emit(index, cert):
    defects.extend([f'(a {4*i+k} * a {4*i+l} - a {4*j+k} * a {4*j+l}) ^ 2',f'(a {4*i+k} * a {4*j+k} - a {4*i+l} * a {4*j+l}) ^ 2'])
  defect='('+' + '.join(defects)+')'
  square_list='[\n  '+',\n  '.join(entries)+'\n]'
+ # Two private import chains bound cold-build concurrency without changing proofs.
+ predecessor='' if index in (0,65) else f'import FourRow.Grams.G{index-1:03}\n'
  source=f'''module
 public import FourRow.PolynomialCertificate
-@[expose] public section
+{predecessor}@[expose] public section
 namespace FourRow
 open PolynomialCertificate
 set_option maxRecDepth 100000

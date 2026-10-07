@@ -1,5 +1,6 @@
 module
 public import FourRow.PolynomialCertificate
+import FourRow.Grams.G127
 @[expose] public section
 namespace FourRow
 open PolynomialCertificate

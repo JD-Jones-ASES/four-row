@@ -3,12 +3,19 @@
 import json
 from lean_table import tree
 from itertools import permutations
-from lean_source import write_lean
+from lean_source import module_source, write_lean
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 data=json.loads((ROOT/'evidence/support-closure.json').read_text())
 def vec(xs): return '!['+','.join(map(str,xs))+']'
-def write(path,text):
+def write(path,text,predecessor=None):
+    if predecessor is not None:
+        # Normalize the public interface first; the scheduling dependency must
+        # remain a plain (private) import instead of becoming a public reexport.
+        text=module_source(text)
+        marker='\n@[expose] public section\n'
+        assert marker in text
+        text=text.replace(marker,f'\nimport {predecessor}\n'+marker,1)
     write_lean(path,text)
 perms=list(permutations(range(4)));lookup={p:i for i,p in enumerate(perms)}
 actions=[]
@@ -56,14 +63,17 @@ for r in range(24):
     src='import FourRow.CensusTableData\n'+header
     src+=f'theorem action_checked_{r:02d} : ∀ c : Fin 24, ValidAction (actionPair {r} c) := by decide +kernel\n'
     src+='end FourRow.Census\n'
-    write(folder/f'Action{r:02d}.lean',src)
+    predecessor=f'FourRow.CensusTableChecks.Action{r-1:02d}' if r else None
+    write(folder/f'Action{r:02d}.lean',src,predecessor)
 for b,start in enumerate(range(0,73,8)):
     n=min(8,73-start)
     src='import FourRow.CensusTableData\n'+header
     src+=f'def primitiveSource{b:02d} (i : Fin {n}) : Fin 73 := ⟨{start}+i.val, by omega⟩\n'
     src+=f'theorem primitive_checked_{b:02d} : ∀ i : Fin {n}, ValidPrimitive (primitiveSource{b:02d} i) := by decide +kernel\n'
     src+='end FourRow.Census\n'
-    write(folder/f'Primitive{b:02d}.lean',src)
+    predecessor=(f'FourRow.CensusTableChecks.Primitive{b-1:02d}' if b
+                 else 'FourRow.CensusTableChecks.Action23')
+    write(folder/f'Primitive{b:02d}.lean',src,predecessor)
 imports='import FourRow.CensusTableData\nimport Mathlib.Algebra.BigOperators.Ring.Finset\n'+''.join(f'import FourRow.CensusTableChecks.Action{r:02d}\n' for r in range(24))+''.join(f'import FourRow.CensusTableChecks.Primitive{b:02d}\n' for b in range(10))
 body=imports+header+'''theorem actionPair_valid (r c : Fin 24) : ValidAction (actionPair r c) := by
   fin_cases r

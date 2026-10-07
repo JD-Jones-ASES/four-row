@@ -2,6 +2,8 @@ module
 
 public import FourRow.CensusWitnessData
 
+import FourRow.CensusData.Extension16
+
 @[expose] public section
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0

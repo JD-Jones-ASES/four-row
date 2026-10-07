@@ -3,10 +3,19 @@
 import json
 from lean_table import tree
 from itertools import permutations
-from lean_source import write_lean
+from lean_source import module_source, write_lean
 from pathlib import Path
 from emit_census_lean import vec, rec
 ROOT=Path(__file__).resolve().parents[1]
+def write_serial(path,source,predecessor):
+    # Public declarations stay unchanged; only the build-order dependency is
+    # private. Insert it after module_source has normalized the public imports.
+    source=module_source(source)
+    marker='\n@[expose] public section\n'
+    assert marker in source
+    source=source.replace(marker,f'\nimport {predecessor}\n'+marker,1)
+    write_lean(path,source)
+
 data=json.loads((ROOT/'evidence/support-closure.json').read_text())
 inds=data['independent'];perms=list(permutations(range(4)));index={p:i for i,p in enumerate(perms)}
 actions=[]
@@ -50,7 +59,9 @@ theorem independent (i : Fin {n}) : IndependentSupport (independentSupport (sour
   exact (record i).kernel_eq_zero (checked i).1 x hx (by simpa only [(checked i).2] using hs)
 end FourRow.Census.{ns}
 '''
-    write_lean(out/(ns+'.lean'),s);imports.append(f'import FourRow.CensusData.{ns}')
+    predecessor=f'FourRow.CensusData.Max{b-1:02}' if b else 'FourRow.CensusTables'
+    write_serial(out/(ns+'.lean'),s,predecessor)
+    imports.append(f'import FourRow.CensusData.{ns}')
 # Independent-support augmentation is checked against literal actions.
 s='\n'.join(imports)+'\nimport FourRow.CensusRelabel\nimport FourRow.CensusTables\nimport FourRow.CensusWitnessData'+'''
 set_option maxRecDepth 100000
@@ -156,7 +167,9 @@ theorem checked : ∀ i : Fin {n}, ∀ p : PermIndex,
   ValidExtension (source i) p (witness i p) := by decide +kernel
 end FourRow.Census.{ns}
 '''
-    write_lean(out/(ns+'.lean'),s)
+    predecessor=(f'FourRow.CensusData.Extension{b-1:02}' if b
+                 else 'FourRow.CensusIndependence')
+    write_serial(out/(ns+'.lean'),s,predecessor)
 print('Emitted 41 maximal-inverse modules, augmentation, and 40 extension modules.')
 s='\n'.join(f'import FourRow.CensusData.Extension{b:02}' for b in range(40))+'''
 import FourRow.CensusIndependence

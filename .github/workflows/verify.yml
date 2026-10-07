@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+        shard: [0, 1]
     env:
       LEAN_NUM_THREADS: '2'
     steps:
@@ -49,11 +49,11 @@ jobs:
           path: |
             .lake/build/lib/lean/FourRow/Grams
             .lake/build/ir/FourRow/Grams
-          key: ${{ runner.os }}-four-row-grams-${{ matrix.shard }}-of-8-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.toml', 'FourRow/Grams/*.lean', 'FourRow/PolynomialCertificate.lean') }}
+          key: ${{ runner.os }}-four-row-grams-${{ matrix.shard }}-of-2-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.toml', 'FourRow/Grams/*.lean', 'FourRow/PolynomialCertificate.lean') }}
           restore-keys: |
-            ${{ runner.os }}-four-row-grams-${{ matrix.shard }}-of-8-
+            ${{ runner.os }}-four-row-grams-${{ matrix.shard }}-of-2-
       - name: Build independent Gram shard with bounded memory
-        run: python3 scripts/build_grams.py --jobs 1 --shard ${{ matrix.shard }} --shards 8
+        run: python3 scripts/build_grams.py --jobs 1 --shard ${{ matrix.shard }} --shards 2
       - name: Save exact Gram shard cache
         if: steps.gram-cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
@@ -85,7 +85,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+        shard: [0]
     env:
       LEAN_NUM_THREADS: '2'
     steps:
@@ -112,20 +112,20 @@ jobs:
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
         with:
           path: |
-            .lake/build/lib/lean/FourRow/CensusData
-            .lake/build/ir/FourRow/CensusData
-          key: ${{ runner.os }}-four-row-census-leaves-${{ matrix.shard }}-of-8-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'FourRow/Census*.lean', 'FourRow/CensusData/*.lean', 'FourRow/CensusTableChecks/*.lean', 'FourRow/Finite.lean', 'FourRow/Circuit.lean', 'FourRow/Relabel.lean', 'FourRow/LookupTree.lean') }}
+            .lake/build/lib/lean/FourRow/Census*
+            .lake/build/ir/FourRow/Census*
+          key: ${{ runner.os }}-four-row-census-leaves-${{ matrix.shard }}-of-1-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'FourRow/Census*.lean', 'FourRow/CensusData/*.lean', 'FourRow/CensusTableChecks/*.lean', 'FourRow/Finite.lean', 'FourRow/Circuit.lean', 'FourRow/Relabel.lean', 'FourRow/LookupTree.lean') }}
           restore-keys: |
-            ${{ runner.os }}-four-row-census-leaves-${{ matrix.shard }}-of-8-
+            ${{ runner.os }}-four-row-census-leaves-${{ matrix.shard }}-of-1-
       - name: Check census shard with bounded memory
-        run: python3 scripts/build_census_shard.py --shard ${{ matrix.shard }} --shards 8
+        run: python3 scripts/build_census_shard.py --shard ${{ matrix.shard }} --shards 1
       - name: Save exact census shard cache
         if: steps.census-cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
         with:
           path: |
-            .lake/build/lib/lean/FourRow/CensusData
-            .lake/build/ir/FourRow/CensusData
+            .lake/build/lib/lean/FourRow/Census*
+            .lake/build/ir/FourRow/Census*
           key: ${{ steps.census-cache.outputs.cache-primary-key }}
       - name: Transfer checked census modules
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
@@ -133,8 +133,8 @@ jobs:
           name: census-proof-${{ matrix.shard }}
           include-hidden-files: true
           path: |
-            .lake/build/lib/lean/FourRow/CensusData
-            .lake/build/ir/FourRow/CensusData
+            .lake/build/lib/lean/FourRow/Census*
+            .lake/build/ir/FourRow/Census*
           retention-days: 7
       - name: Preserve census build logs
         if: always()
