@@ -17,9 +17,9 @@ classification:
   - math.CO
   - math.PR
   msc2020:
-  - 15A15
-  - 60E15
-  - 26D15
+  - "15A15"
+  - "60E15"
+  - "26D15"
 sources:
 - title: Sharp four-row permanent robustness, stability, and entropy
   type: other
