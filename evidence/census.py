@@ -26,9 +26,9 @@ rational elimination.  Both orientations are retained unless an actual group
 element stabilizing the support sends that primitive vector to its negative.
 
 Replay from the repository root:
-  .venv/bin/python probes/P0182_permanent_robustness/census.py
+  python3 evidence/census.py
 Regenerate the deterministic checked data explicitly:
-  .venv/bin/python probes/P0182_permanent_robustness/census.py --output /tmp/circuits.json
+  python3 evidence/census.py --output /tmp/circuits.json
 """
 from __future__ import annotations
 

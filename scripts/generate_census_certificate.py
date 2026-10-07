@@ -8,7 +8,7 @@ independent support. The Lean checker must verify all these finite identities
 and its generic coverage theorem before this proves real-law coverage.
 
 Only Python's standard library is used. Discovery arithmetic here is not an
-axiom. Run with --source <P0182 evidence directory> and --output <json path>.
+axiom. Run with --source <evidence directory> and --output <json path>.
 """
 from __future__ import annotations
 import argparse

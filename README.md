@@ -1,43 +1,56 @@
-# four-row
+# Sharp robustness and stability of the four-row permanent inequality
 
-A private formalization of sharp robustness and stability for the four-row
-permanent inequality, based on Analytic-Lab's October 6, 2026 handoff.
+This Lean formalization proves the exact total-variation robustness radius
+**$1/24$** for the four-row permanent inequality, together with its optimal
+variance-deficit bound, equality cases, and entropy consequences.
 
-The mathematical research is recorded in [the endpoint note](docs/ENDPOINT.md)
-and [the extensions](docs/EXTENSIONS.md). The
-[sixteen principal statements](docs/THEOREMS.md) include full real-law
-coverage, boundary cases, sharpness, entropy and adaptive histories. Complete
-Lean assembly, exact statement comparison, and independent kernel replay form
-the [release verification gate](docs/VERIFICATION.md).
-No publication or Palomar submission has been made.
+Let $u$ be uniform on the 24 permutations of four labels. A probability law
+$\nu$ is balanced when every coordinate has uniform marginal. For every
+balanced real law with $d_{\mathrm{TV}}(\nu,u)\le r\le1/24$ and nonnegative
+rows normalized by $\frac14\sum_j f_i(j)^2=1$, we prove
 
-For every balanced real probability law on the 24 permutations within total
-variation distance `0 ≤ r ≤ 1/24` of uniform, and nonnegative rows normalized in
-probability L², the principal stability theorem is
+$$
+1-\mathbb E_\nu\prod_{i=1}^4 f_i(\sigma(i))
+\ge \frac{1-24r}{9}\sum_{i=1}^4\mathrm{Var}_{u_4}(f_i).
+$$
 
-```text
-1 − Eν ∏ᵢ fᵢ(σ(i)) ≥ ((1 − 24r)/9) ∑ᵢ Var(fᵢ).
-```
+Here $u_4$ is the uniform four-point law. The coefficient is optimal for
+every $0\le r\le1/24$. The endpoint inequality includes arbitrary
+nonnegative matrices, zero rows, and every real balanced law in the closed
+ball. The radius $1/24$ is sharp.
 
-The coefficient is optimal at each radius, and the exact radius at exponent
-two is `1/24`. Boundary matrices and arbitrary real laws are part of the
-statement. Worldwide novelty and external mathematical peer review are not
-asserted.
+The sixteen principal statements also give the complete endpoint equality
+classification, an explicit extremal family, the sufficient exponent
+$p(r)=2-(1-24r)/36$, the exact threshold for a common exponent below two,
+sharp endpoint entropy and observation constants, and tensorization for
+adaptive permutation histories. The interior exponent is not claimed
+optimal, and no global shuffle mixing theorem is claimed.
 
-## Reproduce the evidence
+## Proof and scope
 
-```sh
-python3 evidence/probe.py
-python3 evidence/audit_census.py
-```
+- [Formal statements](docs/THEOREMS.md): all sixteen claims and their hypotheses.
+- [FourRowChallenge.lean](FourRowChallenge.lean): the Mathlib-only statement of record.
+- [FourRowSolution.lean](FourRowSolution.lean): the corresponding proved declarations.
+- [Endpoint proof](docs/ENDPOINT.md) and [extensions](docs/EXTENSIONS.md): mathematical arguments.
+- [Real-law reduction](docs/real-law-reduction.md) and [support census](docs/CENSUS.md): why finite certificates cover every real law.
+- [Prior art](docs/PRIOR_ART.md): published antecedents and the contribution boundary.
+- [Verification](docs/VERIFICATION.md) and [AI assistance](DISCLOSURE.md): checks, provenance, and review status.
 
-The standard-library replay regenerates the full 73-support/131-orientation
-census, verifies the rational Gram identities and positive pivots, and runs
-thirteen corruption controls. It does not replace the Lean proof.
+The endpoint proof uses 73 support representatives and 131 oriented
+sum-of-squares certificates. Lean proves exhaustive support coverage,
+certificate soundness, and transfer to arbitrary real laws. Python prepares
+finite witnesses; its computations are not axioms of the Lean proof.
 
-## Build the formalization
+The [complete Linux verification](https://github.com/JD-Jones-ASES/four-row/actions/runs/37572525271)
+passed at proof commit `c207efc787a7e1c88aae29dc92d4be5e10297bf2`, including
+all sixteen statement comparisons and axiom audits, con-ron, NanoDa, and
+Lean kernel replay. The direct cold build also passed. This documentation
+revision preserves the verified Lean, dependency, Comparator, and build
+inputs; [the verification record](docs/VERIFICATION.md) states the exact scope.
 
-Install the pinned Lean toolchain with elan, then run:
+## Build and replay
+
+Use the pinned Lean toolchain and dependencies:
 
 ```sh
 python3 scripts/fetch_mathlib_cache.py
@@ -47,28 +60,13 @@ lake build
 python3 scripts/audit_release.py
 ```
 
-`lean-toolchain` and `lake-manifest.json` pin Lean and all dependencies.
-The generated Gram modules contain explicit sum-of-squares proofs with
-exact denominator clearing. Python generates source text; Lean checks the
-integer polynomial identities and their return to the real inequalities.
-The generation script and original certificate data are committed.
-See [verification and reproduction](docs/VERIFICATION.md) for the source
-guards, private Linux workflow, statement comparison and independent kernels.
+The independent exact evidence replays are:
 
-## Provenance
+```sh
+python3 evidence/probe.py
+python3 evidence/audit_census.py
+```
 
-The research source is Analytic-Lab commit
-`a763c72511bef8bb915449576581222a9dc1fb05`; the original endpoint snapshot is
-`c054cfc1669b4c5d1b58438a1bc9742e52fcd63d`.
-See [source hashes](evidence/SOURCE.json), the [prior-art audit](docs/PRIOR_ART.md)
-and [Palomar handoff](docs/PALOMAR.md). The copied replay has only its import
-paths adapted to this standalone layout. Mathematical evidence is retained.
-
-JD Jones directs and maintains the project. Astra (OpenAI Codex) developed
-the research and Lean formalization with parallel agent assistance. Grok's
-credit for the original Analytic-Lab research station is preserved. Source
-citations identify the published mathematical inputs; no peer combinatorial
-implementation or investigation workflow was imported.
-
-The repository is to remain **private**. JD will decide when to make it public
-and will handle Palomar submission after the exact release is verified.
+The project uses the [MIT license](LICENSE).
+[Submission details](docs/PALOMAR.md) identify the package and the current
+Palomar requirements.

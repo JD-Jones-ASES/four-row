@@ -2,68 +2,179 @@
 version: v0.4
 project:
   name: Sharp robustness and stability of the four-row permanent inequality
-  description: >-
-    A formalization of the exact balanced total-variation robustness radius
-    1/24 for the four-row permanent inequality, the optimal variance-deficit
-    coefficient (1-24r)/9, complete nonnegative equality cases, and explicit
-    subcritical-exponent and entropy consequences, including sharp endpoint
-    entropy constants and tensorization for adaptive permutation histories.
-    The finite endpoint proof checks exhaustive support coverage and rational
-    Gram identities in Lean.
-  authors: [JD Jones]
-  responsible_maintainers: [JD Jones]
+  description: A formalization of the exact balanced total-variation robustness radius 1/24 for the
+    four-row permanent inequality, the optimal variance-deficit coefficient (1-24r)/9, complete nonnegative
+    equality cases, and explicit subcritical-exponent and entropy consequences, including sharp endpoint
+    entropy constants and tensorization for adaptive permutation histories. The finite endpoint proof
+    checks exhaustive support coverage and rational Gram identities in Lean.
+  authors:
+  - JD Jones
+  responsible_maintainers:
+  - JD Jones
   license: MIT
 classification:
-  arxiv: [math.CO, math.PR]
-  msc2020: ['15A15', '60E15', '26D15']
+  arxiv:
+  - math.CO
+  - math.PR
+  msc2020:
+  - 15A15
+  - 60E15
+  - 26D15
 sources:
-  - title: Sharp four-row permanent robustness and extensions, Analytic-Lab
-    type: other
-    relationship: formalizes
-    id: https://github.com/JD-Jones-ASES/Analytic-Lab/tree/a763c72511bef8bb915449576581222a9dc1fb05
-    location: research/permanent_robustness/ENDPOINT.md and EXTENSIONS.md
-    note: >-
-      The source repository is private. The complete mathematical notes and
-      exact source evidence used here are included in docs/ and evidence/.
-      The source result was developed by Astra under JD Jones's direction;
-      this formalization is source-based, not its first presentation.
-  - title: Subadditivity of the entropy and its relation to Brascamp-Lieb type inequalities
-    authors: [Eric A. Carlen, Dario Cordero-Erausquin]
-    type: paper
-    relationship: background
-    id: arXiv:0710.0870v2
-    location: https://arxiv.org/abs/0710.0870v2
-    note: The project proves the required finite duality argument directly.
+- title: Sharp four-row permanent robustness, stability, and entropy
+  type: other
+  relationship: formalizes
+  location: docs/ENDPOINT.md and docs/EXTENSIONS.md
+  note: Mathematical notes prepared before the Lean development and included in this repository.
+    The sixteen selected statements formalize their endpoint, stability, equality, exponent, entropy,
+    and adaptive-history results. Further informal consequences are identified in docs/THEOREMS.md.
+    This source-based declaration records the origin of the development, not a worldwide-priority
+    claim.
+- title: A strict four-row permanent inequality and permutation moments
+  authors:
+  - OpenAI
+  type: paper
+  relationship: adapts
+  id: https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/A-strict-four-row-permanent-inequality-and-permutation-moments-September-26-2026
+  note: 'Direct predecessor: qualitative balanced-law robustness below exponent two and permutation-history
+    applications. The present result determines the exact radius at exponent two, the optimal stability
+    coefficient, and an explicit sufficient interior exponent. The endpoint and stability are proved
+    here by independent exact certificates; no source implementation was imported.'
+- title: An Inequality of Hadamard Type for Permanents
+  authors:
+  - Eric Carlen
+  - Elliott H. Lieb
+  - Michael Loss
+  type: paper
+  relationship: background
+  id: arXiv:math/0508096v1
+  location: https://arxiv.org/abs/math/0508096v1
+  note: Classical sharp uniform permanent inequality at exponent two. The present formalization treats
+    a balanced nonuniform total-variation ball.
+- title: Entropy inequalities for random walks and permutations
+  authors:
+  - Alexandre Bristiel
+  - Pietro Caputo
+  type: paper
+  relationship: background
+  id: arXiv:2109.06009v3
+  location: https://arxiv.org/abs/2109.06009v3
+  note: Sharp uniform permanent inequality and entropy background. Its general critical-exponent
+    theorem is used in the supplementary informal docs/PROOF.md, not as an assumption in the sixteen
+    selected Lean results.
+- title: Subadditivity of the entropy and its relation to Brascamp-Lieb type inequalities
+  authors:
+  - Eric A. Carlen
+  - Dario Cordero-Erausquin
+  type: paper
+  relationship: background
+  id: arXiv:0710.0870v2
+  location: https://arxiv.org/abs/0710.0870v2
+  note: The project proves the required finite duality argument directly.
 status:
-  scope: >-
-    Arbitrary real balanced laws in the closed TV ball and all nonnegative real
-    matrices, including zero rows. The explicit interior exponent is sufficient,
-    not claimed optimal. Adaptive kernels may depend on the complete permutation
-    past, with assumptions only on positive-probability histories. A new global
-    shuffle mixing theorem and worldwide novelty are not claimed. The copied
-    notes distinguish further informal consequences from the compared declarations.
-    Release verification requires the complete build, exact axiom audit,
-    Comparator comparison and both independent kernel checks at the same commit.
+  scope: All sixteen selected statements are proved for arbitrary real balanced laws in the closed
+    TV ball and nonnegative real matrices, including zero rows. The explicit interior exponent is
+    sufficient, not claimed optimal. Adaptive kernels may depend on the complete permutation past,
+    with assumptions only on positive-probability histories. A global shuffle mixing theorem is not
+    claimed. The full Linux build, statement comparison, axiom audits, and con-ron, NanoDa, and Lean
+    replay passed at proof commit c207efc787a7e1c88aae29dc92d4be5e10297bf2. This documentation revision
+    preserves the verified proof and build inputs; see docs/VERIFICATION.md for the exact scope.
+    The general local-exponent theorem in docs/PROOF.md and additional application corollaries are
+    supplementary informal results.
   sorry_count: 0
   sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Classical.choice
+  - Quot.sound
+  main_results:
+  - declaration: FourRowPrincipal.endpoint
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.sharp_stability
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.stability_optimal
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.explicit_extremal_family
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.radius_sharp
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.endpoint_equality
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.explicit_exponent
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.larger_exponents
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.subcritical_threshold
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.entropy
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.observation_contraction
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.entropy_optimal
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.observation_optimal
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.adaptive_tensorization
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.adaptive_probability
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
+  - declaration: FourRowPrincipal.adaptive_marginals
+    file: FourRowSolution.lean
+    sorry_count: 0
+    comparator_config: comparator.json
 automation:
   methods:
-    - method: agent
-      framework: OpenAI Codex
-      models: [Astra]
-      tool_setup: >-
-        A primary agent and parallel agents wrote Lean proofs, generated explicit
-        rational proof source, checked scope, and reviewed one another's arguments.
-        Python scripts use exact rational arithmetic for certificate preparation.
-  notes: >-
-    JD Jones directed the work. Python-generated data and numerical discovery
-    are not trusted axioms; the formal proof terms must pass Lean and independent
-    kernel verification. Deliberate Challenge theorem holes are excluded from
-    the proof-development sorry counts.
+  - method: agent
+    framework: OpenAI Codex
+    models:
+    - OpenAI GPT-6 Astra
+    tool_setup: AI agents developed the mathematical arguments, exact certificates, Lean proofs,
+      and documentation, with separate agents reviewing scope, definitions, and proof assembly. Python
+      generates finite witnesses using exact arithmetic; Lean proves the certificate checks and their
+      soundness.
+  notes: The responsible maintainer directed the work. Material AI assistance and review limits are
+    disclosed in DISCLOSURE.md. Python and numerical discovery are not trusted axioms. Intentional
+    Challenge theorem holes are excluded from the proof-development sorry counts.
 review:
   status: agent-reviewed
-  notes: >-
-    Distinct internal agents reviewed the research and formalization arguments.
-    This is not external human peer review. Exact release verification is recorded
-    by the full private Linux workflow and its commit-pinned artifacts;
-    no claim of Palomar acceptance, registration or worldwide novelty is made.
+  notes: Distinct internal agents reviewed the mathematical arguments, definitions, census coverage,
+    and formal proof assembly. This is agent review, not independent human peer review or source-author
+    endorsement. Completed mechanical checks and their exact source commits are recorded in docs/VERIFICATION.md.
+    No registry acceptance or worldwide priority is claimed.
+fidelity:
+  divergences: The selected statements include the real closed ball, all nonnegative matrices, the
+    complete endpoint equality classification, and full-history adaptive kernels on positive-probability
+    pasts. Relative entropy is extended-real and includes unsupported laws. The explicit interior
+    exponent is sufficient rather than optimal. The supplementary general-dimensional local theorem,
+    shuffle calculation, conditional resampling, and concentration consequences are not separate
+    compared Lean statements.

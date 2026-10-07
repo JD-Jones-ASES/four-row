@@ -5,7 +5,7 @@ This standard-library replay checks the twelve product-equality blocks in every
 SOS certificate and independently expands the compact scalar quartic identity.
 The surrounding proofs (normalization, circuit convexity, and pair estimates)
 are mathematical arguments in the accompanying notes, not numerical searches.
-Run: python probes/P0182_permanent_robustness/extensions.py
+Run: python3 evidence/extensions.py
 """
 
 from __future__ import annotations

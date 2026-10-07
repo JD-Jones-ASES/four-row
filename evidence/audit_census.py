@@ -1,4 +1,4 @@
-"""Independent rational audit of the complete P0182 circuit census.
+"""Independent rational audit of the complete four-row circuit census.
 
 This optional replay uses no source imports from the primary census and no
 modular arithmetic, numerical libraries, or determinant-size assumption.
@@ -14,7 +14,7 @@ independent mathematical review agent after reviewing the primary census;
 it does not claim an independent discovery of that enumeration principle.
 
 Run from the repository root:
-  .venv/bin/python probes/P0182_permanent_robustness/audit_census.py
+  python3 evidence/audit_census.py
 """
 
 from fractions import Fraction

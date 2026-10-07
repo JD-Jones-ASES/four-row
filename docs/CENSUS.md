@@ -47,7 +47,7 @@ Lean tables use `decide +kernel`, not `native_decide` or `Lean.ofReduceBool`.
 Regeneration, followed by a successful Lean build, is a replay of the proof;
 regeneration by itself is not.
 
-Replay the proof-carrying data from the packaged P0182 source evidence:
+Replay the proof-carrying data from the packaged exact evidence:
 
 ```sh
 python3 scripts/generate_census_certificate.py \
@@ -89,9 +89,9 @@ print axioms”; the Lean axiom audit passed. Both checkers read the same
 86,558,045-byte export, whose hash is recorded in the JSON. Checker declaration
 counts use their respective reporting conventions.
 
-The two-worker con-ron run exceeded a standard private Linux runner's memory
-budget. Production verification uses one worker per independent checker and
+The two-worker macOS measurement was close to the physical memory of the
+smaller Linux runner. Production verification uses one worker per checker and
 provides swap headroom. Its Linux resource use is a separate measurement.
-This record verifies the census only. The complete release still requires
-the full theorem closure, statement comparison, and the checks described in
+These historical measurements verify the census only. The subsequent complete
+proof replay, statement comparison, and axiom audits passed as recorded in
 [`VERIFICATION.md`](VERIFICATION.md).

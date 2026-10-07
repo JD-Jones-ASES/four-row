@@ -1,9 +1,55 @@
 # Verification and reproduction
 
-The release gate is a successful **full** private Linux verification run on
-the exact commit. Its recorded commit, clean worktree, axiom audit, statement
-comparison, and independent-kernel verdicts are the verification record.
-A partial certificate build or sandbox smoke is not the completed gate.
+## Completed proof verification
+
+The complete [Linux run](https://github.com/JD-Jones-ASES/four-row/actions/runs/37572525271)
+passed at the clean proof commit
+`c207efc787a7e1c88aae29dc92d4be5e10297bf2` on October 7, 2026.
+It checked the full Lean build, all sixteen principal statement comparisons
+and their transitive definition closure, all sixteen axiom audits, and both
+exact Python evidence replays. The only axioms were `propext`,
+`Classical.choice`, and `Quot.sound`.
+
+| Replay | Result |
+|---|---|
+| con-ron, verified mode, one worker | Accepted 36,724 declarations; 35,929 checks completed |
+| NanoDa, one worker | Accepted; unpermitted axioms treated as hard errors |
+| Lean default kernel | Accepted |
+| Original bundled Comparator | Exit 0; “Your solution is okay!” |
+
+The complete Comparator step took 2 hours 42 minutes 3 seconds. Its outer
+process RSS is not an aggregate memory measurement of the checkers.
+
+The [direct cold Solution build](https://github.com/JD-Jones-ASES/four-row/actions/runs/37572527284)
+also passed at that clean commit: 3,547 build jobs, including 285 project
+modules, in 5,931.62 seconds. It began without project build artifacts and
+used only the pinned Mathlib cache, with `LEAN_NUM_THREADS=16`. The runner
+had two CPUs, about 7.75 GiB RAM, and 19 GiB swap. No OOM event was observed.
+This is a successful build on that runner, not equivalence to Palomar's
+official hardware profile.
+
+The [archived logs and audits](https://github.com/JD-Jones-ASES/four-row/blob/1bba389f3264084890bafdffe499494f42d1655a/verification/runs/c207efc787a7e1c88aae29dc92d4be5e10297bf2/README.md)
+are pinned by `evidence/2026-10-07-c207efc`; the source tag is
+`verified/2026-10-07-c207efc`. Earlier census-only measurements and the
+cancelled unbounded cold-build diagnostic remain in
+[census.json](../verification/census.json) and
+[cold-build.json](../verification/cold-build.json). They are historical
+diagnostics, not substitutes for the complete successful run.
+
+## Documentation revision
+
+The current revision updates prose, metadata, the packaged-evidence manifest,
+and Python documentation strings. Every Lean file, dependency pin, Comparator
+configuration, and workflow is byte-identical to the verified proof commit.
+Python executable syntax is unchanged after removing documentation strings.
+[documentation-refresh.json](../verification/documentation-refresh.json)
+records the comparison, current-policy validation, and documentation checks.
+
+This is evidence that the previously verified proof inputs are preserved;
+it is not a new full Linux kernel replay at the documentation commit. A future
+change to mathematical code, definitions, dependencies, or executable build
+logic needs fresh verification appropriate to that change. Palomar verifies
+the exact commit supplied at submission independently.
 
 ## Pinned inputs
 
@@ -11,18 +57,16 @@ A partial certificate build or sandbox smoke is not the completed gate.
 |---|---|
 | Lean | `leanprover/lean4:v4.35.0-rc3` |
 | Mathlib | `a98628e16c11f5167f16124105ddce53efa9bfe5` |
-| Source research and extensions | Analytic-Lab `a763c72511bef8bb915449576581222a9dc1fb05` |
-| Original endpoint proof | Analytic-Lab `c054cfc1669b4c5d1b58438a1bc9742e52fcd63d` |
-| Policy inspected for this package | PalomarPolicy `96b034cc31a72a63d4f4041911dce337a85c9a04` |
-| Official verification tooling inspected | PalomarSubmission `d4e41c1d5b0d114c4859e6e5831dc6d3ad1d0d44` |
+| PalomarPolicy, checked October 7 | `96b034cc31a72a63d4f4041911dce337a85c9a04` |
+| PalomarSubmission, checked October 7 | `d4e41c1d5b0d114c4859e6e5831dc6d3ad1d0d44` |
 
-All transitive dependencies are pinned by [lake-manifest.json](../lake-manifest.json).
-The policy and tooling pins document the verification target, not registry
-acceptance. Policy can change before a later submission.
+[lake-manifest.json](../lake-manifest.json) pins the transitive dependencies.
+The policy and tooling pins identify the inspected requirements, not registry
+acceptance. [Submission details](PALOMAR.md) summarize the current contract.
 
 ## Local build
 
-With elan and Python 3 installed, from the repository root:
+With elan and Python 3 installed, run from the repository root:
 
 ```sh
 python3 scripts/fetch_mathlib_cache.py
@@ -36,107 +80,59 @@ git diff --check
 ```
 
 The sequential prebuild commands are the conservative local route. A direct
-cold `lake build FourRowSolution` also follows explicit private import chains:
-two Gram chains (G000–G064 and G065–G130), plus one census chain through table
-checks, maximal-support witnesses, independence, and support extensions.
-Thus at most three large certificate modules compile simultaneously; other
-modules may also compile, so this is not a total process or memory bound.
-The ordering imports add no mathematical assumption and leave theorem bodies
-unchanged. `--jobs 1` remains the conservative Gram-builder default.
-`FOUR_ROW_LAKE` selects the Lake executable
-for the Gram builder and release audit; the census builder has `--lake`.
+`lake build FourRowSolution` follows two Gram chains, G000–G064 and
+G065–G130, and one census chain. At most three large certificate modules
+compile simultaneously; other modules may also compile, so this is not a
+total process or memory bound. Private ordering imports add no mathematical
+assumption. `FOUR_ROW_LAKE` selects the Lake executable for the Gram builder
+and release audit; the census builder accepts `--lake`.
 
-`audit_release.py` checks that the Challenge and Solution resolve uniquely
-to this repository in Lake's actual source search path. It checks the
-Mathlib-only contract boundary, source proof-hole exclusions, immutable
-dependency pins, and `#print axioms` for every compared principal theorem.
-Only `propext`, `Quot.sound`, and `Classical.choice` are permitted. No custom
-census axiom or native-decision axiom is permitted in the solution.
+`audit_release.py` checks unique Challenge/Solution module resolution, the
+Mathlib-only Challenge boundary, proof-hole exclusions, immutable dependency
+pins, and `#print axioms` for all sixteen principal theorems.
+`FourRowChallenge.lean` intentionally has sixteen theorem placeholders;
+the Solution never imports them.
 
-`FourRowChallenge.lean` intentionally has sixteen theorem holes. It is the
-independent statement of record, and its holes are never imported into
-`FourRowSolution.lean` or the mathematical proof modules.
+## Linux workflow
 
-## Private Linux verification
-
-[The workflow](../.github/workflows/verify.yml) is manually dispatched. Its
-two Gram jobs and one census job check the certificate chains against the
-same immutable source. Checked artifacts, including private proof data and
-census phase parents, are transferred to the dependent verification job,
-which builds the exhaustive census and the full public API, audits all
-principal axioms, and runs the two exact Python replays.
-
-The final step runs the toolchain's `lake comparator` with the named
-Challenge and Solution. A temporary config enables the bundled NanoDa and
-con-ron independent kernels. For the private runner's memory budget, a
-temporary launcher runs NanoDa with one worker and treats unpermitted
-axioms as hard errors; it preserves the exported declarations and axiom
-allowlist. Con-ron runs in verified mode with one worker. The committed
-comparator config stays within
-Palomar's accepted authoring schema. The checker runs use bubblewrap from
-the pinned official installer. The complete verification job adds 16 GiB of
-swap as memory headroom for the full exported proof closure. The private
-workflow does not contact the
-submission service or create a registry entry.
+[verify.yml](../.github/workflows/verify.yml) is manually dispatched:
 
 ```sh
 gh workflow run verify.yml --ref main -f stage=full
 ```
 
-The `certificates` stage is a development diagnostic. Only a completed
-`full` run, including statement comparison and both independent kernels,
-counts as a verified release. The workflow records its exact source SHA,
-worktree status, build logs, comparison output, and axiom audit in private
-Actions artifacts. A cached proof never substitutes for the independent
-replay of the exported declarations.
+Two Gram jobs and one census job check the certificate chains at the same
+commit. The verification job checks the transferred proof artifacts, completes
+the census and public API, audits the axioms, runs the exact evidence replays,
+and invokes the original bundled `lake comparator` in bubblewrap.
 
-## Direct cold-build diagnostic
+A temporary configuration uses the bundled con-ron and NanoDa checkers with
+one worker each. NanoDa rejects unpermitted axioms as hard errors; con-ron
+uses verified mode. These resource settings preserve the exported declarations
+and axiom allowlist. The job provisions swap for the smaller hosted runner.
+The committed Comparator configuration stays within Palomar's authoring schema.
 
-[The cold-build workflow](../.github/workflows/cold-build.yml) starts with no
-project build artifacts, retrieves only the pinned Mathlib cache, and runs
-`lake build FourRowSolution` with `LEAN_NUM_THREADS=16`. It records process,
-resident-memory, swap, pressure, and elapsed-time samples. This checks the
-direct build route used by the inspected submission tooling, on the smaller
-private GitHub runner; it is not an official submission preflight.
+Only a completed `full` run counts as complete independent replay. The
+`certificates` stage is a development diagnostic. The workflow records the
+exact commit, worktree status, and verification logs. The separate
+[cold-build workflow](../.github/workflows/cold-build.yml) measures the direct
+Solution build without project artifacts.
 
-[The diagnostic record](../verification/cold-build.json) preserves the earlier
-unbounded-layout run. It was cancelled after one hour: sixteen concurrent
-Lean compilers caused sustained swap thrashing, with no Lean error or OOM
-kill recorded. That observation motivated the import chains. Cancellation
-does not establish a failed theorem or a failure on official hardware.
+## Evidence and generation
 
-## Research evidence and generation
+[SOURCE.json](../evidence/SOURCE.json) records the packaged evidence hashes
+and their relation to the verified proof snapshot. `evidence/probe.py`
+regenerates the circuit census and checks rational identities, positive pivots,
+equality blocks, the scalar stability identity, and thirteen corruption
+controls. `evidence/audit_census.py` independently implements rational
+elimination and orbit traversal.
 
-[SOURCE.json](../evidence/SOURCE.json) records hashes of the original Lab
-files before the standalone import-path adjustment to `probe.py`.
-`evidence/probe.py` independently regenerates the source census and checks
-the original exact polynomial identities, positive pivots, equality blocks,
-scalar stability identity, finite shuffle calculation, and thirteen
-corruption controls. `evidence/audit_census.py` uses an independently
-implemented rational elimination and orbit traversal.
+The generators emit literal data and Lean propositions. Lean's kernel checks
+the support witnesses and sparse integer polynomial identities. A proved
+normalizer preserves polynomial evaluation, and exact positive denominator
+clearing transfers the certificates to the real inequalities. Python is a
+certificate producer, not part of the theorem's axiom assumptions.
 
-The formal census adds exact integer left-inverse and support-extension
-witnesses in `evidence/support-closure.json`. The generators in `scripts/`
-emit literal data and Lean propositions. These are checked by Lean's
-kernel; Python is not part of the theorem's trust assumptions.
-
-The formal Gram generator strengthens the source certificates by retaining
-an explicit positive sum of squares of row/column product differences.
-The generator clears rational denominators using a positive integer scale.
-Every emitted identity is checked by kernel reduction of sparse integer
-polynomials. The shared checker proves that expansion, structural sorting,
-and coefficient collection preserve evaluation for every real assignment;
-it also proves nonnegativity from the checked integer square weights.
-A definitional evaluation bridge and a checked scalar identity recover
-each original real quartic statement by dividing by the positive scale,
-including the positive defect used in the full equality classification.
-Python generation is therefore certificate construction,
-not an additional trusted computation.
-
-## Publication boundary
-
-The repository remains private. JD controls any later visibility change
-and Palomar submission. The exact compared statements define the formal
-scope; historical research notes may discuss further unformalized
-consequences. Neither verification nor registration establishes worldwide
-novelty or external mathematical peer review.
+The compared declarations define the formal scope. Supplementary application
+notes include further informal consequences. Mechanical verification does
+not establish worldwide novelty or external mathematical peer review.

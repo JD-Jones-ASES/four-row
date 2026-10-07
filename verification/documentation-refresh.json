@@ -1,0 +1,1410 @@
+{
+  "checked_date": "2026-10-07",
+  "baseline_proof_commit": "c207efc787a7e1c88aae29dc92d4be5e10297bf2",
+  "full_linux_run": 37572525271,
+  "cold_build_run": 37572527284,
+  "validation": {
+    "official_metadata_contract": "passed",
+    "upstream_v0_4_schema": "passed",
+    "official_lean_source_requirements": {
+      "schema_version": 1,
+      "module_required": true,
+      "maximum_lines": 10000,
+      "files_checked": 287
+    },
+    "principal_metadata_names": "all 16 match comparator.json",
+    "license": "unchanged MIT text and matching metadata",
+    "packaged_evidence_hashes": 9,
+    "internal_project_mentions_in_current_tracked_text": 0,
+    "documentation_links": {
+      "documents": 13,
+      "local_links": 64,
+      "markdown_fragments": 2,
+      "external_links_not_fetched": 21,
+      "errors": [],
+      "source_hashes": [
+        {
+          "path": "README.md",
+          "sha256": "a861531830d687927e60b6b2770cade21a0f97e81dcbf339be4815a1b33a1ea1"
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "a70a1395f1772895993239ddbecbc0bef7002879cfea21a589214729bfbd6284"
+        },
+        {
+          "path": "DISCLOSURE.md",
+          "sha256": "c2972120a532bc33beb1f349c253b211d84443d1c69ec8b9a6e102f872383a82"
+        },
+        {
+          "path": "docs/CENSUS.md",
+          "sha256": "bf710f5994c269f7ec071c7946d171de8e79b7e8404ce5d355921aa5e1867a65"
+        },
+        {
+          "path": "docs/ENDPOINT.md",
+          "sha256": "2d3d35190dba2e68e9e4584736987a2fdf99f68fff27504a30579dc21d890e19"
+        },
+        {
+          "path": "docs/EXTENSIONS.md",
+          "sha256": "b06e727b626366ab5065d5024171842aed1d0663e1c9f5a835125b0c69988cfe"
+        },
+        {
+          "path": "docs/PALOMAR.md",
+          "sha256": "009893eae2895ccd0b831f2ff341e3136e56a56941aeeaebf289b9d56fb4af56"
+        },
+        {
+          "path": "docs/PRIOR_ART.md",
+          "sha256": "887d05a36df6ed6cec333b0565edbebe05c1f4d5dd90d5755f469531e2fc8177"
+        },
+        {
+          "path": "docs/PROOF.md",
+          "sha256": "a49466537c3499142bb2c0e8119e299f9719b9075d1ca5f0b0db5700232dd533"
+        },
+        {
+          "path": "docs/SHUFFLE_INPUT.md",
+          "sha256": "ec63b06af3ee0ceed4f4b487a9d40ee2ce65df0b73ba11b080ce4f1998998eff"
+        },
+        {
+          "path": "docs/THEOREMS.md",
+          "sha256": "2430de3ca8a6a28c4436001a12f5429101c5d41a8e2d181dfb29fa1536fa2e97"
+        },
+        {
+          "path": "docs/VERIFICATION.md",
+          "sha256": "71b581080cf8e3101d11d9624f105c5e5dec313be6ce60e7f1866b2a8768e53b"
+        },
+        {
+          "path": "docs/real-law-reduction.md",
+          "sha256": "04080af38780b74d799e3b6d77e2b8d2473f903c4a84a441a42317658c4411a6"
+        }
+      ]
+    },
+    "mathematical_expressions": {
+      "result": "passed",
+      "normalization": "Markdown math delimiters, whitespace, and operatorname to mathrm only",
+      "matched_math_spans": {
+        "ENDPOINT.md": 90,
+        "EXTENSIONS.md": 177,
+        "PROOF.md": 167,
+        "THEOREMS.md": 46,
+        "SHUFFLE_INPUT.md": 45,
+        "PRIOR_ART.md": 13
+      }
+    },
+    "module_resolution": {
+      "FourRowChallenge": "FourRowChallenge.lean",
+      "FourRowSolution": "FourRowSolution.lean",
+      "method": "scripts/audit_release.py --structure-only",
+      "result": "passed"
+    },
+    "formalization_yaml_sha256": "ab838c2ed7a0889d0a5a992558a8d204c6d2ca4b475dd20ceaa627951142a916",
+    "evidence_manifest_sha256": "59a8d8af92f42ba6dd50d969e50c2607082bba0571c86bd459420dc43748063a",
+    "diff_whitespace": "passed"
+  },
+  "identity": {
+    "byte_identical_files": [
+      {
+        "path": ".github/workflows/cold-build.yml",
+        "sha256": "d2e7412727b2ae476e85e2ff1463841d5701efc45695f328bbc21e0866b3d572"
+      },
+      {
+        "path": ".github/workflows/kernel-smoke.yml",
+        "sha256": "04310e2c81d94493d294001d29a792091bce372d5631f79c69a05fe2e68c90ad"
+      },
+      {
+        "path": ".github/workflows/verify.yml",
+        "sha256": "244c5a4d451d19e9392e2a4a0965feaee263666f67eaa5d3f3b4eac31d3119c9"
+      },
+      {
+        "path": "FourRow.lean",
+        "sha256": "3bd055f137bdd300b9ecad4dee0be327bbe4dcf6d902e9a5b3eaadb385f8db15"
+      },
+      {
+        "path": "FourRow/Census.lean",
+        "sha256": "e6f9f4ce7d0fe894873552332651bc01f28638be703252ea0120a26f936d2a97"
+      },
+      {
+        "path": "FourRow/CensusCoverage.lean",
+        "sha256": "43e3b289316651807cb6d975f22e7ad98d741b6998e1c83ab1100aa265fa1380"
+      },
+      {
+        "path": "FourRow/CensusData/Extension00.lean",
+        "sha256": "a57fcb059943cb850e4f99de97b7361e8432aacb66543149243a504d9c66897c"
+      },
+      {
+        "path": "FourRow/CensusData/Extension01.lean",
+        "sha256": "d27f14b7c79a854de61b32091f16602db57b4d1a702c721ad0cd0e6f9b758bc8"
+      },
+      {
+        "path": "FourRow/CensusData/Extension02.lean",
+        "sha256": "27064586fab15052e95041153b00f22b0c86b073cc2dfde093ca11301aa8b5fb"
+      },
+      {
+        "path": "FourRow/CensusData/Extension03.lean",
+        "sha256": "c9bab7b26e617df0da817ae057efe63a8256447dea73e4aeade121737a30d53e"
+      },
+      {
+        "path": "FourRow/CensusData/Extension04.lean",
+        "sha256": "a5fa130734a5e661fbd400ff19708c2842c757fd5c13f7a1999e02511821f896"
+      },
+      {
+        "path": "FourRow/CensusData/Extension05.lean",
+        "sha256": "2f7647d04bbab724a202f7ca09e830440af034bedfded18bc99792efb18b4ae0"
+      },
+      {
+        "path": "FourRow/CensusData/Extension06.lean",
+        "sha256": "9d893d1f3d1a4714d42fd21b013a0bd91064bd39a688566a3c391bed893d992b"
+      },
+      {
+        "path": "FourRow/CensusData/Extension07.lean",
+        "sha256": "dd4fe3bf6cbc162635619e3d2eb4ee8f178b877e1e14927363a93b271abd2d5a"
+      },
+      {
+        "path": "FourRow/CensusData/Extension08.lean",
+        "sha256": "d5af2f6dad53f11dc93277413a54069225c37a3965ca238661ac6417b0b6d0d6"
+      },
+      {
+        "path": "FourRow/CensusData/Extension09.lean",
+        "sha256": "054323b0329b8ef4c14f813bd0fe9480fa1f6244fc3c89da56dffc7d4b5066e1"
+      },
+      {
+        "path": "FourRow/CensusData/Extension10.lean",
+        "sha256": "8e61df42243d66da848290ec3a17540462ee4d9d1af6256b382876b4a1419ab4"
+      },
+      {
+        "path": "FourRow/CensusData/Extension11.lean",
+        "sha256": "14d40a5d7495b1fc316e8f25789e71f4c0132b8bf197b12356f4a4960120a3f4"
+      },
+      {
+        "path": "FourRow/CensusData/Extension12.lean",
+        "sha256": "7de3131a3d0e3c28768a90b2bda750d97c588b0b3241287cb2e2625ed9609f8a"
+      },
+      {
+        "path": "FourRow/CensusData/Extension13.lean",
+        "sha256": "3170f7a946b3c6d0d5dcbf4f6ed008b86c8a87a3bcc2e0f7073fd613b4b1adec"
+      },
+      {
+        "path": "FourRow/CensusData/Extension14.lean",
+        "sha256": "3cdf8ab3e8227bdf550776c83f606f16d41d37f563335af0b12da0c35d08af6d"
+      },
+      {
+        "path": "FourRow/CensusData/Extension15.lean",
+        "sha256": "3f3f185b88ee44f2bcfff8a9e89e84e9c7a037aa0cb52a4af06400380db429a8"
+      },
+      {
+        "path": "FourRow/CensusData/Extension16.lean",
+        "sha256": "e9bf3ea50d0d199dee20c242fd08f9dec27845233165315701fa59e95a469a17"
+      },
+      {
+        "path": "FourRow/CensusData/Extension17.lean",
+        "sha256": "cc17f8773ed4c8ae274bdfa4b05db8d0a02f32cce43c5deab39df98756767bff"
+      },
+      {
+        "path": "FourRow/CensusData/Extension18.lean",
+        "sha256": "fb0d836922bbc843ff3a1f6523a1efe5765da2fbd325de03b846159c15e31869"
+      },
+      {
+        "path": "FourRow/CensusData/Extension19.lean",
+        "sha256": "f8be711856853d629e08f17316ab5b5f729ec97489b0daad4eeddef7ed3db363"
+      },
+      {
+        "path": "FourRow/CensusData/Extension20.lean",
+        "sha256": "49ae03b338dd7697376757bfa817d35915025903f44a6c7f400769b0a4bf82c5"
+      },
+      {
+        "path": "FourRow/CensusData/Extension21.lean",
+        "sha256": "219cba549ab690e5a0c9823add96524deb12e6523111c42d6ae79ab5f8b60801"
+      },
+      {
+        "path": "FourRow/CensusData/Extension22.lean",
+        "sha256": "7bfd886796cd3ee15d08dc8fadfd1f6a3386eb9fb6f343d3a50e64aae9b107bd"
+      },
+      {
+        "path": "FourRow/CensusData/Extension23.lean",
+        "sha256": "1cd3c7399e82e589ecaa5ab351d842490aa17f45ec04f6d107a4597aca1dc712"
+      },
+      {
+        "path": "FourRow/CensusData/Extension24.lean",
+        "sha256": "e84453d8c23db2507e133355908bc3d3c2cefa019ad5d24c4d7bdd1817cd3473"
+      },
+      {
+        "path": "FourRow/CensusData/Extension25.lean",
+        "sha256": "07d56846cd17dcceef76125d232f4f1621922c2c9f1a6bec173db9a2d98d9d27"
+      },
+      {
+        "path": "FourRow/CensusData/Extension26.lean",
+        "sha256": "71578e413c71b2547b0eaca2863ccb55dfbcb26514baccd7239e182c822d643e"
+      },
+      {
+        "path": "FourRow/CensusData/Extension27.lean",
+        "sha256": "4b9f95e43feb3654d03ffdf9b36c7d322c6035e5e03731ea1ab7229e683505dd"
+      },
+      {
+        "path": "FourRow/CensusData/Extension28.lean",
+        "sha256": "d6e01800f5338ddbc2c404c64f55b441acf7ee633797ebe4dc19addfd10213a1"
+      },
+      {
+        "path": "FourRow/CensusData/Extension29.lean",
+        "sha256": "6aad1254fe6f397234da23b798a8d500319f3775d0e81539eaadcc1461da3064"
+      },
+      {
+        "path": "FourRow/CensusData/Extension30.lean",
+        "sha256": "2d4db8c246dafe0322519906283bd356777ef6580ae9710153fedd848b91b186"
+      },
+      {
+        "path": "FourRow/CensusData/Extension31.lean",
+        "sha256": "5bf863e977f90d0641dd944f3215e5e2354f7ae34c0ca1ec577c3c4cfbddbe70"
+      },
+      {
+        "path": "FourRow/CensusData/Extension32.lean",
+        "sha256": "6e785a1d9933425cc5df49562fa4413a7f9865f385cf2fb8145649710fbe4cd8"
+      },
+      {
+        "path": "FourRow/CensusData/Extension33.lean",
+        "sha256": "319a3c84015f7ae2ca115e4fc56a8bbf5f927a6af9190945ec98b7ae0612c14f"
+      },
+      {
+        "path": "FourRow/CensusData/Extension34.lean",
+        "sha256": "594b4e9eaa2163da10a29116c35a13f6303efeedac3915e9ee50db146d45a333"
+      },
+      {
+        "path": "FourRow/CensusData/Extension35.lean",
+        "sha256": "9189941645bc387023d2e25f222ed407711c1a08727fe57b7d4b5ef4a4dac65b"
+      },
+      {
+        "path": "FourRow/CensusData/Extension36.lean",
+        "sha256": "520edf2a36556be53ce08749cdc6ea4340c9fc992fd52f444cb47c58293c0444"
+      },
+      {
+        "path": "FourRow/CensusData/Extension37.lean",
+        "sha256": "baf83048801ff964843c8157893739d988c935cd93543e1c3a4a93bc9df2a7e4"
+      },
+      {
+        "path": "FourRow/CensusData/Extension38.lean",
+        "sha256": "e2f5db2e4da934a82208223257813556f9da7a207c995030827680a40ebeaa37"
+      },
+      {
+        "path": "FourRow/CensusData/Extension39.lean",
+        "sha256": "e070af2e34017cb578a02ac8d9252634d10b5f5f9fa6ad7f68c5c8ee1178db8f"
+      },
+      {
+        "path": "FourRow/CensusData/Max00.lean",
+        "sha256": "daeb73b2a9597570d5180f7a30585f50ec1f800acd22a46e4137ff3b34a237ba"
+      },
+      {
+        "path": "FourRow/CensusData/Max01.lean",
+        "sha256": "bb7c0a04a31f009470cf5c2b765850453430d85e2974fefa02df11a045f4fdf8"
+      },
+      {
+        "path": "FourRow/CensusData/Max02.lean",
+        "sha256": "d814fd4f953aae8ae426e088f0015e3ea9af91179949bfe5fd60b85786d02fd6"
+      },
+      {
+        "path": "FourRow/CensusData/Max03.lean",
+        "sha256": "14a7f87f2dcfc8847e86684f18755e2e5725450391e0d5b8f8d363c8be683e39"
+      },
+      {
+        "path": "FourRow/CensusData/Max04.lean",
+        "sha256": "1db95bd5f6923f96ab26be5fd51d9a25726d5980279b907f2d7f99392653d0b7"
+      },
+      {
+        "path": "FourRow/CensusData/Max05.lean",
+        "sha256": "b87113bab12e3596fad99d3bd4b6b488467249b79fbd64c1fb4ed0dbec35a0c3"
+      },
+      {
+        "path": "FourRow/CensusData/Max06.lean",
+        "sha256": "d90a2f9639e677c70cd19685c01dfe70d935c63eab679db8175fbc377f3a1494"
+      },
+      {
+        "path": "FourRow/CensusData/Max07.lean",
+        "sha256": "d7b1a8ddcfce6c22cddc3a342c75815d74e2751de3a8c6a6d83580e76dd72688"
+      },
+      {
+        "path": "FourRow/CensusData/Max08.lean",
+        "sha256": "74f4c642e37e240748587913c5015a7d45c0c12869c1020e3dc9ccb404263005"
+      },
+      {
+        "path": "FourRow/CensusData/Max09.lean",
+        "sha256": "a83b6ff0fed18acd7310f648bd06938876222b8287d2801dbe3f42b0fff90282"
+      },
+      {
+        "path": "FourRow/CensusData/Max10.lean",
+        "sha256": "8016aa4b39e5e8ef6e5dcda9218ae2750378290559881a90b23b85cb5e631b04"
+      },
+      {
+        "path": "FourRow/CensusData/Max11.lean",
+        "sha256": "ac7e0880357b4b295176cf9e0709506a8bc0684e5e054f67c6463085f1dc6719"
+      },
+      {
+        "path": "FourRow/CensusData/Max12.lean",
+        "sha256": "3945aefbce95af491b4bad00b2e3daa82570ca0f5242686740c59449fed4cd97"
+      },
+      {
+        "path": "FourRow/CensusData/Max13.lean",
+        "sha256": "299fde5227d39d02aa23c580905559838bff19311bbb71e0f9509a2f243f71ac"
+      },
+      {
+        "path": "FourRow/CensusData/Max14.lean",
+        "sha256": "6c69fa56b7a46d72d60294e69a17e0759bf7180642f3410449312c11dddabeef"
+      },
+      {
+        "path": "FourRow/CensusData/Max15.lean",
+        "sha256": "b604dc5292a48a0d1779bf5a338fd367d79b4a45bdd0a118135909dcc16640b2"
+      },
+      {
+        "path": "FourRow/CensusData/Max16.lean",
+        "sha256": "504191ca2b0cf052f68212aa8fe4936ad456f3a2d61a92738f72e460051c50bc"
+      },
+      {
+        "path": "FourRow/CensusData/Max17.lean",
+        "sha256": "1adc245834ff0e3aa3f459abd40d16293faac36199ba5c0c7eafd3cb5475d601"
+      },
+      {
+        "path": "FourRow/CensusData/Max18.lean",
+        "sha256": "a78d745acd164dffb85c8289709d098deda42aa31e8775f8724716986f3bdfbf"
+      },
+      {
+        "path": "FourRow/CensusData/Max19.lean",
+        "sha256": "e866d939cc4c958914b9762a676050e34cc678d14faa9e87ff08f7141188f48b"
+      },
+      {
+        "path": "FourRow/CensusData/Max20.lean",
+        "sha256": "cb3466f4a6241d8e9c175d813ba562697383f2b4c2f8d0e757c244e68752d968"
+      },
+      {
+        "path": "FourRow/CensusData/Max21.lean",
+        "sha256": "214b3234d0cd5faf60f2311aed92e8b51d0578ac48f972f05c6fe9bc26a9a604"
+      },
+      {
+        "path": "FourRow/CensusData/Max22.lean",
+        "sha256": "ce193805cdf8de3d71207a9e0aa6e02f41d0441f0151d084255e0b08bc488659"
+      },
+      {
+        "path": "FourRow/CensusData/Max23.lean",
+        "sha256": "6abc17283ccd86ee6d5f696b9cfb2b5f1f61afb8e0b62af4a2dabcbf4ecf5131"
+      },
+      {
+        "path": "FourRow/CensusData/Max24.lean",
+        "sha256": "604e3b404ff4575b1438ed020d9a63d4b7ae00e5050f64ef88e0df91c81dd7b8"
+      },
+      {
+        "path": "FourRow/CensusData/Max25.lean",
+        "sha256": "859e31c0150a7036392f8fc63ab49a25da9680368b511f9b240a249bb4eadf2c"
+      },
+      {
+        "path": "FourRow/CensusData/Max26.lean",
+        "sha256": "dc3b5361b0658ec1b93fd0f535068df2e895a743cdf2c0b7f3870c69889a95d6"
+      },
+      {
+        "path": "FourRow/CensusData/Max27.lean",
+        "sha256": "04f415e81eebeff166c0266b5f60f423be3dbc8df570ae1afef594d7d11185f7"
+      },
+      {
+        "path": "FourRow/CensusData/Max28.lean",
+        "sha256": "0582c7e375ead543f04cdcff3d5a982f1a919703709a9fa6bc47763db4dfafca"
+      },
+      {
+        "path": "FourRow/CensusData/Max29.lean",
+        "sha256": "8aad907269847626ef567822606d801bec433c9da47ebaa3cec75d5ef298381f"
+      },
+      {
+        "path": "FourRow/CensusData/Max30.lean",
+        "sha256": "ca488604d10412f9fa8309780c7b18184495076e058cd1f215e7743b7e82d9a6"
+      },
+      {
+        "path": "FourRow/CensusData/Max31.lean",
+        "sha256": "3744d6cbdadd6547992478605ed69c4ca9d3c41c0b3f3f661c6da4f7841cd4a3"
+      },
+      {
+        "path": "FourRow/CensusData/Max32.lean",
+        "sha256": "d58ff47782ddff1e1c16fec43f00e3975d920f1a8f04564598fa0bff22c56440"
+      },
+      {
+        "path": "FourRow/CensusData/Max33.lean",
+        "sha256": "1f209d4b4714c6a59950c071347daf9c64e7ded58cb7eef8b7f78f5a0007aa9f"
+      },
+      {
+        "path": "FourRow/CensusData/Max34.lean",
+        "sha256": "6b90855264895c0c5ee399d105359db8cdfd9cfe0f5c3899b19ff818a0c8cf43"
+      },
+      {
+        "path": "FourRow/CensusData/Max35.lean",
+        "sha256": "816e09a9526c90658d121854c88d4995b726e29527decbc03467c5a2b02424f7"
+      },
+      {
+        "path": "FourRow/CensusData/Max36.lean",
+        "sha256": "e6115c2ef0fedf29ffeeaf842d252ae8eb607bd9363bad43df4dc61d52f9e812"
+      },
+      {
+        "path": "FourRow/CensusData/Max37.lean",
+        "sha256": "94489f1e7017c965efdc224d3323c32b082cac271afacfe2cbc46f41a2d9e898"
+      },
+      {
+        "path": "FourRow/CensusData/Max38.lean",
+        "sha256": "ce197a5c4efb103c1b462d21b8cf8e24999e5130462abb10bbd5abc16ae3e694"
+      },
+      {
+        "path": "FourRow/CensusData/Max39.lean",
+        "sha256": "9fc6c7251a5696987cf54a4337b28e3a7fdae1af5701771997fa74adfed37b54"
+      },
+      {
+        "path": "FourRow/CensusData/Max40.lean",
+        "sha256": "d0c9ebecb497ec0144f62e4d2a1b09d6cf37539c9e0ffdeb777c44a7db934833"
+      },
+      {
+        "path": "FourRow/CensusIndependence.lean",
+        "sha256": "b98dea3fb2c08193418ae616b51afdb0e715d2c80ac6773d4206a4cfdcd11f03"
+      },
+      {
+        "path": "FourRow/CensusMask.lean",
+        "sha256": "ee46aefee0a44eccfa3bacb55828808049fef0afd6e2708f4dd65479eea5b894"
+      },
+      {
+        "path": "FourRow/CensusRelabel.lean",
+        "sha256": "fd46a29501136f95ba9a230c5d830871e7f6e58bfdca8ea04342662aa90aa2a6"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action00.lean",
+        "sha256": "fabecbbc21fea3850159b971395de0621d7d2d74c6854d06c8739fbd4e36807f"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action01.lean",
+        "sha256": "9286d82c5887a0963d5de699f7b4656fe52154ad492ba96274c15a7c08341725"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action02.lean",
+        "sha256": "5c56bdfafd7d371751987266db918bca5c6cadcf5f5922535066cd0869c92208"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action03.lean",
+        "sha256": "e3cec9b16bc89ebcaad5cb4c73d09b126f01ccad8488cb88429902645409705f"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action04.lean",
+        "sha256": "b1e332633c9b75b32455ae543bcc7657d6f76136cbacb1fbd2890b919a7ae6c2"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action05.lean",
+        "sha256": "41f2571c6b9e9aa8d63e31edd52f74d50a9612d20121c43b4a8bc0cf6ae24d75"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action06.lean",
+        "sha256": "c2ab02a3464be5453badaadb71cca57a2ab62e8760d6b072d52b0a72ea47e842"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action07.lean",
+        "sha256": "4eb7ca4573adef966b8bc57061c0ee42352177f240b029bd9f20ea1f25a3c28e"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action08.lean",
+        "sha256": "5caff8c3c6b13175cce06ce1c916bef9eb7bcf6d741607cb0a24ae67a7084d48"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action09.lean",
+        "sha256": "4cab29b8bed44a09290d3371d42b5aa484517a821cfdd821f1a1faa3fc48f7ea"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action10.lean",
+        "sha256": "0e95e009ef60ccf741a658c080169e0e93e8179ae9471fce59500825d1ba5bb2"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action11.lean",
+        "sha256": "73179fddfa7e063229092344c6f59d10f8b608fef5e2cc333083a40d89eade35"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action12.lean",
+        "sha256": "e9a8b5d73b20738fc572d0013c1c967a694c51acd2fe2ad61cb16e0b66ed1d7e"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action13.lean",
+        "sha256": "0b8412c502acfdfa812bb61ba57d66b2e3ee6801916d9fb381e3317b42796a9c"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action14.lean",
+        "sha256": "9d7999a084f662abe84403739af9f6f90c4d3807bbf0623b8bc6cd4920a78e54"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action15.lean",
+        "sha256": "3e7d041fda2890fcb68924d30814944502552ee59f4be005049b1e98b691a18a"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action16.lean",
+        "sha256": "c179b90f73de60cd9a72c113c2a476637d4e92f05ca845065a7265fa9f995433"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action17.lean",
+        "sha256": "2fad56a667c660f069a06419a83181f469a9beeefa7a6c55da30884aa1a9ff9e"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action18.lean",
+        "sha256": "8c01e67f9a6724425f702e773c7ac7fd6df12cadd40c6293aa40e21615025892"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action19.lean",
+        "sha256": "0554c372bcc79b56184226ad333fb091798c2e71e326ceae5f8132c26aa51341"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action20.lean",
+        "sha256": "02a9aeb1a42e7af57dc4d92d452382e129060a8ca8a7ecd19c359daee78d0587"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action21.lean",
+        "sha256": "68236ea255a2e983a911879fcd9d36d5dd9ef12922478dca0735b6998eee8651"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action22.lean",
+        "sha256": "9a2f8427e6b1e95f833f5302196c76ed02fdb68e203f2bc3ab5d1b22223ea14b"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Action23.lean",
+        "sha256": "413ae96eb7207666294b01c04de694705e7ac92146920d8e18addb917927361c"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Primitive00.lean",
+        "sha256": "2442e7c01a2c2c39477b69add9a559747cb65824b685e77238ff87ca67652e54"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Primitive01.lean",
+        "sha256": "2872eeea9f4092f5cf763ec609d0d404440a3cce90862a64d1f6bd9b6d85fb06"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Primitive02.lean",
+        "sha256": "2cec565852e499edb7e05edb7fb2740c91ee088d2ae6b98a4c0df2d94fe41376"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Primitive03.lean",
+        "sha256": "e5ee155bde0a3ef05207c8e0e2168f7d6437182474ee108a9fdee2a9cddc100e"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Primitive04.lean",
+        "sha256": "8d42d5c5945f4ee9ed97b285fc8beb501b5414c7358b1ad9a3460ab50b06c692"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Primitive05.lean",
+        "sha256": "f56a6b7e27e9c68c3d0b2d78f27f5e458a6b6a94c1139c0d3c40fd06c1d66fb5"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Primitive06.lean",
+        "sha256": "7f7a69cd6b4b08a39dafe9bcd221dbb97b9e1704ead94e96467ee1cff5223a31"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Primitive07.lean",
+        "sha256": "bab20218fc1b03dcb97a484b72f5ef16f77508467313ae2dd128212d6f59668a"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Primitive08.lean",
+        "sha256": "a5589a83974478eed4e64c8ff0beeb0cb16afe485b3298343b73f48dd648ffad"
+      },
+      {
+        "path": "FourRow/CensusTableChecks/Primitive09.lean",
+        "sha256": "2100bcc5a836f0050404287c96aba3d574071cfe7e102ea80dc399cf83c580c8"
+      },
+      {
+        "path": "FourRow/CensusTableData.lean",
+        "sha256": "089879939289f8a5a7d93ed9c9454c69f0e2d1ee694b84a0bb8d1762d1955367"
+      },
+      {
+        "path": "FourRow/CensusTables.lean",
+        "sha256": "0ef73d27cd6719035f9e55d33ebd317047b8400f27ccf476705832ecf740ca82"
+      },
+      {
+        "path": "FourRow/CensusWitness.lean",
+        "sha256": "e590a04fcd9911ec4aa12d1556ef872a4071c97ec96dbd93e398968aac25d1e3"
+      },
+      {
+        "path": "FourRow/CensusWitnessData.lean",
+        "sha256": "bec327d0e66d2dfd70727764a5f1cc89bbfd3169fb83bd7f458927089622e65e"
+      },
+      {
+        "path": "FourRow/CertificateTransfer.lean",
+        "sha256": "85c63aaeec7b2b6472dc1e8008399a96a7eb7b70bbe232a7384af5b7adffd393"
+      },
+      {
+        "path": "FourRow/Circuit.lean",
+        "sha256": "5448b666f95e7a5d0576c9177a0148e89b12b93e502331ede24c3a831e139d4a"
+      },
+      {
+        "path": "FourRow/Definitions.lean",
+        "sha256": "a48cc970b64985bde2c27216a2e0103efa6a220ac1a54160f02ace8e7d07448e"
+      },
+      {
+        "path": "FourRow/Endpoint.lean",
+        "sha256": "38bba4e7a3d95a91810a4ec86ff2d24d1bbb598e09db5393f7907733caf1e65f"
+      },
+      {
+        "path": "FourRow/EndpointTheorem.lean",
+        "sha256": "651d2514412e962f92ca237e3a29231d8328f6cee3610609f0ffd26c3947124f"
+      },
+      {
+        "path": "FourRow/Entropy.lean",
+        "sha256": "8d0923c08976287cc56b60130697ea91ceca62ff4278a0bceeb87f2c8d452f9f"
+      },
+      {
+        "path": "FourRow/EntropyExponent.lean",
+        "sha256": "50dc36fa296216b9f6b8e119e5610f958013179861f826ed1945bd00a077eb6e"
+      },
+      {
+        "path": "FourRow/Equality.lean",
+        "sha256": "2ac3c1c77749c7e004104f73409fc60ee5d046065c5b6b6e6534d65f898fb52e"
+      },
+      {
+        "path": "FourRow/EqualityEndpoint.lean",
+        "sha256": "df3fe15ecc61c157fbb0946aab80953186a916f6f85b199a8a6f6e40617660e7"
+      },
+      {
+        "path": "FourRow/Exponent.lean",
+        "sha256": "b5762a826ca3293781788cf8f426591f492272c1ddcde896c5d285c4139b9ae6"
+      },
+      {
+        "path": "FourRow/ExtremalFamily.lean",
+        "sha256": "9cfad981c11fe3e86180adefb4070476080517131daf7ef5c8d1d948b1fef00b"
+      },
+      {
+        "path": "FourRow/Finite.lean",
+        "sha256": "7cccb95ca2cebade7fa2ce1e879411520003ae1b74c471c3cf6b083092cbb8fe"
+      },
+      {
+        "path": "FourRow/GramBridge.lean",
+        "sha256": "48bc647a195e3629fb3d07f6047899b8cb202d1a0e2f1543e01c261f5c3f3380"
+      },
+      {
+        "path": "FourRow/GramData.lean",
+        "sha256": "2c65c910657ba0cec81aa60534f754fc156f04f0955b28988c81a915ad80ec0f"
+      },
+      {
+        "path": "FourRow/Grams.lean",
+        "sha256": "0fcb6e6634883b7ff45c1c0972d9eae42c1a7159042d0083cfe5fc3c218c8981"
+      },
+      {
+        "path": "FourRow/Grams/G000.lean",
+        "sha256": "3f82a11e54f25760a7feacec9ad612d69b885093914e9dc0dd80e7849a784c63"
+      },
+      {
+        "path": "FourRow/Grams/G001.lean",
+        "sha256": "120b7a489cdd0a002aa0e55a57ef6152b812911ba15c36779bb24265cf096c68"
+      },
+      {
+        "path": "FourRow/Grams/G002.lean",
+        "sha256": "23fac71085e4b59eb77a360d341424c6b65e9255893209926779886f0a27a6a9"
+      },
+      {
+        "path": "FourRow/Grams/G003.lean",
+        "sha256": "5b9f9685ec7b83a32eada478cf8b7c64e90baffb165b7b418fb1117c167a1820"
+      },
+      {
+        "path": "FourRow/Grams/G004.lean",
+        "sha256": "bed6ca8c8a862b70a8c7c618d020eebc38dc0bd1ab490a28bda7795ed6f80d67"
+      },
+      {
+        "path": "FourRow/Grams/G005.lean",
+        "sha256": "2f9fafef2d4bc5797fb03fae1d8110054171f1ad935f00e4f1dba6aabe066e69"
+      },
+      {
+        "path": "FourRow/Grams/G006.lean",
+        "sha256": "699d7c99dbdbb2eefad1fc5d94aa14421d47106c535eb02a70b11ae4cc44140a"
+      },
+      {
+        "path": "FourRow/Grams/G007.lean",
+        "sha256": "248383acf20db0392462184b15c9a69ce82b7a45a148833a3a708df1b0273669"
+      },
+      {
+        "path": "FourRow/Grams/G008.lean",
+        "sha256": "c5ae0aa96fec51fa54cafb15fd0f68ce035d773530fa306a95aa75d481affe6a"
+      },
+      {
+        "path": "FourRow/Grams/G009.lean",
+        "sha256": "c2cd86399f857d4d6a65afe760e0386a785c128d8e1000a4d98c44866d2ace73"
+      },
+      {
+        "path": "FourRow/Grams/G010.lean",
+        "sha256": "5d31e78564f32250c7e0eb38699e04350bc46205a02f533e964eec94d3e3d925"
+      },
+      {
+        "path": "FourRow/Grams/G011.lean",
+        "sha256": "4f32cd51327ab21250d57770876a876ea8f2de1e7cd91c4d6f2d84cf878f90b0"
+      },
+      {
+        "path": "FourRow/Grams/G012.lean",
+        "sha256": "32c89ed7c8e81b297734f08d3d02cac7f42fd385f0db2c84759b376b5e702835"
+      },
+      {
+        "path": "FourRow/Grams/G013.lean",
+        "sha256": "23796af2275c73a834bf212ba5edff70bfa780aec302c6e17b9133179a00a68c"
+      },
+      {
+        "path": "FourRow/Grams/G014.lean",
+        "sha256": "862d190b9d816d3f5022370c62c05d797a49bc5becf4e4393bc8dd65cc416c89"
+      },
+      {
+        "path": "FourRow/Grams/G015.lean",
+        "sha256": "4ea14099c5a3a43047d8716148812afe58ed06722ce0713318c7da3730bac747"
+      },
+      {
+        "path": "FourRow/Grams/G016.lean",
+        "sha256": "991da30b563363d576ed95eb655252892c82563c7c7a7e76e3cce1e6a14b6374"
+      },
+      {
+        "path": "FourRow/Grams/G017.lean",
+        "sha256": "7d59f7854db92e4cdd781ffba9f0616c4a5e33cc021ee584d684ccc81875d688"
+      },
+      {
+        "path": "FourRow/Grams/G018.lean",
+        "sha256": "2b49905f9a925416120e1efb77d3962a9c97e8e63939b069372153bf102446a8"
+      },
+      {
+        "path": "FourRow/Grams/G019.lean",
+        "sha256": "beb2a54be8854e6930617c988483f4f471c4e6604869a84ca66c8122b9a9c7df"
+      },
+      {
+        "path": "FourRow/Grams/G020.lean",
+        "sha256": "bf50cf6df46ab55672d484aca90e397f7e2abd7ede06b20bea49f239edbe06c1"
+      },
+      {
+        "path": "FourRow/Grams/G021.lean",
+        "sha256": "d2ad44412299c20fe54db89897862b9c973cf5b74197c186f8b9bb0cbb82de89"
+      },
+      {
+        "path": "FourRow/Grams/G022.lean",
+        "sha256": "db0e867a6a8f0d01f916c9916350da01bab7d68cb53e6cd07762493ab0a703e7"
+      },
+      {
+        "path": "FourRow/Grams/G023.lean",
+        "sha256": "bd8fefce31b847a6d799a6781191f7eb2f6af5fdc2f697beaf547a0ced74eea4"
+      },
+      {
+        "path": "FourRow/Grams/G024.lean",
+        "sha256": "7238b930759a14fe4177db34e40301015c166673da148970db1697074842d174"
+      },
+      {
+        "path": "FourRow/Grams/G025.lean",
+        "sha256": "0b0c6a4120024c85788e37b3440b83bf1932631d4ce03be9c66efd305498cf21"
+      },
+      {
+        "path": "FourRow/Grams/G026.lean",
+        "sha256": "ac09ccfce1451d9c1531538576827ecf742e61114b149ac70eab59528ba9b4d3"
+      },
+      {
+        "path": "FourRow/Grams/G027.lean",
+        "sha256": "6e726424f2bb9701398d17d67db7c0a61157f572513dd6e9507ddc9fd6b0207b"
+      },
+      {
+        "path": "FourRow/Grams/G028.lean",
+        "sha256": "704e378e44a974718ffc70c6561f0232ab18cadce749133030c08e0e336304e8"
+      },
+      {
+        "path": "FourRow/Grams/G029.lean",
+        "sha256": "8daf18d9ee6fb6832e4aaf93edcb9b9281bb45364325b5cea67c33b3f74532c0"
+      },
+      {
+        "path": "FourRow/Grams/G030.lean",
+        "sha256": "f43ed8b6837fe506af496088c5b4832d0e565c665ca03dad3a2cc9e7945f2df1"
+      },
+      {
+        "path": "FourRow/Grams/G031.lean",
+        "sha256": "54f851c24bc0eb02084237310b641157d60fd9698e5163b4b9417e1338d76373"
+      },
+      {
+        "path": "FourRow/Grams/G032.lean",
+        "sha256": "4c474e6e81fc1a011234483acda73ae1843bedb997481510096150055254a949"
+      },
+      {
+        "path": "FourRow/Grams/G033.lean",
+        "sha256": "9e36fdb62a91480d5ff5cf91536f6916edf259ef8a8c0bb2631ff42753e746b5"
+      },
+      {
+        "path": "FourRow/Grams/G034.lean",
+        "sha256": "439afd216dbc125ab105c3b6183ee9c3ff9e6844e555e2c9c47b6c172f993cbc"
+      },
+      {
+        "path": "FourRow/Grams/G035.lean",
+        "sha256": "d9e5616b32057c4a21d7ed3bb92c67ca11a9f1d52a64f0236a91c3008736f766"
+      },
+      {
+        "path": "FourRow/Grams/G036.lean",
+        "sha256": "c860c148905be83f87c195522d09689c2007e310d7800b3a0c10fa6aca7614a1"
+      },
+      {
+        "path": "FourRow/Grams/G037.lean",
+        "sha256": "35fea7b28ce8eef5fbfd6735fe000137a90b18ceb09e126d87d251435ae1ec57"
+      },
+      {
+        "path": "FourRow/Grams/G038.lean",
+        "sha256": "39b893671f3170c38f732d6073208f13023ffc6024aae8ade29eb5356c831502"
+      },
+      {
+        "path": "FourRow/Grams/G039.lean",
+        "sha256": "cc3f5a5d10894be447a100f7403ab8ffa08b920fa4a77fb9a7de61ff1a0be9b0"
+      },
+      {
+        "path": "FourRow/Grams/G040.lean",
+        "sha256": "0d7b1626c2e2d757c2cd92daa597fb0a08c50cdb58320d6e40abb15f5b9d5fdd"
+      },
+      {
+        "path": "FourRow/Grams/G041.lean",
+        "sha256": "7d558ab95ee831ff7c496dcfbebb825fe1b77db496b99e9e7833d02b7ecfe8e5"
+      },
+      {
+        "path": "FourRow/Grams/G042.lean",
+        "sha256": "f336f4c0b4bec8eb7771b93dba19a03cdf7d2d356ef05510a45c049474d29bee"
+      },
+      {
+        "path": "FourRow/Grams/G043.lean",
+        "sha256": "e4fadb22e6083b75a8a70260686a9b1efc9e49df107027e9b3b9d79274350753"
+      },
+      {
+        "path": "FourRow/Grams/G044.lean",
+        "sha256": "2d2419f71c263f36c3de85f78dd13ee1926527d14ab286dc9738b4020e155f55"
+      },
+      {
+        "path": "FourRow/Grams/G045.lean",
+        "sha256": "94a3537af2622c354cca879ea5b40811e3010aa2eb9f73d7a80021a6e4a16bd0"
+      },
+      {
+        "path": "FourRow/Grams/G046.lean",
+        "sha256": "86b1462f3cb0a6c8c4648535ef309d0e3f6557bed7b7416a520da310d9208884"
+      },
+      {
+        "path": "FourRow/Grams/G047.lean",
+        "sha256": "0ac84e1e8b15a67d86046d82c62b3aefe4d8c315f0701f3387e0cb0ce648390a"
+      },
+      {
+        "path": "FourRow/Grams/G048.lean",
+        "sha256": "ebcb02a17b7c8fdbd0f7c59bdf7617c7f7fdd8adc8fd77321a62e6457f4da3e7"
+      },
+      {
+        "path": "FourRow/Grams/G049.lean",
+        "sha256": "ad2496417c803c1a1de1ef17fc64add0c9da226c29ac2565ee71c96677fa4743"
+      },
+      {
+        "path": "FourRow/Grams/G050.lean",
+        "sha256": "06c72f8e26ef898dbf37252b6bdff539e6e133ce0bbcedc39b39782ade37a79f"
+      },
+      {
+        "path": "FourRow/Grams/G051.lean",
+        "sha256": "3f383ca04fff0f9a365a0b531e40c1adfae16bec79f56cac7dd2bfb6932a41b0"
+      },
+      {
+        "path": "FourRow/Grams/G052.lean",
+        "sha256": "a32a3295c2bb63b4eac5c23ce73a5a613f9db83273df81d0e09c55b1ad654704"
+      },
+      {
+        "path": "FourRow/Grams/G053.lean",
+        "sha256": "a578e9d1e2d894ee393fdf12ba1d65696de7a34369d8acb8324f10d907973d3c"
+      },
+      {
+        "path": "FourRow/Grams/G054.lean",
+        "sha256": "20639c607efcd044aa0f5705d502381587e795b75ee2c44ec31aff73a6ff7afc"
+      },
+      {
+        "path": "FourRow/Grams/G055.lean",
+        "sha256": "11a343646bd3c6b9c825248ceb3f22f4cd87fe9dbc2fa6853908c600d12e11f2"
+      },
+      {
+        "path": "FourRow/Grams/G056.lean",
+        "sha256": "64fd54a1f01129814e381f9472691daf1c639f66c7daeab724c8d4022c4cde5a"
+      },
+      {
+        "path": "FourRow/Grams/G057.lean",
+        "sha256": "3bea1f691784994fa78de64db69ed4ca5f2fdc7eb84a1f5f96b8902356bf93db"
+      },
+      {
+        "path": "FourRow/Grams/G058.lean",
+        "sha256": "3fac88ee251d093587ec040218c790c0409b7efd7ecd5d57b972d06152c76820"
+      },
+      {
+        "path": "FourRow/Grams/G059.lean",
+        "sha256": "eee0e3153258cf52e55ef3102179a9fb79f09d21c31734ee12f26d46b31fa6dc"
+      },
+      {
+        "path": "FourRow/Grams/G060.lean",
+        "sha256": "bd3eefa2c2b67a20bfc0c940d144dba88e3bbf795f925ffdb12edc7194b05f6c"
+      },
+      {
+        "path": "FourRow/Grams/G061.lean",
+        "sha256": "f4c345693681576d755cbdc7901781079e25c2cbdd75fb4720c556d747b71bf6"
+      },
+      {
+        "path": "FourRow/Grams/G062.lean",
+        "sha256": "ef7c7e2403033e6d475be33de4dad1b950f5cb29fb8894956ce82a065e1b7b71"
+      },
+      {
+        "path": "FourRow/Grams/G063.lean",
+        "sha256": "703c12b8493f2b271b21b0d09d7db6865f8989de2fa79b79169ae7eaa3dfc56c"
+      },
+      {
+        "path": "FourRow/Grams/G064.lean",
+        "sha256": "9dc3f1efa2b4c78e1d3e7c4209ab1870b35d3fbfec81c2641f326bab7603a67d"
+      },
+      {
+        "path": "FourRow/Grams/G065.lean",
+        "sha256": "785b8b148cd6baa40b84ba6166c8a059c199ef85a751fd62e7e76f294b34776f"
+      },
+      {
+        "path": "FourRow/Grams/G066.lean",
+        "sha256": "1abc6cd656cddc198fd17b9d908de35386c9782f95d0bf53748182d0998162a8"
+      },
+      {
+        "path": "FourRow/Grams/G067.lean",
+        "sha256": "f66054635a782557868e91c1c6a1a29c67f95242f3516ecee0b052fa48e50a36"
+      },
+      {
+        "path": "FourRow/Grams/G068.lean",
+        "sha256": "457f13101fc8f01e8f7cd080f4633a38f1a1f40649e6dfe114b40a8cb62e8b8e"
+      },
+      {
+        "path": "FourRow/Grams/G069.lean",
+        "sha256": "3bb9965df740b3797a394f362bbcec6d842c085cedf4674aa1ec6b87ae7761b0"
+      },
+      {
+        "path": "FourRow/Grams/G070.lean",
+        "sha256": "6604670c09344fadbe67aa338f33898292931571321ed8d726f42c917db59f30"
+      },
+      {
+        "path": "FourRow/Grams/G071.lean",
+        "sha256": "665170f9073ade925e81a4b639531cb6f7fb7429daa42b3315d62b6d5cc9ffb8"
+      },
+      {
+        "path": "FourRow/Grams/G072.lean",
+        "sha256": "40a0b7b9243e9b97b8a62f383693d3484c1fcfc6ebcff412b3e3d471bd971c18"
+      },
+      {
+        "path": "FourRow/Grams/G073.lean",
+        "sha256": "5c576322445da57799adddccb929c8eae0aaf3b98c5291966f3fd5604c655ca0"
+      },
+      {
+        "path": "FourRow/Grams/G074.lean",
+        "sha256": "642812b20aa6e54b4ffba28cd2ac450a7f88d9008f266b8c0a9cc089d2386c3c"
+      },
+      {
+        "path": "FourRow/Grams/G075.lean",
+        "sha256": "61818873c141b78b9b8c5a0c012533309d6d2bca0d9091b2d8ebb57173b85c0e"
+      },
+      {
+        "path": "FourRow/Grams/G076.lean",
+        "sha256": "d6ff293af09afa7703bb73a1ed8ad565c650e84c89c106ae82c62e271a2d1e5f"
+      },
+      {
+        "path": "FourRow/Grams/G077.lean",
+        "sha256": "7c195859995308ecc61905529286ef67c8bd1f5cc77b57ac4c3ef76dedba5105"
+      },
+      {
+        "path": "FourRow/Grams/G078.lean",
+        "sha256": "9264593fd0cca2510bd6182b0de0bc2e9ac6ca257a8b864abe1823fc5f5d7491"
+      },
+      {
+        "path": "FourRow/Grams/G079.lean",
+        "sha256": "5322375ef73b17a9f5e3b20a64a810aa5fa15d4bc21a8209ccab6e27a0693d8a"
+      },
+      {
+        "path": "FourRow/Grams/G080.lean",
+        "sha256": "2ad5d9bb22ed5bff425d451bec2f29214cdcd840c2505a2acad2a1f1ac8f962c"
+      },
+      {
+        "path": "FourRow/Grams/G081.lean",
+        "sha256": "db3aa402da43da9e997d9aa43abdc278cd9ac26b9604ef6d938f5ddd7adc107d"
+      },
+      {
+        "path": "FourRow/Grams/G082.lean",
+        "sha256": "0ed73d365bd274186c3f627ad37aedb5e2387050811475abdce8e40381b24708"
+      },
+      {
+        "path": "FourRow/Grams/G083.lean",
+        "sha256": "48848cf7b2d698b6c05f0d29fa081d5dcc75d39adf59dcd6d290ae94346c72be"
+      },
+      {
+        "path": "FourRow/Grams/G084.lean",
+        "sha256": "24808fcb177ce33cf9d9a7fb25098de75faf4e68f6e7d81e80d2659eca34bf49"
+      },
+      {
+        "path": "FourRow/Grams/G085.lean",
+        "sha256": "63c49d9921df8956843190531ba9fcf6ea8582051fc54670f15bbc62b600bb87"
+      },
+      {
+        "path": "FourRow/Grams/G086.lean",
+        "sha256": "321a86b61f903310209ee7cfc44d8d13eea76bcf66635f8726e1912066293d68"
+      },
+      {
+        "path": "FourRow/Grams/G087.lean",
+        "sha256": "c8f57b4abbd25f23bd6fb8cfb5ff3ca2f63c63398d4810a8d446e680e3fa4bce"
+      },
+      {
+        "path": "FourRow/Grams/G088.lean",
+        "sha256": "7e9397785feb12f304b21f6991f0f71aaa82e17a73e3a8576d56ecbecd940c60"
+      },
+      {
+        "path": "FourRow/Grams/G089.lean",
+        "sha256": "70f9fd5b6ea6b3610aa2e3628ec66efca4ad73738041e079bb5fe1e0a70eb3fe"
+      },
+      {
+        "path": "FourRow/Grams/G090.lean",
+        "sha256": "5afe19362222e713c9d7432115ddc63dcc5a1615473e8f61792ac4c777b08e40"
+      },
+      {
+        "path": "FourRow/Grams/G091.lean",
+        "sha256": "0b898d952567701690d7f8ff89239d7a58731382cad9b8d679aadc45624a3131"
+      },
+      {
+        "path": "FourRow/Grams/G092.lean",
+        "sha256": "f4e6f8f2a2fa6b06d38fcf1d10e18b4e555175b3c7501633accd42a25efbed1a"
+      },
+      {
+        "path": "FourRow/Grams/G093.lean",
+        "sha256": "e7efd6e630cf61458f1153deea7e44cbb409090b4a701658b3aee5fa831770c2"
+      },
+      {
+        "path": "FourRow/Grams/G094.lean",
+        "sha256": "1abddb761c50694f538cbb9dd3fc0b51e65c665ec30db7b53113088d7d060e37"
+      },
+      {
+        "path": "FourRow/Grams/G095.lean",
+        "sha256": "747d1ce81fbf007bd927ec0e211f18e25866515c9a895c56cfa5c28070ca0660"
+      },
+      {
+        "path": "FourRow/Grams/G096.lean",
+        "sha256": "ded1e5d75bf5c8aa1672de9e2f553653bf51bf611cd283a366879d72f3fa4b48"
+      },
+      {
+        "path": "FourRow/Grams/G097.lean",
+        "sha256": "7156dfa46f1d2a25208a4bf28f7a7706c0d1d2b9e2346a75c01fa4cc3aa91fe1"
+      },
+      {
+        "path": "FourRow/Grams/G098.lean",
+        "sha256": "d925bae3ed1668c6bbf0143a5500f41121b9f5a8b72bdc7be9d882516feda3b6"
+      },
+      {
+        "path": "FourRow/Grams/G099.lean",
+        "sha256": "2879e70c9236a6cb416b4145ec63ac481356463a2fd98de026f645d277d4c422"
+      },
+      {
+        "path": "FourRow/Grams/G100.lean",
+        "sha256": "ec6559ead89cab33258f80a2ec126dc19e6c3830b89ac692db88e44e7276172d"
+      },
+      {
+        "path": "FourRow/Grams/G101.lean",
+        "sha256": "3b961c250c61bce74ae2916624c43cde4b3e518a22db84d7b5f4bfc31a07c060"
+      },
+      {
+        "path": "FourRow/Grams/G102.lean",
+        "sha256": "f89054d5ee88ff90eb5cb37bcaf1b9af79aaae503a3a983b88cbc58d878c9c55"
+      },
+      {
+        "path": "FourRow/Grams/G103.lean",
+        "sha256": "43fe07eba6224d30971f1945bc8e3deae766f18ddac9a75e3ec8f10fcd130d8a"
+      },
+      {
+        "path": "FourRow/Grams/G104.lean",
+        "sha256": "cd89cecbff79ad35188af261b059a712c803cb0aec7e9f10fd7dbd7e2924ad1d"
+      },
+      {
+        "path": "FourRow/Grams/G105.lean",
+        "sha256": "60fe03a2e860a40eed0c9217c94f28f68369bc5b941d5ceae8617751ecf7c5ca"
+      },
+      {
+        "path": "FourRow/Grams/G106.lean",
+        "sha256": "20a8031f266bb90c0450b395ad1bc12a16308573879829e7adc6eec8fa565d66"
+      },
+      {
+        "path": "FourRow/Grams/G107.lean",
+        "sha256": "ad7d5f4fe93520d5d5e2092c41a95b49c4bb58bb2df2828cda66c3a438133227"
+      },
+      {
+        "path": "FourRow/Grams/G108.lean",
+        "sha256": "75c44a5b9755fe95072512560c294a04a855b9751bda3aed0c656fd0ab02c891"
+      },
+      {
+        "path": "FourRow/Grams/G109.lean",
+        "sha256": "3f2ab7cdaf86c54b71aae78e32d690653967315700ef5e167e823150d4b477e7"
+      },
+      {
+        "path": "FourRow/Grams/G110.lean",
+        "sha256": "7139c980ff28b8f8665e04b55e307ba7359bada04c900806875a68be1ec05a01"
+      },
+      {
+        "path": "FourRow/Grams/G111.lean",
+        "sha256": "6f14462f757c32057264e147dd965f576c81e20eff8b8fcf57e2186980817c61"
+      },
+      {
+        "path": "FourRow/Grams/G112.lean",
+        "sha256": "0497131a596ae067f516ded4ae90317e9800be6eed30f918df3c6d91175ce4ca"
+      },
+      {
+        "path": "FourRow/Grams/G113.lean",
+        "sha256": "e29efb76f285027f953ec506a2b59e42156127c42907cce2dcbac5df5ff6f697"
+      },
+      {
+        "path": "FourRow/Grams/G114.lean",
+        "sha256": "c337bc01873d4f64ee5f30666b23e954ea37cb6213a5e49db86f2526a8f9d2ac"
+      },
+      {
+        "path": "FourRow/Grams/G115.lean",
+        "sha256": "af161ed02a971f7ec8c60447d4622b2f972fcc0cfd577e899eaad6ff76940d26"
+      },
+      {
+        "path": "FourRow/Grams/G116.lean",
+        "sha256": "ae8da96b2b8e5f3b94e1bd833e700ffea901b804095b537feadb2b5e3c7474f2"
+      },
+      {
+        "path": "FourRow/Grams/G117.lean",
+        "sha256": "15f03341e49b3a3ef7589e279b30f4b855b8be43b447730d4b6b2d737ba0b9e5"
+      },
+      {
+        "path": "FourRow/Grams/G118.lean",
+        "sha256": "4d0592218432340c8ff896b2bde5db70026c7c1380f2454ce255aa707b8dd686"
+      },
+      {
+        "path": "FourRow/Grams/G119.lean",
+        "sha256": "6efd391c369860c8b7d28de80d95937aa875c5ed2ccb9a8357623b794bf9e386"
+      },
+      {
+        "path": "FourRow/Grams/G120.lean",
+        "sha256": "d2730c683d208cbe63623ef857247ea86bec4709f54f06b3fffab9a21b7ccb51"
+      },
+      {
+        "path": "FourRow/Grams/G121.lean",
+        "sha256": "b2849cdc6b3a56f7a30c1e9646701faec9e271d59b0dfd7545f0b6eda81ee9c8"
+      },
+      {
+        "path": "FourRow/Grams/G122.lean",
+        "sha256": "34e735cbd82d531225ef34bac7b70bd27314cb90818661c9c5d6445101d899ab"
+      },
+      {
+        "path": "FourRow/Grams/G123.lean",
+        "sha256": "b5a2c4cc03f5381d7185cc6ef7aa11d336455d71ad80dd0f81327536b6645411"
+      },
+      {
+        "path": "FourRow/Grams/G124.lean",
+        "sha256": "c556b61523ef987065c450babe11f8879ffc3af19cee74b90c49a9d1999eb793"
+      },
+      {
+        "path": "FourRow/Grams/G125.lean",
+        "sha256": "264991161df83717b75f64bfa5af07bbc38243d868495151dc369524fb32081e"
+      },
+      {
+        "path": "FourRow/Grams/G126.lean",
+        "sha256": "7508d4215ff5e0421e44a40b68b821a7c75fb1e4d800b634ae46ef3e5f0ee00e"
+      },
+      {
+        "path": "FourRow/Grams/G127.lean",
+        "sha256": "321d52d026b62031e606be11e3dceac85cf82658e517693e6a6bf1ce5c471111"
+      },
+      {
+        "path": "FourRow/Grams/G128.lean",
+        "sha256": "ee9c4b62d9256b5386357771fe4989ca82911ff08c68558212658db1b97e036e"
+      },
+      {
+        "path": "FourRow/Grams/G129.lean",
+        "sha256": "973890aec05dc6eb0a8a429f5ef9b8304f25a881892d51bfe84d9c0a3cea238d"
+      },
+      {
+        "path": "FourRow/Grams/G130.lean",
+        "sha256": "5031f474dd5ff8790d1bd84d9ef7c1a53cfd8623328b339ceb7d2426fcc2cdc3"
+      },
+      {
+        "path": "FourRow/LookupTree.lean",
+        "sha256": "d9acacaf91309519f9a6e7f56b85b739e7093a91ebb7513c7afc1cc68b6acb7a"
+      },
+      {
+        "path": "FourRow/NormMonotonicity.lean",
+        "sha256": "dd2ae00d47b9db84c327f02a8e00a662205ad58835bbccc856cc9f506470796f"
+      },
+      {
+        "path": "FourRow/Normalization.lean",
+        "sha256": "52c5e78893ee03676cad89539016411ee94acfa8896e582a8cd5d9444f2987bd"
+      },
+      {
+        "path": "FourRow/OrbitTransfer.lean",
+        "sha256": "49b507982b00e30ed02d381e177540b53f2af1ae9cd1573f51f734f55d7986f0"
+      },
+      {
+        "path": "FourRow/Orientations.lean",
+        "sha256": "8eb06bd294232b4a44060a392b295aea8a4969222842d887572f0451acc68182"
+      },
+      {
+        "path": "FourRow/PolynomialCertificate.lean",
+        "sha256": "2a4dbd86e06fb63f32118df1d931249eb905762c9e187887b3af3ef1ba8c60a1"
+      },
+      {
+        "path": "FourRow/Relabel.lean",
+        "sha256": "70270ee95c9d27551ef084d274aeaa0b5b6cd396bbf0426ac5d5a22005e1f10a"
+      },
+      {
+        "path": "FourRow/SharpEntropy.lean",
+        "sha256": "29f76485d64133441bded49c0dae168090b804a495d0d6f40d496205f1841187"
+      },
+      {
+        "path": "FourRow/SharpExponent.lean",
+        "sha256": "06a2c3aa098ccc970e497cd6781c310dba830071539ae3020f0c04636479336c"
+      },
+      {
+        "path": "FourRow/Sharpness.lean",
+        "sha256": "886d54ab0f24147175cded96027045901d904d9ff5bdc62da76d5f5682df6766"
+      },
+      {
+        "path": "FourRow/Stability.lean",
+        "sha256": "83aa7cb7c03b348abc5fd837555ca6da38e025ccf5ca022b62f413a4510a1131"
+      },
+      {
+        "path": "FourRow/Symmetry.lean",
+        "sha256": "af501726a520fa932e018046581add152136d3afcb1a1efb5efcdf0c7b734ef2"
+      },
+      {
+        "path": "FourRow/Tensorization.lean",
+        "sha256": "72774d24bea6b324f4080b89a1ad5df52e8d8331adb3d205aac751d45f37a574"
+      },
+      {
+        "path": "FourRow/Uniform.lean",
+        "sha256": "28f5d5d573a016461fc4a5bb910096af3cca2095a90db1654be051e6eb473fbc"
+      },
+      {
+        "path": "FourRowChallenge.lean",
+        "sha256": "944ee3cc29a54243d454deb01e4d688c35c069e689f8257f2d3dd49b9ba69af6"
+      },
+      {
+        "path": "FourRowSolution.lean",
+        "sha256": "14c21e410a142b6d1f9e196c544cfa97b2dc733aa7e63f6bfbe41d9abb171c96"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "8d464f723696204001f7ef63b6146ffc544aa6837aa74c53f6f9c53d8a18b0f0"
+      },
+      {
+        "path": "comparator.json",
+        "sha256": "e025b6ad8819210f688fd76e50bc2e92a91fbc5bf1ae67d3ec4c05ea8c559751"
+      },
+      {
+        "path": "evidence/certificates.json",
+        "sha256": "f3fd0a1d522ab8bfbee5be5ff73730d1e337af9bdaa5537ead2a89df7b26b951"
+      },
+      {
+        "path": "evidence/circuits.json",
+        "sha256": "dd2571809b05d009293a6d908fe8ffbd782dc2ec3b9bfc787afb0a303b11c696"
+      },
+      {
+        "path": "evidence/support-closure.json",
+        "sha256": "524562d183dffa5e112e038e0f51b5fbc42cd5361266d85da9fe88eb6c3c5d06"
+      },
+      {
+        "path": "lake-manifest.json",
+        "sha256": "e14bbc65e5fef8ab9277b49633147c8a0601ea8c78690fb010fe6dc2ad289777"
+      },
+      {
+        "path": "lakefile.toml",
+        "sha256": "7941d080f1b0719148818e7ef678f216f573655600b31fe2c4e1eee74cc04e7b"
+      },
+      {
+        "path": "lean-toolchain",
+        "sha256": "bc84812c94489d1e3e191baa1dc10d5eb684382d7fe9d2a5ab085e72c1c67e47"
+      }
+    ],
+    "python_executable_ast_identical": [
+      {
+        "path": "evidence/audit_census.py",
+        "executable_ast_sha256": "7211e733861b5b2bee05e86543048609529ac59e2e3a056289e38d1b9e43afd8"
+      },
+      {
+        "path": "evidence/census.py",
+        "executable_ast_sha256": "d3fd9b6a2b5a8bb4596f4e9619f5e734b78d47c849171134b7c2fee15dd7f797"
+      },
+      {
+        "path": "evidence/extensions.py",
+        "executable_ast_sha256": "d5b41d8d70bf00b450def821d024e6cc7f99804dc90b1b75e62c8cae212244ad"
+      },
+      {
+        "path": "evidence/probe.py",
+        "executable_ast_sha256": "743623cbd5fb5118f492283b4f1724642b7437c77695da3d336f3fd912d04b70"
+      },
+      {
+        "path": "evidence/shuffle_input.py",
+        "executable_ast_sha256": "6fdc0f63438656b8fb9714fcc23d3b7ecd15f177f8d595f62be1c77fffbd596d"
+      },
+      {
+        "path": "evidence/verify.py",
+        "executable_ast_sha256": "acb9374d94d87f97c058e595b99544607aed03fecca61db84931ac389614cd28"
+      },
+      {
+        "path": "scripts/audit_release.py",
+        "executable_ast_sha256": "657a898ea907491fd6562f17683c10ca5787a6f8d8f5c79b28937985c1d33560"
+      },
+      {
+        "path": "scripts/build_census.py",
+        "executable_ast_sha256": "a1747e935d8679f54003356174f7e7c8a3c74675eeb6d9811b5de51226f319be"
+      },
+      {
+        "path": "scripts/build_census_shard.py",
+        "executable_ast_sha256": "7c0d367828e91c0625141a2711685ff5d635d859481be826f9da301bd59e0ac1"
+      },
+      {
+        "path": "scripts/build_census_table_checks.py",
+        "executable_ast_sha256": "5f5a55220272db38eada61a853b021526476726fb2de7e83b829c9679ab360e1"
+      },
+      {
+        "path": "scripts/build_grams.py",
+        "executable_ast_sha256": "02531bf5592ef3385a5da4035e32e4e444d758534b0dbf41b974d8b52a113b9f"
+      },
+      {
+        "path": "scripts/check_certificate_artifacts.py",
+        "executable_ast_sha256": "85e3a7f7ab98030175c5d96d9a76303a7e3ac915c512965af215ff3a1aee66c7"
+      },
+      {
+        "path": "scripts/emit_census_lean.py",
+        "executable_ast_sha256": "b795d7188cab82e1bfc1935e78f3a234fad988c1d6351e5e1b031c55f0a56025"
+      },
+      {
+        "path": "scripts/emit_census_proofs.py",
+        "executable_ast_sha256": "2e558307d634dc251289eb60c6a51ba7868b594ca661fdd830e98e7d6e0f3d79"
+      },
+      {
+        "path": "scripts/emit_census_tables.py",
+        "executable_ast_sha256": "42b9295d4fd5eb24064efa95e3c7ab087abc299bf4f1913eff6e288a2cffa01a"
+      },
+      {
+        "path": "scripts/fetch_mathlib_cache.py",
+        "executable_ast_sha256": "9f59620a1eeefd37f94c3816f1d70c3aafdc87411585105098beee9fcd307c6b"
+      },
+      {
+        "path": "scripts/generate_census_certificate.py",
+        "executable_ast_sha256": "2bea441f3fd903a039d108b3e75a6a60cf234acce52a50c0b6460b3266d7264b"
+      },
+      {
+        "path": "scripts/generate_grams.py",
+        "executable_ast_sha256": "a531fc210dcb613b5a7a1b66ccfa15b87ebca70ff19f28f3bb00014d8fe3b007"
+      },
+      {
+        "path": "scripts/generate_orientations.py",
+        "executable_ast_sha256": "6a0c1084bad51b153e8119c92bd0fb527eb0f813fd95f9cf84a77e5f8babe985"
+      },
+      {
+        "path": "scripts/lean_source.py",
+        "executable_ast_sha256": "83f1e97bda625ff88825e52239696157b1996d8014e2de4ef35a9f63580957af"
+      },
+      {
+        "path": "scripts/lean_table.py",
+        "executable_ast_sha256": "13ca674eda430e19cab87f4ab7e6b1d45763354b21f40bfa08a4993db25cb762"
+      },
+      {
+        "path": "scripts/prepare_comparator.py",
+        "executable_ast_sha256": "153ef2284f3c90636fb4537a017c5561850a341af5fd26961e7eea44d2a1f721"
+      },
+      {
+        "path": "scripts/smoke_comparator.py",
+        "executable_ast_sha256": "85009451d6f9c8f45fca95b7af48de4f82f8db61c2e99db30d5b140cb5d771df"
+      }
+    ],
+    "python_docstring_only_changes": [
+      "evidence/audit_census.py",
+      "evidence/census.py",
+      "evidence/extensions.py",
+      "evidence/shuffle_input.py",
+      "scripts/generate_census_certificate.py"
+    ],
+    "python_ast_normalization": "CPython ast.dump(include_attributes=False), after removing only leading module/class/function docstrings; comments are not syntax nodes.",
+    "python_version": "3.14.6"
+  },
+  "scope": "Documentation, metadata, evidence manifest, and Python docstring changes only. No new full Linux kernel replay is claimed at this documentation commit.",
+  "inspected_repositories": {
+    "PalomarRegistry/PalomarPolicy": "96b034cc31a72a63d4f4041911dce337a85c9a04",
+    "PalomarRegistry/PalomarSubmission": "d4e41c1d5b0d114c4859e6e5831dc6d3ad1d0d44",
+    "JD-Jones-ASES/x-ray-lean": "c0a7d9f6119ed1126a292081689fdf8927ac12ea",
+    "JD-Jones-ASES/nk-lean": "b255c9a00124bbf8c17d2c7d51450b67d43c4116",
+    "JD-Jones-ASES/fs-formal": "4e796565301b1425c53e807a6edf408535b2e922",
+    "mathlib-initiative/formalization.yaml": "99c678e569c7c4c0772db297c5ddd5e4c9b6322e"
+  }
+}

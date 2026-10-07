@@ -33,7 +33,7 @@ sparse and finite-size requirements can require a larger moment.  Its
 tree-parameter choice delta=(1/2-theta)/2 gives b=188/189 and eta=1/378;
 these are substitutions into that argument, not a new global theorem.
 
-Replay: .venv/bin/python probes/P0182_permanent_robustness/shuffle_input.py
+Replay: python3 evidence/shuffle_input.py
 All checks remain active under python -O.
 """
 
