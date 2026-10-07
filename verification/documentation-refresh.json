@@ -41,11 +41,11 @@
         },
         {
           "path": "docs/ENDPOINT.md",
-          "sha256": "2d3d35190dba2e68e9e4584736987a2fdf99f68fff27504a30579dc21d890e19"
+          "sha256": "94e63db5032e145c000e7dc71b48d10a6f83edbd2e52543840eb1084e595bccc"
         },
         {
           "path": "docs/EXTENSIONS.md",
-          "sha256": "b06e727b626366ab5065d5024171842aed1d0663e1c9f5a835125b0c69988cfe"
+          "sha256": "0f9854bf8a5c59a195f1d0a32cff940f84469d32baa8d25d18d568691e5a9c80"
         },
         {
           "path": "docs/PALOMAR.md",
@@ -57,11 +57,11 @@
         },
         {
           "path": "docs/PROOF.md",
-          "sha256": "a49466537c3499142bb2c0e8119e299f9719b9075d1ca5f0b0db5700232dd533"
+          "sha256": "3e120eb1b2ea9386fcfeb8aca6fef9e13c43ed4531b1d569600a54d0a88a1009"
         },
         {
           "path": "docs/SHUFFLE_INPUT.md",
-          "sha256": "ec63b06af3ee0ceed4f4b487a9d40ee2ce65df0b73ba11b080ce4f1998998eff"
+          "sha256": "60d096c249071ce6765e32ddb7b503a5979e6620af48d003ca5fa1dcacd88c69"
         },
         {
           "path": "docs/THEOREMS.md",
@@ -79,7 +79,7 @@
     },
     "mathematical_expressions": {
       "result": "passed",
-      "normalization": "Markdown math delimiters, whitespace, and operatorname to mathrm only",
+      "normalization": "Markdown math delimiters, whitespace, operatorname to mathrm, lt/gt relation aliases, and tag to text equation labels only",
       "matched_math_spans": {
         "ENDPOINT.md": 90,
         "EXTENSIONS.md": 177,
@@ -97,7 +97,77 @@
     },
     "formalization_yaml_sha256": "ab838c2ed7a0889d0a5a992558a8d204c6d2ca4b475dd20ceaa627951142a916",
     "evidence_manifest_sha256": "59a8d8af92f42ba6dd50d969e50c2607082bba0571c86bd459420dc43748063a",
-    "diff_whitespace": "passed"
+    "diff_whitespace": "passed",
+    "github_math_formatting": {
+      "baseline_documentation_commit": "6dd0f2a015ffcc1db3d0b896050b248ea761608e",
+      "method": "Compare every corrected math payload after GitHub Markdown API rendering with its source and the baseline expression; check brace balance and retain equation labels.",
+      "syntax_reference": "https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions",
+      "changes": "Protected inline math and fenced math blocks preserve Markdown-sensitive TeX; lt/gt avoid HTML parsing collisions; text labels avoid native MathML mlabeledtr layout failures.",
+      "documents": {
+        "ENDPOINT.md": {
+          "math_expressions": 90,
+          "github_markdown_payloads_preserved": 90,
+          "unprotected_or_nested_math": 0,
+          "balanced_TeX_groups": true,
+          "labels_preserved": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ]
+        },
+        "EXTENSIONS.md": {
+          "math_expressions": 177,
+          "github_markdown_payloads_preserved": 177,
+          "unprotected_or_nested_math": 0,
+          "balanced_TeX_groups": true,
+          "labels_preserved": [
+            "S",
+            "Q",
+            "Q-SOS",
+            "U",
+            "P",
+            "E",
+            "I",
+            "T"
+          ]
+        },
+        "PROOF.md": {
+          "math_expressions": 167,
+          "github_markdown_payloads_preserved": 167,
+          "unprotected_or_nested_math": 0,
+          "balanced_TeX_groups": true,
+          "labels_preserved": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"
+          ]
+        },
+        "SHUFFLE_INPUT.md": {
+          "math_expressions": 45,
+          "github_markdown_payloads_preserved": 45,
+          "unprotected_or_nested_math": 0,
+          "balanced_TeX_groups": true,
+          "labels_preserved": [
+            "C"
+          ]
+        }
+      },
+      "kernel_replay": "No new kernel replay; all 298 previously recorded proof/build/data input hashes still match."
+    }
   },
   "identity": {
     "byte_identical_files": [
