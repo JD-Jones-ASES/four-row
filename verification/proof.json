@@ -1,7 +1,6 @@
 {
-  "checked_source": "c207efc787a7e1c88aae29dc92d4be5e10297bf2",
-  "verification": "https://github.com/JD-Jones-ASES/four-row/actions/runs/37572525271",
-  "cold_build": "https://github.com/JD-Jones-ASES/four-row/actions/runs/37572527284",
+  "description": "Hash manifest of proof and build inputs; verification verdicts belong to the full workflow run for the exact submitted Git commit.",
+  "verification_workflow": "https://github.com/JD-Jones-ASES/four-row/actions/workflows/verify.yml",
   "principal_statements": 16,
   "checks": [
     "Lean build",
@@ -20,7 +19,7 @@
   "sha256": {
     ".github/workflows/cold-build.yml": "d2e7412727b2ae476e85e2ff1463841d5701efc45695f328bbc21e0866b3d572",
     ".github/workflows/kernel-smoke.yml": "04310e2c81d94493d294001d29a792091bce372d5631f79c69a05fe2e68c90ad",
-    ".github/workflows/verify.yml": "244c5a4d451d19e9392e2a4a0965feaee263666f67eaa5d3f3b4eac31d3119c9",
+    ".github/workflows/verify.yml": "5894cd5e85612b9f5393775d099d4b1f6aef18b9fcbbcafa99559c7e3dea5dfe",
     "FourRow.lean": "3bd055f137bdd300b9ecad4dee0be327bbe4dcf6d902e9a5b3eaadb385f8db15",
     "FourRow/Census.lean": "e6f9f4ce7d0fe894873552332651bc01f28638be703252ea0120a26f936d2a97",
     "FourRow/CensusCoverage.lean": "43e3b289316651807cb6d975f22e7ad98d741b6998e1c83ab1100aa265fa1380",

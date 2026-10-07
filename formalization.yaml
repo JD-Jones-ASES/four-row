@@ -2,11 +2,13 @@
 version: v0.4
 project:
   name: Sharp robustness and stability of the four-row permanent inequality
-  description: A formalization of the exact balanced total-variation robustness radius 1/24 for the
-    four-row permanent inequality, the optimal variance-deficit coefficient (1-24r)/9, complete nonnegative
-    equality cases, and explicit subcritical-exponent and entropy consequences, including sharp endpoint
-    entropy constants and tensorization for adaptive permutation histories. The finite endpoint proof
-    checks exhaustive support coverage and rational Gram identities in Lean.
+  description: A formalization of sharp balanced-law robustness and stability refinements of the
+    classical four-row permanent inequalities of Carlen-Lieb-Loss and Bristiel-Caputo. It proves the
+    exact total-variation radius 1/24, optimal variance-deficit coefficient (1-24r)/9, complete
+    nonnegative equality cases, sharp endpoint entropy constants, and adaptive tensorization.
+    The explicit interior exponent is sufficient rather than optimal; at radius zero it is weaker
+    than the classical optimal uniform exponent. Lean checks exhaustive support coverage and
+    exact rational Gram identities.
   authors:
   - JD Jones
   responsible_maintainers:

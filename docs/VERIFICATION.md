@@ -1,16 +1,17 @@
 # Verification and reproduction
 
-## Checked proof
+## Verification record
 
-The [complete Linux verification](https://github.com/JD-Jones-ASES/four-row/actions/runs/37572525271)
-passed the full Lean build, all sixteen statement comparisons and axiom
-audits, exact evidence replays, and independent checking by con-ron,
-NanoDa, and Lean. The [direct cold build](https://github.com/JD-Jones-ASES/four-row/actions/runs/37572527284)
-also passed.
+The [full Linux verification workflow](https://github.com/JD-Jones-ASES/four-row/actions/workflows/verify.yml)
+records the exact Git commit it checks. Use a successful run with `stage=full`
+whose head SHA equals the submitted commit. Its artifact contains
+`checked-commit.txt`, `checked-status.txt`, the Comparator transcript, and
+the axiom audit. A successful run covers all sixteen statement comparisons,
+the full Lean build, exact evidence replays, and independent checking by
+con-ron, NanoDa, and Lean.
 
-The kernel-checked source is `c207efc787a7e1c88aae29dc92d4be5e10297bf2`.
-[proof.json](../verification/proof.json) identifies its checks and the exact
-proof/build inputs present in this package. Python executable hashes exclude
+[proof.json](../verification/proof.json) is a hash manifest of the proof and
+build inputs, not a verification verdict. Python executable hashes exclude
 docstrings. The permitted axioms are `propext`, `Classical.choice`, and
 `Quot.sound`. The Mathlib-only Challenge has intentional theorem placeholders;
 the Solution does not import them.

@@ -1,8 +1,10 @@
 # Sharp robustness and stability of the four-row permanent inequality
 
-This Lean formalization proves the exact total-variation robustness radius
-**$1/24$** for the four-row permanent inequality, together with its optimal
-variance-deficit bound, equality cases, and entropy consequences.
+This Lean formalization gives sharp balanced-law robustness and stability
+refinements of the classical four-row permanent inequalities of
+Carlen–Lieb–Loss and Bristiel–Caputo. It proves the exact total-variation
+radius **$1/24$**, the optimal variance-deficit bound, equality cases, and
+entropy consequences.
 
 Let $u$ be uniform on the 24 permutations of four labels. A probability law
 $\nu$ is balanced when every coordinate has uniform marginal. For every
@@ -24,7 +26,8 @@ classification, an explicit extremal family, the sufficient exponent
 $p(r)=2-(1-24r)/36$, the exact threshold for a common exponent below two,
 sharp endpoint entropy and observation constants, and tensorization for
 adaptive permutation histories. The interior exponent is sufficient, not
-claimed optimal.
+claimed optimal; at $r=0$ it is weaker than the classical optimal uniform
+exponent. See [related work](docs/PRIOR_ART.md) for the contribution boundary.
 
 ## Proof and scope
 

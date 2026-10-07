@@ -1,4 +1,4 @@
-name: Private verification
+name: Verification
 on:
   workflow_dispatch:
     inputs:
