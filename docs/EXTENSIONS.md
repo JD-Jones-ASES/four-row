@@ -4,7 +4,7 @@ These are mathematical consequences and extensions of the exact
 [endpoint theorem](ENDPOINT.md), with its computer-assisted dependency retained.
 All measures and matrix entries are real; functions are nonnegative unless
 stated otherwise. The exponent bound below is sufficient, not optimal.
-[PRIOR_ART](PRIOR_ART.md) distinguishes the new parameter claims from standard
+[PRIOR_ART](PRIOR_ART.md) identifies the published antecedents and standard
 entropy and tensorization mechanisms. [THEOREMS.md](THEOREMS.md) identifies
 the sixteen formal statements. The additional rectangle, path-entropy,
 conditional-resampling, and concentration consequences at the end of this
@@ -175,7 +175,7 @@ $`L^p`$ norms is $`2^{4-8/p}\lt 1`$.
 
 At $`r=1/48`$, for example, $`p=143/72`$. The associated exponent
 $`1-1/p=71/143\lt 1/2`$ supplies an explicit strict margin in the predecessor's
-permutation-moment argument. A new shuffle mixing theorem is not proved here.
+permutation-moment argument; see the [shuffle input](SHUFFLE_INPUT.md).
 
 ## 3. All endpoint equality cases
 
@@ -255,8 +255,8 @@ optimality is not asserted.
 
 Equivalently, if $`U\to\Pi\to(I,\Pi(I))`$, $`\Pi\sim\nu`$, is a Markov
 chain, averaging (I) over the conditional laws of $`\Pi`$ given $`U`$ gives
-$`I(U;I,\Pi(I))\le(p/4)I(U;\Pi)`$. This interpretation uses standard
-strong data-processing theory, not a new transfer mechanism.
+$`I(U;I,\Pi(I))\le(p/4)I(U;\Pi)`$. This is the standard strong
+data-processing interpretation.
 
 ## 5. Adaptive tensorization and applications
 
@@ -305,7 +305,3 @@ Several direct consequences are useful:
   Specifically $`\log\mathbb Ee^{\lambda(Z-\mathbb EZ)}\le p\lambda^2V_h/8`$;
   optimization in $`\lambda`$ gives the claim. The constants here are not
   asserted optimal. If $`V_h=0`$, $`Z`$ is deterministic.
-
-The entropy, conditional-resampling, and concentration proofs introduce no
-additional finite census. Their universal mathematical transfer arguments
-are given here; a Python replay alone is not a verification of those arguments.

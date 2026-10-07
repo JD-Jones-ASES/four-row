@@ -137,9 +137,8 @@ The 73 primitive support representatives and both orientations map to the
 131 polynomial certificates. Exhaustive coverage enters as a proved Lean
 theorem, not as a Python result or rank assumption.
 
-The files [ENDPOINT.md](ENDPOINT.md), [EXTENSIONS.md](EXTENSIONS.md), and
-[SHUFFLE_INPUT.md](SHUFFLE_INPUT.md) preserve the broader source research.
-Only the compared declarations above define this package's formal scope.
-The later [atom-geometry note](ATOM_GEOMETRY.md), including its all-radius
-atom envelope and law-side simplex classification, is supplementary
-mathematics and is not an additional Lean claim in this submission.
+[ENDPOINT.md](ENDPOINT.md) and [EXTENSIONS.md](EXTENSIONS.md) give the
+mathematical arguments. The [shuffle input](SHUFFLE_INPUT.md) and
+[atom geometry](ATOM_GEOMETRY.md), including the all-radius atom envelope
+and law-side simplex classification, are supplementary results outside
+the sixteen compared declarations.

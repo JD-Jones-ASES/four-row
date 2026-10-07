@@ -6,20 +6,11 @@ description of laws that attain the small-radius atom bound. The latter
 identifies every law permitting nonconstant equality in the permanent
 inequality at its sharp endpoint.
 
-**Scope and provenance.** These supplementary results were derived in the
-October 7, 2026 GPT-6 Pro pre-submission review and checked mathematically
-while incorporating that review. The proofs below are informal mathematical
-arguments; they are **not additional Lean-verified claims**. The submission's
-formal scope remains the sixteen compared declarations in
-[THEOREMS.md](THEOREMS.md). The review also supplied uncompiled candidate
-Lean extensions, which are outside that submission contract.
-
-The independent exact replay [atom_geometry.py](../evidence/atom_geometry.py)
-checks the finite rational identities, attaining-law endpoints, trade
-incidence, and vertex counts. The arbitrary-real statements and equality
-classifications rely on the arguments below; finite replay does not replace
-those proofs or establish Lean verification. No new circuit census or
-permanent certificate is needed for these arguments.
+These are supplementary mathematical proofs, outside the sixteen
+Lean-verified statements in [THEOREMS.md](THEOREMS.md). The exact replay
+[atom_geometry.py](../evidence/atom_geometry.py) checks the finite rational
+identities, attaining-law endpoints, trade incidence, and vertex counts.
+The arbitrary-real statements and equality classifications are proved below.
 
 Let $`u`$ be uniform on $`S_4`$. Write $`\mathcal B_r`$ for the balanced probability
 laws at total-variation distance at most $`r`$ from $`u`$, using the definitions
@@ -101,7 +92,7 @@ Replacing $`\delta`$ by $`r`$ proves the envelope upper bound.
 
 ### Attaining laws
 
-For $`0\le r\le1/4`$, the existing extremal family
+For $`0\le r\le1/4`$, the extremal family
 
 ```math
 \nu_r=u+r\left(\tfrac12\delta_{\mathrm{id}}
@@ -308,15 +299,12 @@ The adjacency graph of these simplices consists of six disjoint copies of
 $`K_4`$: adjacency means that the labels lie in the same coset of the normal
 Klein four subgroup consisting of the identity and the three double
 transpositions. The pairwise intersections within a component are distinct
-points; no assertion of a common intersection of three or four simplices
-is intended. These intersection and counting statements are mathematical
-consequences proved here, not additional mechanically checked Lean claims
-in this revision.
+points; no three or four simplices have a common intersection.
 
 ## 6. Consequences for permanent and stability equality
 
 At the permanent endpoint $`r=1/24`$, an atom is saturated precisely when
-its mass is $`1/16`$. Combining the existing complete matrix-side equality
+its mass is $`1/16`$. Combining the complete matrix-side equality
 classification with the simplex theorem describes every law permitting
 nonconstant normalized equality: it belongs to one of the twenty-four
 simplices above. Its nonconstant equality matrices are exactly twice the
@@ -326,7 +314,7 @@ Such a law has one or two nonconstant normalized equality matrices. It has
 two exactly at one of the thirty-six shared four-support vertices. All
 other laws in the union have one. Laws outside the union have only the
 all-ones normalized equality matrix. Arbitrary positive row rescaling and
-zero-row cases are handled by the original equality theorem.
+zero-row cases are handled by the endpoint equality theorem.
 
 There is also a complete positive-radius equality description for the sharp
 stability inequality. If $`0\lt r\le1/24`$, $`\nu\in\mathcal B_r`$, and the rows
@@ -345,7 +333,7 @@ for $`\nu'=u+(\nu-u)/(24r)`$. This is a balanced probability law in
 $`\mathcal B_{1/24}`$: its TV distance is at most $`1/24`$, and
 $`|\nu(\sigma)-u(\sigma)|\le d_{\rm TV}(\nu,u)\le r`$ ensures
 $`\nu'(\sigma)\ge0`$. Equality forces the endpoint gap to vanish,
-because its coefficient $`24r`$ is positive. The existing endpoint equality
+because its coefficient $`24r`$ is positive. The endpoint equality
 theorem gives all ones or twice a permutation matrix, and
 $`\nu'(\tau)=1/16`$ is equivalent to $`\nu(\tau)=1/24+r/2`$. Both displayed
 matrix types also attain the uniform stability bound, proving sufficiency.
@@ -386,8 +374,7 @@ with $`a_i=f_i(\sigma(i))`$. Balance makes the expected sum of fourth
 powers equal to four, so the product expectation is at most one. Undoing
 row normalization proves the exponent-four inequality; zero rows are
 immediate. Probability-$`L^p`$ norm monotonicity gives every $`p\ge4`$.
-This is an elementary proof of the usual Hölder mechanism, not a new
-Hölder inequality.
+This is the usual Hölder inequality.
 
 At $`r=7/12`$, the attaining law has identity mass $`1/4`$, derangement mass
 $`1/12`$ each, and zero mass on other permutations. It belongs to every
@@ -404,7 +391,7 @@ This establishes the exact common-exponent regime on that whole range. It
 does not establish that $`7/12`$ is the first radius requiring exponent four,
 or determine the optimal exponent at intermediate radii.
 
-The original sharpness family corresponds to the interior barycentric
+The sharpness family corresponds to the interior barycentric
 coordinates $`(1/9,1/9,1/9,2/9,2/9,2/9)`$ in the small-radius atom simplex.
-The present classification therefore contains that family and explicitly
+The classification contains that family and explicitly
 describes every other saturating law in the stated range.

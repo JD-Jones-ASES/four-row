@@ -2,7 +2,7 @@
 """Enable the two independent kernels required by the pinned Palomar policy.
 
 The submission comparator.json remains within Palomar's accepted schema.
-Only this temporary private-verification config adds external checker paths.
+The temporary verification config adds external checker paths.
 """
 import json
 from pathlib import Path
@@ -17,7 +17,7 @@ nanoda = prefix / 'bin/nanoda_bin'
 if not nanoda.is_file():
     raise SystemExit(f'Missing bundled checker: {nanoda}')
 # Comparator defaults to four NanoDa workers. Keep the independent replay
-# within a private standard runner's memory budget without changing its input
+# within a standard runner's memory budget without changing its input
 # declarations or permitted axioms. A Linux anonymous file works inside the
 # read-only bubblewrap sandbox and leaves no writable project dependency.
 launcher = destination.with_name(destination.stem + '-nanoda.py')

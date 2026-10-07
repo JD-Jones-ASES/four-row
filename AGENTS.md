@@ -1,8 +1,9 @@
 # four-row
 
 Read README.md, docs/THEOREMS.md, and docs/VERIFICATION.md before changing
-the formalization. The repository is public as of October 7, 2026.
-Palomar submission remains a separate maintainer action.
+the formalization. Keep public documentation focused on the mathematics,
+formal scope, reproduction, and concise required attribution. Development
+history and process logs belong outside the public documentation.
 
 Preserve the exact scope of the sixteen principal theorems and the research
 evidence in evidence/. Generated Lean source is untrusted until checked by
@@ -26,6 +27,6 @@ attribution. Record AI assistance in DISCLOSURE.md and formalization.yaml.
 Keep personal names in authorship, responsibility, or bibliographic fields.
 
 Use coherent codex/ branches unless the maintainer requests main directly;
-no force-push. Preserve historical evidence and tags. Do not import peer
+no force-push. Preserve verification tags. Do not import peer
 combinatorial implementations or workflows. Canonical Mathlib and official
 Lean/Palomar verification tools are permitted dependencies.

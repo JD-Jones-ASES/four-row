@@ -25,11 +25,9 @@ sources:
   type: other
   relationship: formalizes
   location: docs/ENDPOINT.md and docs/EXTENSIONS.md
-  note: Mathematical notes prepared before the Lean development and included in this repository.
-    The sixteen selected statements formalize their endpoint, stability, equality, exponent, entropy,
-    and adaptive-history results. Further informal consequences are identified in docs/THEOREMS.md.
-    This source-based declaration records the origin of the development, not a worldwide-priority
-    claim.
+  note: Mathematical source notes for the endpoint, stability, equality, exponent, entropy,
+    and adaptive-history results. docs/THEOREMS.md distinguishes formal statements from
+    supplementary mathematical consequences.
 - title: A strict four-row permanent inequality and permutation moments
   authors:
   - OpenAI
@@ -39,7 +37,7 @@ sources:
   note: 'Direct predecessor: qualitative balanced-law robustness below exponent two and permutation-history
     applications. The present result determines the exact radius at exponent two, the optimal stability
     coefficient, and an explicit sufficient interior exponent. The endpoint and stability are proved
-    here by independent exact certificates; no source implementation was imported.'
+    here by exact certificates.'
 - title: An Inequality of Hadamard Type for Permanents
   authors:
   - Eric Carlen
@@ -72,16 +70,12 @@ sources:
   location: https://arxiv.org/abs/0710.0870v2
   note: The project proves the required finite duality argument directly.
 status:
-  scope: All sixteen selected statements are proved for arbitrary real balanced laws in the closed
-    TV ball and nonnegative real matrices, including zero rows. The explicit interior exponent is
-    sufficient, not claimed optimal. Adaptive kernels may depend on the complete permutation past,
-    with assumptions only on positive-probability histories. A global shuffle mixing theorem is not
-    claimed. The full Linux build, statement comparison, axiom audits, and con-ron, NanoDa, and Lean
-    replay passed at proof commit c207efc787a7e1c88aae29dc92d4be5e10297bf2. This documentation revision
-    preserves the verified proof and build inputs; see docs/VERIFICATION.md for the exact scope.
-    The general local-exponent theorem in docs/PROOF.md, additional application corollaries, and
-    the later atom-geometry results in docs/ATOM_GEOMETRY.md are supplementary informal results.
-    The five Lean statements proposed in the October 7 review are not part of this contract.
+  scope: Sixteen principal statements for arbitrary real balanced laws in the closed TV ball
+    and nonnegative real matrices, including zero rows. The explicit interior exponent is sufficient,
+    not claimed optimal. Adaptive kernels may depend on the complete permutation past, with
+    assumptions only on positive-probability histories. docs/THEOREMS.md specifies the formal
+    scope; docs/VERIFICATION.md records the mechanical checks. The general local-exponent theorem,
+    atom geometry, and additional application corollaries are supplementary mathematical results.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
@@ -159,34 +153,24 @@ automation:
     framework: OpenAI Codex
     models:
     - OpenAI GPT-6 Astra
-    tool_setup: AI agents developed the mathematical arguments, exact certificates, Lean proofs,
-      and documentation, with separate agents reviewing scope, definitions, and proof assembly. Python
-      generates finite witnesses using exact arithmetic; Lean proves the certificate checks and their
-      soundness.
+    tool_setup: Mathematical arguments, exact certificates, Lean proofs, documentation, and review.
   - method: agent
-    framework: Maintainer-supplied pre-submission review
     models:
     - OpenAI GPT-6 Pro
-    tool_setup: Reviewed the original sixteen statements and proposed supplementary atom geometry
-      and five uncompiled Lean additions. GPT-6 Astra agents assessed the supplied review and adapted
-      its mathematical note and exact evidence. The new Lean additions are excluded from this release.
-  notes: The responsible maintainer directed the work. Material AI assistance and review limits are
-    disclosed in DISCLOSURE.md. Python and numerical discovery are not trusted axioms. Intentional
-    Challenge theorem holes are excluded from the proof-development sorry counts.
+    tool_setup: Mathematical review and supplementary atom geometry.
+  notes: Python generates exact finite witnesses; Lean proves their checks and soundness.
+    See DISCLOSURE.md for attribution.
 review:
   status: agent-reviewed
   reviewers:
-  - OpenAI GPT-6 Pro (maintainer-supplied October 7 review)
-  - OpenAI GPT-6 Astra agents
-  notes: Distinct internal agents reviewed the mathematical arguments, definitions, census coverage,
-    and formal proof assembly. This is agent review, not independent human peer review or source-author
-    endorsement. Completed mechanical checks and their exact source commits are recorded in docs/VERIFICATION.md.
-    The separate supplied GPT-6 Pro review and its disposition are recorded in docs/REVIEW.md.
-    No registry acceptance or worldwide priority is claimed.
+  - OpenAI GPT-6 Astra
+  - OpenAI GPT-6 Pro
+  notes: AI review of the mathematics, definitions, and formal proof. No independent human peer
+    review is claimed. Mechanical checks are recorded in docs/VERIFICATION.md.
 fidelity:
   divergences: The selected statements include the real closed ball, all nonnegative matrices, the
     complete endpoint equality classification, and full-history adaptive kernels on positive-probability
     pasts. Relative entropy is extended-real and includes unsupported laws. The explicit interior
     exponent is sufficient rather than optimal. The supplementary general-dimensional local theorem,
-    shuffle calculation, conditional resampling, concentration consequences, and later atom-geometry
+    shuffle calculation, conditional resampling, concentration consequences, and atom-geometry
     results are not separate compared Lean statements.

@@ -1,89 +1,23 @@
 # Verification and reproduction
 
-## Completed proof verification
+## Checked proof
 
-The complete [Linux run](https://github.com/JD-Jones-ASES/four-row/actions/runs/37572525271)
-passed at the clean proof commit
-`c207efc787a7e1c88aae29dc92d4be5e10297bf2` on October 7, 2026.
-It checked the full Lean build, all sixteen principal statement comparisons
-and their transitive definition closure, all sixteen axiom audits, and both
-exact Python evidence replays. The only axioms were `propext`,
-`Classical.choice`, and `Quot.sound`.
+The [complete Linux verification](https://github.com/JD-Jones-ASES/four-row/actions/runs/37572525271)
+passed the full Lean build, all sixteen statement comparisons and axiom
+audits, exact evidence replays, and independent checking by con-ron,
+NanoDa, and Lean. The [direct cold build](https://github.com/JD-Jones-ASES/four-row/actions/runs/37572527284)
+also passed.
 
-| Replay | Result |
-|---|---|
-| con-ron, verified mode, one worker | Accepted 36,724 declarations; 35,929 checks completed |
-| NanoDa, one worker | Accepted; unpermitted axioms treated as hard errors |
-| Lean default kernel | Accepted |
-| Original bundled Comparator | Exit 0; “Your solution is okay!” |
+The kernel-checked source is `c207efc787a7e1c88aae29dc92d4be5e10297bf2`.
+[proof.json](../verification/proof.json) identifies its checks and the exact
+proof/build inputs present in this package. Python executable hashes exclude
+docstrings. The permitted axioms are `propext`, `Classical.choice`, and
+`Quot.sound`. The Mathlib-only Challenge has intentional theorem placeholders;
+the Solution does not import them.
 
-The complete Comparator step took 2 hours 42 minutes 3 seconds. Its outer
-process RSS is not an aggregate memory measurement of the checkers.
+## Local reproduction
 
-The [direct cold Solution build](https://github.com/JD-Jones-ASES/four-row/actions/runs/37572527284)
-also passed at that clean commit: 3,547 build jobs, including 285 project
-modules, in 5,931.62 seconds. It began without project build artifacts and
-used only the pinned Mathlib cache, with `LEAN_NUM_THREADS=16`. The runner
-had two CPUs, about 7.75 GiB RAM, and 19 GiB swap. No OOM event was observed.
-This is a successful build on that runner, not equivalence to Palomar's
-official hardware profile.
-
-The [archived logs and audits](https://github.com/JD-Jones-ASES/four-row/blob/1bba389f3264084890bafdffe499494f42d1655a/verification/runs/c207efc787a7e1c88aae29dc92d4be5e10297bf2/README.md)
-are pinned by `evidence/2026-10-07-c207efc`; the source tag is
-`verified/2026-10-07-c207efc`. Earlier census-only measurements and the
-cancelled unbounded cold-build diagnostic remain in
-[census.json](../verification/census.json) and
-[cold-build.json](../verification/cold-build.json). They are historical
-diagnostics, not substitutes for the complete successful run.
-
-## Pre-submission review revision
-
-The [October 7 review](REVIEW.md) retains all sixteen compared statements.
-All 298 proof/build/data/license inputs recorded in
-[documentation-refresh.json](../verification/documentation-refresh.json)
-remain byte-identical to the verified proof commit, and all 23 original
-Python executable ASTs remain unchanged after docstring removal. The new
-[atom-geometry checker](../evidence/atom_geometry.py) is supplementary and
-is not imported by a Lean generator, build script, or existing evidence replay.
-Its normal and optimized runs passed, including corruption controls.
-
-[review-2026-10-07.json](../verification/review-2026-10-07.json) records
-current-policy metadata/schema checks, Lean source requirements, source
-identity, local links, and the exact supplementary evidence. This revision
-is not a new full kernel replay. The previously verified proof is preserved;
-the proposed five additional Lean statements were not included.
-
-## Earlier documentation revision
-
-Commit `d03ba898e7fd0d8102916bddb297eb35bf48fdea` updated prose, metadata, the packaged-evidence manifest,
-and Python documentation strings. Every Lean file, dependency pin, Comparator
-configuration, and workflow is byte-identical to the verified proof commit.
-Python executable syntax is unchanged after removing documentation strings.
-[documentation-refresh.json](../verification/documentation-refresh.json)
-records the comparison, current-policy validation, and documentation checks.
-
-This is evidence that the previously verified proof inputs are preserved;
-it is not a new full Linux kernel replay at the documentation commit. A future
-change to mathematical code, definitions, dependencies, or executable build
-logic needs fresh verification appropriate to that change. Palomar verifies
-the exact commit supplied at submission independently.
-
-## Pinned inputs
-
-| Input | Pin |
-|---|---|
-| Lean | `leanprover/lean4:v4.35.0-rc3` |
-| Mathlib | `a98628e16c11f5167f16124105ddce53efa9bfe5` |
-| PalomarPolicy, checked October 7 | `96b034cc31a72a63d4f4041911dce337a85c9a04` |
-| PalomarSubmission, checked October 7 | `d4e41c1d5b0d114c4859e6e5831dc6d3ad1d0d44` |
-
-[lake-manifest.json](../lake-manifest.json) pins the transitive dependencies.
-The policy and tooling pins identify the inspected requirements, not registry
-acceptance. [Submission details](PALOMAR.md) summarize the current contract.
-
-## Local build
-
-With elan and Python 3 installed, run from the repository root:
+Use elan, Python 3, and the committed toolchain and dependency pins:
 
 ```sh
 python3 scripts/fetch_mathlib_cache.py
@@ -93,63 +27,48 @@ lake build
 python3 scripts/audit_release.py
 python3 evidence/probe.py
 python3 evidence/audit_census.py
-git diff --check
 ```
 
-The sequential prebuild commands are the conservative local route. A direct
-`lake build FourRowSolution` follows two Gram chains, G000–G064 and
-G065–G130, and one census chain. At most three large certificate modules
-compile simultaneously; other modules may also compile, so this is not a
-total process or memory bound. Private ordering imports add no mathematical
-assumption. `FOUR_ROW_LAKE` selects the Lake executable for the Gram builder
+`audit_release.py` checks source-module resolution, the Challenge import
+boundary, proof-hole exclusions, dependency pins, and each theorem's axioms.
+
+The sequential prebuilds limit memory use. Direct `lake build FourRowSolution`
+uses two Gram import chains and one census chain; other modules can compile
+concurrently. `FOUR_ROW_LAKE` selects the Lake executable for the Gram builder
 and release audit; the census builder accepts `--lake`.
 
-`audit_release.py` checks unique Challenge/Solution module resolution, the
-Mathlib-only Challenge boundary, proof-hole exclusions, immutable dependency
-pins, and `#print axioms` for all sixteen principal theorems.
-`FourRowChallenge.lean` intentionally has sixteen theorem placeholders;
-the Solution never imports them.
+## Independent kernel replay
 
-## Linux workflow
-
-[verify.yml](../.github/workflows/verify.yml) is manually dispatched:
+Run the [Linux verification workflow](../.github/workflows/verify.yml):
 
 ```sh
 gh workflow run verify.yml --ref main -f stage=full
 ```
 
-Two Gram jobs and one census job check the certificate chains at the same
-commit. The verification job checks the transferred proof artifacts, completes
-the census and public API, audits the axioms, runs the exact evidence replays,
-and invokes the original bundled `lake comparator` in bubblewrap.
+The `full` stage builds the certificate chains and public API, audits axioms,
+replays the exact evidence, and invokes the bundled `lake comparator` in
+bubblewrap. con-ron runs in verified mode with one worker; NanoDa runs with
+one worker and rejects unpermitted axioms. The workflow records the checked
+commit and worktree status. The `certificates` and `census` stages check
+only their named components. The [cold-build workflow](../.github/workflows/cold-build.yml)
+checks a direct Solution build without project artifacts.
 
-A temporary configuration uses the bundled con-ron and NanoDa checkers with
-one worker each. NanoDa rejects unpermitted axioms as hard errors; con-ron
-uses verified mode. These resource settings preserve the exported declarations
-and axiom allowlist. The job provisions swap for the smaller hosted runner.
-The committed Comparator configuration stays within Palomar's authoring schema.
+## Exact evidence
 
-Only a completed `full` run counts as complete independent replay. The
-`certificates` stage is a development diagnostic. The workflow records the
-exact commit, worktree status, and verification logs. The separate
-[cold-build workflow](../.github/workflows/cold-build.yml) measures the direct
-Solution build without project artifacts.
+[SOURCE.json](../evidence/SOURCE.json) records hashes of the packaged evidence.
+The main replay checks circuit coverage, rational polynomial identities,
+positive pivots, equality blocks, stability identities, and corruption controls.
+The census audit independently implements rational elimination and orbit
+traversal. Python produces witnesses; Lean proves their checks and soundness.
 
-## Evidence and generation
+The supplementary [atom-geometry note](ATOM_GEOMETRY.md) has a separate
+finite rational checker:
 
-[SOURCE.json](../evidence/SOURCE.json) records the packaged evidence hashes
-and their relation to the verified proof snapshot. `evidence/probe.py`
-regenerates the circuit census and checks rational identities, positive pivots,
-equality blocks, the scalar stability identity, and thirteen corruption
-controls. `evidence/audit_census.py` independently implements rational
-elimination and orbit traversal.
+```sh
+python3 evidence/atom_geometry.py
+python3 -O evidence/atom_geometry.py
+```
 
-The generators emit literal data and Lean propositions. Lean's kernel checks
-the support witnesses and sparse integer polynomial identities. A proved
-normalizer preserves polynomial evaluation, and exact positive denominator
-clearing transfers the certificates to the real inequalities. Python is a
-certificate producer, not part of the theorem's axiom assumptions.
-
-The compared declarations define the formal scope. Supplementary application
-notes include further informal consequences. Mechanical verification does
-not establish worldwide novelty or external mathematical peer review.
+This checks affine identities, trades, incidence counts, and corruption
+controls. The note's general statements rely on its written proofs and are
+outside the [compared Lean declarations](THEOREMS.md).

@@ -303,9 +303,8 @@ R_4(2)\le1/24.
 Indeed $`f_i(j)=2\mathbf1_{j=i}`$ has row $`L^2`$ norm one and expectation
 $`16(1/24+\delta/2)=2/3+8\delta`$. It exceeds one as soon as
 $`\delta\gt 1/24`$, with feasible laws through $`\delta=1/4`$.
-**The matching lower bound is now proved by the separate
-[exact certificate argument](ENDPOINT.md).** The local proof above
-does not extrapolate to this endpoint.
+The [exact certificate argument](ENDPOINT.md) proves the matching lower
+bound at exponent two.
 
 ## An explicit, coarse sufficient radius
 

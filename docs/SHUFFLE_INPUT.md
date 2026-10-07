@@ -2,16 +2,11 @@
 
 This supplementary note verifies an explicit local input to the permutation-moment
 argument in OpenAI's *A strict four-row permanent inequality and permutation
-moments*. It is not a new proof of the paper's global shuffle theorem or an
-improved global mixing-time estimate.
-
-The mathematical definitions were checked against the pinned
-[§3 source](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/A-strict-four-row-permanent-inequality-and-permutation-moments-September-26-2026/build/sections/03-recursion.tex)
-(lines 4–14, 23–27, 42–46, 91–92, 150–161). The tree-parameter comparison uses
-the same snapshot's §6. No implementation was imported. The independent
-standard-library [finite-group replay](../evidence/shuffle_input.py)
-is included in the packaged evidence. The shuffle calculation is not a
-separate compared Lean theorem.
+moments*, [§3](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/A-strict-four-row-permanent-inequality-and-permutation-moments-September-26-2026/build/sections/03-recursion.tex).
+The tree-parameter comparison uses §6 of the same source. This calculation
+is outside the sixteen compared Lean statements and does not establish a
+global mixing-time estimate. The exact [finite-group replay](../evidence/shuffle_input.py)
+is included in the packaged evidence.
 
 Label the square $`\{0,1,2,3\}`$. Let $`H`$ average the independent fair
 switches $`(01),(23)`$, and $`V`$ average $`(02),(13)`$. Products act on the
@@ -75,12 +70,9 @@ under the same half-margin choice of $`\delta`$. This $`\theta`$ is distinct
 from the coordinate-observation contraction coefficient $`p/4`$.
 
 **Application boundary.** Moment six suffices for the *local permanent-input
-condition*. The paper's sparse-case bounds, cutoff choices, finite-size
-spectral gaps and eventual moment choice impose additional requirements.
-Those were not optimized or replaced here. In particular this calculation
-does not assert that moment six proves the global shuffle theorem, nor that
-its final mixing exponent or constant improves. It turns an asymptotic
-local input into a concrete, independently replayable one.
+condition*. The paper's global shuffle theorem also requires sparse-case
+bounds, cutoff choices, finite-size spectral gaps, and a moment choice
+satisfying those constraints.
 
 Replay:
 

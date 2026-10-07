@@ -3,7 +3,7 @@
 
 Construct permutations and trades from their mathematical descriptions,
 check the duals and the two attaining families over rational polynomials,
-and count the incidences of the proposed atom-simplex vertices. These are
+and count the incidences of the atom-simplex vertices. These are
 finite checks and affine identities, not formal verification or a sampled
 proof about arbitrary real laws. The note supplies the real-law argument.
 Run with python3 evidence/atom_geometry.py (also supports python3 -O).

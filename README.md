@@ -23,8 +23,8 @@ The sixteen principal statements also give the complete endpoint equality
 classification, an explicit extremal family, the sufficient exponent
 $p(r)=2-(1-24r)/36$, the exact threshold for a common exponent below two,
 sharp endpoint entropy and observation constants, and tensorization for
-adaptive permutation histories. The interior exponent is not claimed
-optimal, and no global shuffle mixing theorem is claimed.
+adaptive permutation histories. The interior exponent is sufficient, not
+claimed optimal.
 
 ## Proof and scope
 
@@ -41,18 +41,9 @@ sum-of-squares certificates. Lean proves exhaustive support coverage,
 certificate soundness, and transfer to arbitrary real laws. Python prepares
 finite witnesses; its computations are not axioms of the Lean proof.
 
-The [complete Linux verification](https://github.com/JD-Jones-ASES/four-row/actions/runs/37572525271)
-passed at proof commit `c207efc787a7e1c88aae29dc92d4be5e10297bf2`, including
-all sixteen statement comparisons and axiom audits, con-ron, NanoDa, and
-Lean kernel replay. The direct cold build also passed. This documentation
-revision preserves the verified Lean, dependency, Comparator, and build
-inputs; [the verification record](docs/VERIFICATION.md) states the exact scope.
-
-The [October 7 pre-submission review](docs/REVIEW.md) found no blocking
-defect in the sixteen-statement package. Its new
-[atom geometry](docs/ATOM_GEOMETRY.md) is included as supplementary
-mathematics with exact rational checks. It is outside the compared Lean
-claims. The repository is public; Palomar submission remains with the maintainer.
+The [atom geometry](docs/ATOM_GEOMETRY.md) and
+[local-exponent theorem](docs/PROOF.md) are supplementary mathematical
+notes outside the sixteen compared Lean statements.
 
 ## Build and replay
 
@@ -73,6 +64,6 @@ python3 evidence/probe.py
 python3 evidence/audit_census.py
 ```
 
-The project uses the [MIT license](LICENSE).
-[Submission details](docs/PALOMAR.md) identify the package and the current
-Palomar requirements.
+The project uses the [MIT license](LICENSE). [formalization.yaml](formalization.yaml)
+contains the mathematical metadata and attribution;
+[comparator.json](comparator.json) specifies the submission contract.

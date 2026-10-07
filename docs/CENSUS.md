@@ -1,7 +1,7 @@
 # Proof-carrying support census
 
-The formal all-law reduction does not trust a Python rank calculation, a
-floating-point solver, the census counts, or a modular-rank shortcut.
+Lean checks explicit support-extension witnesses and integer left inverses
+to prove coverage of every real balanced law.
 
 `FourRow.Census.extension_coverage` proves the following finite combinatorial
 lemma. Start with a listed empty independent support. Suppose every extension
@@ -63,35 +63,7 @@ memory footprint; ordinary `lake build` checks the same declarations.
 CI uses `scripts/build_census_shard.py --shard 0 --shards 1` for the full
 census chain, followed by the sequential runner to assemble and check the
 semantic coverage proof. Private predecessor imports enforce this ordering
-also during a direct cold Solution build. Splitting the census into more
-shards repeats prerequisite work and is no longer the recommended route.
+also during a direct cold Solution build.
 
-## Scoped verification record
-
-[`verification/census.json`](../verification/census.json) records the successful
-eight-shard Linux check of all 81 certificate leaves at
-`5ac56b66b910c536ff52fa4b1dc2443d41f5de99`, with clean-commit flags on every
-shard. The completed semantic assembly matches
-`4c11ca43afd49c1b3b1a0562e0e3acbc33e8c8a5`. Its principal census theorems use
-only `propext`, `Classical.choice`, and `Quot.sound`.
-
-The complete dependency closure of `FourRow.Census.support_cover` was exported
-and checked locally by both bundled independent kernels:
-
-| Checker | Result | Wall time | Maximum RSS |
-| --- | --- | --- | --- |
-| NanoDa, serial | 14,966 declarations; no type-checking errors | 922.39 s | 3.70 GB |
-| con-ron, verified, two workers | 13,492 checks completed; 13,949 declarations accepted | 667.09 s | 7.82 GB |
-
-These are macOS measurements from `time -l`, with decimal GB. NanoDa exited
-successfully and separately reported the pretty-printer message “Unable to
-print axioms”; the Lean axiom audit passed. Both checkers read the same
-86,558,045-byte export, whose hash is recorded in the JSON. Checker declaration
-counts use their respective reporting conventions.
-
-The two-worker macOS measurement was close to the physical memory of the
-smaller Linux runner. Production verification uses one worker per checker and
-provides swap headroom. Its Linux resource use is a separate measurement.
-These historical measurements verify the census only. The subsequent complete
-proof replay, statement comparison, and axiom audits passed as recorded in
-[`VERIFICATION.md`](VERIFICATION.md).
+The complete proof replay, statement comparison, and axiom audits are
+recorded in [VERIFICATION.md](VERIFICATION.md).

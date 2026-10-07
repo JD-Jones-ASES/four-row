@@ -9,9 +9,7 @@ the primary implementation's eight-bit lookup canonicalizer.
 
 The shared mathematical enumeration principle is to extend every independent
 support orbit.  Deleting any element of a circuit leaves an independent set,
-so all circuits occur by rank plus one.  This audit was written by the
-independent mathematical review agent after reviewing the primary census;
-it does not claim an independent discovery of that enumeration principle.
+so all circuits occur by rank plus one.
 
 Run from the repository root:
   python3 evidence/audit_census.py

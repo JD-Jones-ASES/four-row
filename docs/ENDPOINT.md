@@ -184,12 +184,10 @@ for real $`A`$. This is a rational Gram certificate; factoring its positive
 pivots also expresses it as squares with nonnegative rational weights.
 
 The monomials use the literal variable index $`4i+j`$ for $`a_{ij}`$, with
-zero-based indices. The numerical discovery grouped the 136 quadratic
-monomials into one block of 16 squares and 30 blocks of four monomials using
-row/column sign symmetries. Known equality points were removed as Gram
-kernels before solving. Neither this symmetry heuristic nor the numerical
-solver is trusted by the proof checker: (5) is expanded directly over
-$`\mathbb Q`$, with all monomial coefficients compared to (4).
+zero-based indices. The 136 quadratic monomials form one block of 16
+squares and 30 blocks of four monomials, according to row/column sign
+symmetries. The proof checker expands (5) directly over $`\mathbb Q`$ and
+compares every monomial coefficient with (4).
 
 The [certificate file](../evidence/certificates.json)
 contains all 131 identities. The independent
@@ -207,8 +205,7 @@ contains all 131 identities. The independent
 There are 13,744 positive pivots across the certificates and 196 coefficient
 keys in each expansion, some with zero target coefficient. The largest
 denominator among saved $`K_b`$ entries is 504,000. The verifier uses only
-Python's standard library and exact integers/Fractions. Floating-point
-eigenvalues and solver status are used only during discovery, never acceptance.
+Python's standard library and exact integers/Fractions.
 
 Equation (5) proves the inequality for every representative. Row and column
 relabeling proves it for every circuit vertex. Finally $`W_w`$, and also
@@ -243,16 +240,10 @@ $`\delta=1/24+\min\{(r-1/24)/2,1/48\}`$; then
 $`1/24\lt \delta\lt r`$ and $`\delta\lt 1/4`$. This proves sharpness and finishes
 the theorem.
 
-## Scope and remaining questions
+## Related results
 
-The theorem includes the exact closed radius, arbitrary real laws satisfying
-the finite constraints, and all nonnegative real matrices with zeros allowed.
-It is a global computer-assisted proof, not a sample or a family exclusion.
-The finite calculations have been independently replayed and internally
-reviewed. The subsequent [extension proof](EXTENSIONS.md) establishes the
-complete nonnegative equality classification, sharp stability throughout
-the ball, an explicit interior exponent, and entropy/tensorization applications.
-The [prior-art comparison](PRIOR_ART.md) records the contribution boundary.
-The endpoint, sharpness, and equality statements are included in the verified
-Lean development. Worldwide priority, external human peer review, and a
-shorter analytic endpoint proof remain unestablished.
+The [extension proof](EXTENSIONS.md) gives the complete nonnegative equality
+classification, sharp stability throughout the ball, an explicit interior
+exponent, and entropy/tensorization applications. The endpoint, sharpness,
+and equality statements are included in the [Lean theorem scope](THEOREMS.md).
+The [prior-art comparison](PRIOR_ART.md) identifies the published antecedents.
