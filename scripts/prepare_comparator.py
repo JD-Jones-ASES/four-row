@@ -43,7 +43,7 @@ launcher.chmod(0o755)
 config.pop('enable_nanoda', None)
 config['external_kernels'] = {
     'nanoda': [str(launcher)],
-    'con-ron': [str(prefix / 'bin/con-ron'), '--jobs=2'],
+    'con-ron': [str(prefix / 'bin/con-ron'), '--verified', '--jobs=1', '--progress=1000'],
 }
 for command in config['external_kernels'].values():
     if not Path(command[0]).is_file():

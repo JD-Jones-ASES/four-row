@@ -10,7 +10,6 @@ project:
     entropy constants and tensorization for adaptive permutation histories.
     The finite endpoint proof checks exhaustive support coverage and rational
     Gram identities in Lean.
-    Development and release verification are still in progress.
   authors: [JD Jones]
   responsible_maintainers: [JD Jones]
   license: MIT
@@ -43,8 +42,8 @@ status:
     past, with assumptions only on positive-probability histories. A new global
     shuffle mixing theorem and worldwide novelty are not claimed. The copied
     notes distinguish further informal consequences from the compared declarations.
-    The complete build, exact axiom audit, Comparator comparison and independent
-    kernel checks are pending.
+    Release verification requires the complete build, exact axiom audit,
+    Comparator comparison and both independent kernel checks at the same commit.
   sorry_count: 0
   sorry_in_definitions: 0
 automation:
@@ -65,5 +64,6 @@ review:
   status: agent-reviewed
   notes: >-
     Distinct internal agents reviewed the research and formalization arguments.
-    This is not external human peer review. Exact release verification is pending;
+    This is not external human peer review. Exact release verification is recorded
+    by the full private Linux workflow and its commit-pinned artifacts;
     no claim of Palomar acceptance, registration or worldwide novelty is made.

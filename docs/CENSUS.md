@@ -18,6 +18,13 @@ supply an explicit row/column action for every support extension. Each
 extension identity or containment is checked in Lean's kernel. Both the
 permutation order and every incidence entry are literal definitions.
 
+Supports are encoded as 24-bit natural numbers. A proved bitwise-image lemma
+connects each numeric action check to the corresponding finite-set image;
+bitwise intersection proves containment. The checker skips an extension by a
+coordinate already present, because that extension is the original support.
+Binary lookup trees keep reduction logarithmic in the table size. These
+representations affect checking cost, without adding a trusted computation.
+
 Only the 1,282 maximal independent supports require linear-algebra
 certificates. Each certificate supplies selected incidence rows and an
 integer matrix `L` satisfying `L B = d I` with nonzero integer `d`. The generic
@@ -53,3 +60,6 @@ python3 scripts/build_census.py
 
 The sequential build runner keeps certificate verification within a bounded
 memory footprint; ordinary `lake build` checks the same declarations.
+For parallel verification, `scripts/build_census_shard.py --shard 0 --shards 8`
+selects one disjoint group of leaf modules. Every shard is required, followed
+by the sequential runner to assemble and check the semantic coverage proof.

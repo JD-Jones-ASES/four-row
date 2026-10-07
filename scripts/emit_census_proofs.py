@@ -77,11 +77,17 @@ s+='def augmentationData : LookupTree (Fin 1282 × Fin 576) := '+tree(f'({k},{g}
 
 def augmentation (i : Fin 5109) : Fin 1282 × Fin 576 := augmentationData.get i.val
 
-def ValidAugmentation (i : Fin 5109) : Prop := ∀ q : PermIndex,
-  (independentMasks.get i.val).testBit (literalAction (augmentation i).2 q).val →
-  (independentMasks.get (maxSource (augmentation i).1).val).testBit q.val
+def ValidAugmentation (i : Fin 5109) : Prop :=
+  match augmentation i with
+  | (k,g) =>
+      independentMasks.get i.val &&&
+        imageMask (literalAction g) (independentMasks.get (maxSource k).val) =
+        independentMasks.get i.val
 
-instance (i : Fin 5109) : Decidable (ValidAugmentation i) := inferInstanceAs (Decidable (∀ _, _))
+instance (i : Fin 5109) : Decidable (ValidAugmentation i) := by
+  unfold ValidAugmentation
+  cases augmentation i
+  infer_instance
 '''
 for b in range(40):
     n=min(128,5109-128*b)
@@ -108,21 +114,21 @@ s+='''
 theorem augmentation_checked (i : Fin 5109) :
     independentSupport i ⊆ (independentSupport (maxSource (augmentation i).1)).image
       (literalAction (augmentation i).2) := by
-  intro p hp
-  let q := (action (relabel (augmentation i).2)).symm p
-  have hq : literalAction (augmentation i).2 q = p := by
-    rw [literalAction_eq]
-    exact (action (relabel (augmentation i).2)).apply_symm_apply p
-  apply Finset.mem_image.mpr
-  refine ⟨q,?_,hq⟩
-  apply (mem_independentSupport _ _).mpr
-  apply augmentation_valid i q
-  have hs := (mem_independentSupport i p).mp hp
-  simpa only [hq] using hs
+  have h := augmentation_valid i
+  rcases he : augmentation i with ⟨k,g⟩
+  have hh : independentMasks.get i.val &&&
+      imageMask (literalAction g) (independentMasks.get (maxSource k).val) =
+      independentMasks.get i.val := by
+    simpa only [ValidAugmentation,he] using h
+  have hs := maskSupport_subset_of_land_eq hh
+  simpa only [maskSupport_imageMask,independentSupport,he] using hs
 
 theorem all_independent (i : Fin 5109) : IndependentSupport (independentSupport i) := by
   apply independent_moved_subset (relabel (augmentation i).2) (maximal_independent (augmentation i).1)
-  simpa only [moved, actionHom_apply, ← literalAction_eq] using augmentation_checked i
+  have hact : literalAction (augmentation i).2 =
+      (action (relabel (augmentation i).2) : PermIndex → PermIndex) :=
+    funext (literalAction_eq (augmentation i).2)
+  simpa only [moved, actionHom_apply, ← hact] using augmentation_checked i
 end FourRow.Census
 '''
 write_lean(ROOT/'FourRow/CensusIndependence.lean',s)
@@ -151,7 +157,7 @@ theorem checked : ∀ i : Fin {n}, ∀ p : PermIndex,
 end FourRow.Census.{ns}
 '''
     write_lean(out/(ns+'.lean'),s)
-print('Emitted41 maximal-inverse modules, augmentation, and40 extension modules.')
+print('Emitted 41 maximal-inverse modules, augmentation, and 40 extension modules.')
 s='\n'.join(f'import FourRow.CensusData.Extension{b:02}' for b in range(40))+'''
 import FourRow.CensusIndependence
 import FourRow.CensusWitness

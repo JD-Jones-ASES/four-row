@@ -3,18 +3,17 @@
 A private formalization of sharp robustness and stability for the four-row
 permanent inequality, based on Analytic-Lab's October 6, 2026 handoff.
 
-**Development in progress. This snapshot is not yet submission-ready.**
-The full mathematical research result is proved by exact computer-assisted
-arguments in [the endpoint note](docs/ENDPOINT.md) and
-[the extensions](docs/EXTENSIONS.md). The
+The mathematical research is recorded in [the endpoint note](docs/ENDPOINT.md)
+and [the extensions](docs/EXTENSIONS.md). The
 [sixteen principal statements](docs/THEOREMS.md) include full real-law
 coverage, boundary cases, sharpness, entropy and adaptive histories. Complete
-Lean assembly and independent kernel replay remain the release gate.
+Lean assembly, exact statement comparison, and independent kernel replay form
+the [release verification gate](docs/VERIFICATION.md).
 No publication or Palomar submission has been made.
 
 For every balanced real probability law on the 24 permutations within total
-variation distance `r ≤ 1/24` of uniform, and nonnegative rows normalized in
-probability L², the intended principal theorem is
+variation distance `0 ≤ r ≤ 1/24` of uniform, and nonnegative rows normalized in
+probability L², the principal stability theorem is
 
 ```text
 1 − Eν ∏ᵢ fᵢ(σ(i)) ≥ ((1 − 24r)/9) ∑ᵢ Var(fᵢ).
@@ -41,7 +40,7 @@ thirteen corruption controls. It does not replace the Lean proof.
 Install the pinned Lean toolchain with elan, then run:
 
 ```sh
-lake exe cache get
+python3 scripts/fetch_mathlib_cache.py
 python3 scripts/build_grams.py --jobs 1
 python3 scripts/build_census.py
 lake build
@@ -49,8 +48,9 @@ python3 scripts/audit_release.py
 ```
 
 `lean-toolchain` and `lake-manifest.json` pin Lean and all dependencies.
-The generated Gram modules contain explicit rational sum-of-squares proofs;
-Python generates source text, while Lean checks the polynomial identities.
+The generated Gram modules contain explicit sum-of-squares proofs with
+exact denominator clearing. Python generates source text; Lean checks the
+integer polynomial identities and their return to the real inequalities.
 The generation script and original certificate data are committed.
 See [verification and reproduction](docs/VERIFICATION.md) for the source
 guards, private Linux workflow, statement comparison and independent kernels.

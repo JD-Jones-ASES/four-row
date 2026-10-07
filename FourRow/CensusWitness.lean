@@ -18,22 +18,24 @@ theorem extension_of_witness {i : Fin 5109} {p : PermIndex} (e : ExtensionWitnes
   have hp' : ¬ (independentMasks.get i.val).testBit p.val :=
     fun h => hp ((mem_independentSupport i p).mpr h)
   rcases e with ⟨k,g⟩
+  have hact : literalAction g = (action (relabel g) : PermIndex → PermIndex) :=
+    funext (literalAction_eq g)
   cases k with
   | inl k =>
     left
     refine ⟨relabel g,k,?_⟩
     have hh : imageMask (literalAction g) (independentMasks.get k.val) = extendedMask i p := by
-      simpa only [ValidExtension,hp',ite_false] using he
+      simpa [ValidExtension,hp'] using he
     have hs := congrArg maskSupport hh
     simpa only [maskSupport_imageMask,maskSupport_extendedMask,independentSupport,
-      moved,actionHom_apply,← literalAction_eq] using hs.symm
+      moved,actionHom_apply,← hact] using hs.symm
   | inr k =>
     right
     refine ⟨relabel g,k,?_⟩
     have hh : imageMask (literalAction g) (circuitMasks.get k.val) &&& extendedMask i p =
         imageMask (literalAction g) (circuitMasks.get k.val) := by
-      simpa only [ValidExtension,hp',ite_false] using he
+      simpa [ValidExtension,hp'] using he
     have hs := maskSupport_subset_of_land_eq hh
     simpa only [maskSupport_imageMask,maskSupport_extendedMask,circuitSupport,
-      moved,actionHom_apply,← literalAction_eq] using hs
+      moved,actionHom_apply,← hact] using hs
 end FourRow.Census

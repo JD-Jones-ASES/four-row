@@ -1,7 +1,9 @@
 # Verification and reproduction
 
-Release verification is in progress. This file describes the reproducible
-checks; a successful partial build is not the completed release gate.
+The release gate is a successful **full** private Linux verification run on
+the exact commit. Its recorded commit, clean worktree, axiom audit, statement
+comparison, and independent-kernel verdicts are the verification record.
+A partial certificate build or sandbox smoke is not the completed gate.
 
 ## Pinned inputs
 
@@ -23,7 +25,7 @@ acceptance. Policy can change before a later submission.
 With elan and Python 3 installed, from the repository root:
 
 ```sh
-lake exe cache get
+python3 scripts/fetch_mathlib_cache.py
 python3 scripts/build_grams.py --jobs 1
 python3 scripts/build_census.py
 lake build
@@ -60,9 +62,15 @@ principal axioms, and runs the two exact Python replays.
 
 The final step runs the toolchain's `lake comparator` with the named
 Challenge and Solution. A temporary config enables the bundled NanoDa and
-con-ron independent kernels. The committed comparator config stays within
+con-ron independent kernels. For the private runner's memory budget, a
+temporary launcher runs NanoDa with one worker and treats unpermitted
+axioms as hard errors; it preserves the exported declarations and axiom
+allowlist. Con-ron runs in verified mode with one worker. The committed
+comparator config stays within
 Palomar's accepted authoring schema. The checker runs use bubblewrap from
-the pinned official installer. The private workflow does not contact the
+the pinned official installer. The complete verification job adds 16 GiB of
+swap as memory headroom for the full exported proof closure. The private
+workflow does not contact the
 submission service or create a registry entry.
 
 ```sh
@@ -93,8 +101,16 @@ kernel; Python is not part of the theorem's trust assumptions.
 
 The formal Gram generator strengthens the source certificates by retaining
 an explicit positive sum of squares of row/column product differences.
-Every emitted identity is checked by `ring`, and its nonnegativity is proved
-in Lean. The positive defect supplies the full equality classification.
+The generator clears rational denominators using a positive integer scale.
+Every emitted identity is checked by kernel reduction of sparse integer
+polynomials. The shared checker proves that expansion, structural sorting,
+and coefficient collection preserve evaluation for every real assignment;
+it also proves nonnegativity from the checked integer square weights.
+A definitional evaluation bridge and a checked scalar identity recover
+each original real quartic statement by dividing by the positive scale,
+including the positive defect used in the full equality classification.
+Python generation is therefore certificate construction,
+not an additional trusted computation.
 
 ## Publication boundary
 
