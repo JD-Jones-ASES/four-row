@@ -63,3 +63,33 @@ memory footprint; ordinary `lake build` checks the same declarations.
 For parallel verification, `scripts/build_census_shard.py --shard 0 --shards 8`
 selects one disjoint group of leaf modules. Every shard is required, followed
 by the sequential runner to assemble and check the semantic coverage proof.
+
+## Scoped verification record
+
+[`verification/census.json`](../verification/census.json) records the successful
+eight-shard Linux check of all 81 certificate leaves at
+`5ac56b66b910c536ff52fa4b1dc2443d41f5de99`, with clean-commit flags on every
+shard. The completed semantic assembly matches
+`4c11ca43afd49c1b3b1a0562e0e3acbc33e8c8a5`. Its principal census theorems use
+only `propext`, `Classical.choice`, and `Quot.sound`.
+
+The complete dependency closure of `FourRow.Census.support_cover` was exported
+and checked locally by both bundled independent kernels:
+
+| Checker | Result | Wall time | Maximum RSS |
+| --- | --- | --- | --- |
+| NanoDa, serial | 14,966 declarations; no type-checking errors | 922.39 s | 3.70 GB |
+| con-ron, verified, two workers | 13,492 checks completed; 13,949 declarations accepted | 667.09 s | 7.82 GB |
+
+These are macOS measurements from `time -l`, with decimal GB. NanoDa exited
+successfully and separately reported the pretty-printer message “Unable to
+print axioms”; the Lean axiom audit passed. Both checkers read the same
+86,558,045-byte export, whose hash is recorded in the JSON. Checker declaration
+counts use their respective reporting conventions.
+
+The two-worker con-ron run exceeded a standard private Linux runner's memory
+budget. Production verification uses one worker per independent checker and
+provides swap headroom. Its Linux resource use is a separate measurement.
+This record verifies the census only. The complete release still requires
+the full theorem closure, statement comparison, and the checks described in
+[`VERIFICATION.md`](VERIFICATION.md).
