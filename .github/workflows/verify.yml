@@ -41,7 +41,7 @@ jobs:
           "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Retrieve pinned Mathlib cache
-        run: lake exe cache get
+        run: python3 scripts/fetch_mathlib_cache.py
       - name: Restore exact Gram shard cache
         id: gram-cache
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
@@ -50,6 +50,8 @@ jobs:
             .lake/build/lib/lean/FourRow/Grams
             .lake/build/ir/FourRow/Grams
           key: ${{ runner.os }}-four-row-grams-${{ matrix.shard }}-of-8-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.toml', 'FourRow/Grams/*.lean', 'FourRow/PolynomialCertificate.lean') }}
+          restore-keys: |
+            ${{ runner.os }}-four-row-grams-${{ matrix.shard }}-of-8-
       - name: Build independent Gram shard with bounded memory
         run: python3 scripts/build_grams.py --jobs 1 --shard ${{ matrix.shard }} --shards 8
       - name: Save exact Gram shard cache
@@ -104,7 +106,7 @@ jobs:
           "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Retrieve pinned Mathlib cache
-        run: lake exe cache get
+        run: python3 scripts/fetch_mathlib_cache.py
       - name: Restore exact census shard cache
         id: census-cache
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
@@ -113,6 +115,8 @@ jobs:
             .lake/build/lib/lean/FourRow/CensusData
             .lake/build/ir/FourRow/CensusData
           key: ${{ runner.os }}-four-row-census-leaves-${{ matrix.shard }}-of-8-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'FourRow/Census*.lean', 'FourRow/CensusData/*.lean', 'FourRow/CensusTableChecks/*.lean', 'FourRow/Finite.lean', 'FourRow/Circuit.lean', 'FourRow/Relabel.lean', 'FourRow/LookupTree.lean') }}
+          restore-keys: |
+            ${{ runner.os }}-four-row-census-leaves-${{ matrix.shard }}-of-8-
       - name: Check census shard with bounded memory
         run: python3 scripts/build_census_shard.py --shard ${{ matrix.shard }} --shards 8
       - name: Save exact census shard cache
@@ -164,7 +168,7 @@ jobs:
           "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Retrieve pinned Mathlib cache
-        run: lake exe cache get
+        run: python3 scripts/fetch_mathlib_cache.py
       - name: Retrieve checked Gram modules from this exact run
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
