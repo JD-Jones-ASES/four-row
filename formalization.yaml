@@ -24,17 +24,19 @@ classification:
   - "26D15"
 sources:
 - title: Sharp four-row permanent robustness, stability, and entropy
-  type: other
-  relationship: formalizes
+  type: original-proof
+  relationship: other
   location: docs/ENDPOINT.md and docs/EXTENSIONS.md
-  note: Mathematical source notes for the endpoint, stability, equality, exponent, entropy,
-    and adaptive-history results. docs/THEOREMS.md distinguishes formal statements from
-    supplementary mathematical consequences.
+  note: This project first presents the sharp endpoint, stability, equality, exponent,
+    entropy, and adaptive-history results. These accompanying mathematical notes are
+    part of the same development, not a distinct prior source work being formalized.
+    docs/THEOREMS.md distinguishes formal statements from supplementary mathematical
+    consequences. This provenance classification does not assert worldwide priority.
 - title: A strict four-row permanent inequality and permutation moments
   authors:
   - OpenAI
   type: paper
-  relationship: adapts
+  relationship: background
   id: https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/A-strict-four-row-permanent-inequality-and-permutation-moments-September-26-2026
   note: 'Direct predecessor: qualitative balanced-law robustness below exponent two and permutation-history
     applications. The present result determines the exact radius at exponent two, the optimal stability
